@@ -1,0 +1,87 @@
+    <form action="#" method="post" id="frm-form" class="form-class1 form-class2" enctype="multipart/form-data">
+        <fieldset id="custom-group-id">
+    <legend>Group 1</legend>
+    <p>Group 1 description.</p>
+        <table>
+    <tr>
+        <th>
+    <label for="frm-form-text">Text</label>
+        </th>
+        <td>
+    <input type="text" name="text" id="frm-form-text">
+        </td>
+    </tr>
+    CUSTOM TEXTAREA PAIR TYPE RENDERING
+        </table>
+
+        <fieldset>
+    <legend><span>Group 2 label</span></legend>
+    <p><span>Group 2 description.</span></p>
+        <table>
+    <tr>
+        <th>
+
+        </th>
+        <td>
+    <label for="frm-form-container-checkbox"><input type="checkbox" name="container[checkbox]" id="frm-form-container-checkbox">Checkbox</label>
+        </td>
+    </tr>
+    <tr>
+        <th>
+    <label>CheckBoxList</label>
+        </th>
+        <td>
+    CUSTOM CHECKBOXLIST CONTROL RENDERING
+        </td>
+    </tr>
+    <tr>
+        <th>
+    <label>RadioList</label>
+        </th>
+        <td>
+    CUSTOM RADIO CONTROL TYPE RENDERING
+        </td>
+    </tr>
+    <tr>
+        <th>
+    <label for="frm-form-container-innerContainer-selectbox">Selectbox</label>
+        </th>
+        <td>
+    <select name="container[innerContainer][selectbox]" id="frm-form-container-innerContainer-selectbox"><option value="5">five</option><option value="6">six</option></select>
+        </td>
+    </tr>
+    <tr>
+        <th>
+    <label for="frm-form-container-innerContainer-upload">Upload</label>
+        </th>
+        <td>
+    <input type="file" name="container[innerContainer][upload]" id="frm-form-container-innerContainer-upload">
+        </td>
+    </tr>
+        </table>
+
+        </fieldset>
+        </fieldset>
+        <table>
+    CUSTOM FOO PAIR RENDERING
+    <tr>
+        <th></th>
+        <td>
+    <input type="submit" name="send" value="SubmitButton">
+    <input type="button" name="button" value="Button">
+        </td>
+    </tr>
+        </table>
+
+    <input type="hidden" name="hidden" value=""><input type="hidden" name="_do" value="form-submit"><!--[if IE]><input type=IEbug disabled style="display:none"><![endif]-->
+</form>
+
+
+
+
+
+
+
+
+
+

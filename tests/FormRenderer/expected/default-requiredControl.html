@@ -1,0 +1,101 @@
+    <form action="#" method="post" id="frm-form" class="form-class1 form-class2" enctype="multipart/form-data">
+        <fieldset id="custom-group-id">
+    <legend>Group 1</legend>
+    <p>Group 1 description.</p>
+        <table>
+    <tr class="required">
+        <th>
+    <label for="frm-form-text">Text</label>
+        </th>
+        <td>
+    <input type="text" name="text" id="frm-form-text" required data-nette-rules='[{"op":":filled","msg":"REQUIRED"}]'>
+        </td>
+    </tr>
+    <tr class="required">
+        <th>
+    <label for="frm-form-textarea">TextArea</label>
+        </th>
+        <td>
+    <textarea name="textarea" id="frm-form-textarea" required data-nette-rules='[{"op":":filled","msg":"REQUIRED"}]'></textarea>
+        </td>
+    </tr>
+        </table>
+
+        <fieldset>
+    <legend><span>Group 2 label</span></legend>
+    <p><span>Group 2 description.</span></p>
+        <table>
+    <tr class="required">
+        <th>
+
+        </th>
+        <td>
+    <label for="frm-form-container-checkbox"><input type="checkbox" name="container[checkbox]" id="frm-form-container-checkbox" required data-nette-rules='[{"op":":filled","msg":"REQUIRED"}]'>Checkbox</label>
+        </td>
+    </tr>
+    <tr class="required">
+        <th>
+    <label>CheckBoxList</label>
+        </th>
+        <td>
+    <label><input type="checkbox" name="container[checkboxlist][]" data-nette-rules='[{"op":":filled","msg":"REQUIRED"}]' value="1">one</label><br><label><input type="checkbox" name="container[checkboxlist][]" value="2">two</label>
+        </td>
+    </tr>
+    <tr class="required">
+        <th>
+    <label>RadioList</label>
+        </th>
+        <td>
+    <label><input type="radio" name="container[radiolist]" required data-nette-rules='[{"op":":filled","msg":"REQUIRED"}]' value="3">three</label><br><label><input type="radio" name="container[radiolist]" required value="4">four</label>
+        </td>
+    </tr>
+    <tr class="required">
+        <th>
+    <label for="frm-form-container-innerContainer-selectbox">Selectbox</label>
+        </th>
+        <td>
+    <select name="container[innerContainer][selectbox]" id="frm-form-container-innerContainer-selectbox" required data-nette-rules='[{"op":":filled","msg":"REQUIRED"}]'><option value="5">five</option><option value="6">six</option></select>
+        </td>
+    </tr>
+    <tr class="required">
+        <th>
+    <label for="frm-form-container-innerContainer-upload">Upload</label>
+        </th>
+        <td>
+    <input type="file" name="container[innerContainer][upload]" id="frm-form-container-innerContainer-upload" required data-nette-rules='[{"op":":filled","msg":"REQUIRED"}]'>
+        </td>
+    </tr>
+        </table>
+
+        </fieldset>
+        </fieldset>
+        <table>
+    <tr class="required">
+        <th>
+    <label class="label-class1 label-class2" for="frm-form-foo">Foo</label>
+        </th>
+        <td>
+    <div data-foo="foo" class="control-class1 control-class2"><input name="foo" id="frm-form-foo" required data-nette-rules='[{"op":":filled","msg":"REQUIRED"}]'><span>foo</span></div>
+        </td>
+    </tr>
+    <tr>
+        <th></th>
+        <td>
+    <input type="submit" name="send" value="SubmitButton">
+    <input type="button" name="button" value="Button">
+        </td>
+    </tr>
+        </table>
+
+    <input type="hidden" name="hidden" value=""><input type="hidden" name="_do" value="form-submit"><!--[if IE]><input type=IEbug disabled style="display:none"><![endif]-->
+</form>
+
+
+
+
+
+
+
+
+
+

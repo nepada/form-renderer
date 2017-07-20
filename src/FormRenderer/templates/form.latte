@@ -1,0 +1,4 @@
+{foreach $this->global->formRendererImports as $templateFile}
+    {import $templateFile}
+{/foreach}
+{include #form, form => $form}

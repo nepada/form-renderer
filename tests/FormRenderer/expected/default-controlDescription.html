@@ -1,0 +1,102 @@
+    <form action="#" method="post" id="frm-form" class="form-class1 form-class2" enctype="multipart/form-data">
+        <fieldset id="custom-group-id">
+    <legend>Group 1</legend>
+    <p>Group 1 description.</p>
+        <table>
+    <tr>
+        <th>
+    <label for="frm-form-text">Text</label>
+        </th>
+        <td>
+    <input type="text" name="text" id="frm-form-text">
+    <small>Control text description.</small>
+        </td>
+    </tr>
+    <tr>
+        <th>
+    <label for="frm-form-textarea">TextArea</label>
+        </th>
+        <td>
+    <textarea name="textarea" id="frm-form-textarea"></textarea>
+    <small>Control textarea description.</small>
+        </td>
+    </tr>
+        </table>
+    
+        <fieldset>
+    <legend><span>Group 2 label</span></legend>
+    <p><span>Group 2 description.</span></p>
+        <table>
+    <tr>
+        <th>
+    
+        </th>
+        <td>
+    <label for="frm-form-container-checkbox"><input type="checkbox" name="container[checkbox]" id="frm-form-container-checkbox">Checkbox</label>
+    <small>Control checkbox description.</small>
+        </td>
+    </tr>
+    <tr>
+        <th>
+    <label>CheckBoxList</label>
+        </th>
+        <td>
+    <label><input type="checkbox" name="container[checkboxlist][]" value="1">one</label><br><label><input type="checkbox" name="container[checkboxlist][]" value="2">two</label>
+    <small>Control checkboxlist description.</small>
+        </td>
+    </tr>
+    <tr>
+        <th>
+    <label>RadioList</label>
+        </th>
+        <td>
+    <label><input type="radio" name="container[radiolist]" value="3">three</label><br><label><input type="radio" name="container[radiolist]" value="4">four</label>
+    <small>Control radiolist description.</small>
+        </td>
+    </tr>
+    <tr>
+        <th>
+    <label for="frm-form-container-innerContainer-selectbox">Selectbox</label>
+        </th>
+        <td>
+    <select name="container[innerContainer][selectbox]" id="frm-form-container-innerContainer-selectbox"><option value="5">five</option><option value="6">six</option></select>
+    <small>Control selectbox description.</small>
+        </td>
+    </tr>
+    <tr>
+        <th>
+    <label for="frm-form-container-innerContainer-upload">Upload</label>
+        </th>
+        <td>
+    <input type="file" name="container[innerContainer][upload]" id="frm-form-container-innerContainer-upload">
+    <small>Control upload description.</small>
+        </td>
+    </tr>
+        </table>
+    
+        </fieldset>
+        </fieldset>
+        <table>
+    <tr>
+        <th>
+    <label class="label-class1 label-class2" for="frm-form-foo">Foo</label>
+        </th>
+        <td>
+    <div data-foo="foo" class="control-class1 control-class2"><input name="foo" id="frm-form-foo"><span>foo</span></div>
+    <small>Control foo description.</small>
+        </td>
+    </tr>
+    <tr>
+        <th></th>
+        <td>
+    <input type="submit" name="send" value="SubmitButton">
+    <small>Control send description.</small>
+    <input type="button" name="button" value="Button">
+    <small>Control button description.</small>
+        </td>
+    </tr>
+        </table>
+    
+    <input type="hidden" name="hidden" value=""><input type="hidden" name="_do" value="form-submit"><!--[if IE]><input type=IEbug disabled style="display:none"><![endif]-->
+</form>
+
