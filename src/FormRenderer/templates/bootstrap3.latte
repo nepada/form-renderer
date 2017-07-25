@@ -1,0 +1,152 @@
+{block #form}
+    <form n:name="$form" n:class="$form->elementPrototype->class, $mode === horizontal ? form-horizontal, $mode === inline ? form-inline">
+        {include #form-errors}
+        {include #form-body}
+    </form>
+{/block}
+
+{define #form-errors}
+    {if $mode === inline}
+        <div n:foreach="$form->errors as $error" class="alert alert-danger">
+            {$error|safeTranslate}
+        </div>
+    {else}
+        <div n:foreach="$form->ownErrors as $error" class="alert alert-danger">
+            {$error|safeTranslate}
+        </div>
+    {/if}
+{/define}
+
+{define #form-body}
+    {foreach $form->getGroups() as $group}
+        {include #group, group => $group, groupsIterator => $iterator}
+    {/foreach}
+    {include #controls, group => $form}
+{/define}
+
+{define #group}
+    {if $group->getOption('visual') && $group->getControls()}
+        <fieldset n:attr="id => $group->getOption('id')">
+            {include #group-caption, group => $group}
+            {include #controls, group => $group}
+            {if $group->getOption('embedNext') && !$groupsIterator->isLast()}
+                {php $groupsIterator->next()}
+                {include #group, group => $groupsIterator->current(), groupsIterator => $groupsIterator}
+            {/if}
+        </fieldset>
+    {/if}
+{/define}
+
+{define #group-caption}
+    <legend n:if="$group->getOption('label') !== null">{$group->getOption('label')|safeTranslate}</legend>
+    <p n:if="$group->getOption('description') !== null">{$group->getOption('description')|safeTranslate}</p>
+{/define}
+
+{define #controls}
+    {foreach $group->getControls() as $control}
+        {continueIf $control->getOption('rendered') || $control->getOption('type') === 'hidden'}
+        {var $controlName = $control->lookupPath(\Nette\Forms\Form::class)}
+        {var $controlType = $control->getOption('type', 'default')}
+        {ifset #pair-name-{$controlName}}
+            {include #"pair-name-{$controlName}", control => $control, controlsIterator => $iterator}
+        {elseifset #pair-type-{$controlType}}
+            {include #"pair-type-{$controlType}", control => $control, controlsIterator => $iterator}
+        {else}
+            {include #pair-type-default, control => $control, controlsIterator => $iterator}
+        {/ifset}
+    {/foreach}
+{/define}
+
+{define #pair-type-default}
+    <div n:class="form-group, $control->getOption('class'), $control->required ? required, $control->hasErrors() ? has-error" n:attr="id => $control->getOption('id')">
+        {include #label, control => $control}
+        <div n:tag-if="$mode === horizontal" n:class="!$control->getLabel() ? $gridOffsetClass, $gridControlClass">
+            {var $controlName = $control->lookupPath(\Nette\Forms\Form::class)}
+            {var $controlType = $control->getOption('type', 'default')}
+            {ifset #control-name-{$controlName}}
+                {include #"control-name-{$controlName}", control => $control}
+            {elseifset #control-type-{$controlType}}
+                {include #"control-type-{$controlType}", control => $control}
+            {else}
+                {include #control-type-default, control => $control}
+            {/ifset}
+        </div>
+    </div>
+{/define}
+
+{define #pair-type-button}
+    <div class="form-group">
+        <div n:tag-if="$mode === horizontal" n:class="$gridOffsetClass, $gridControlClass" n:inner-block="#control-type-button">
+            {if !$control->getOption('rendered')}
+                {input $control}
+                {include #control-help, control => $control}
+            {/if}
+            {if !$controlsIterator->isLast() && $controlsIterator->getNextValue()->getOption('type') === 'button'}
+                {php $controlsIterator->next()}
+                {include #control-type-button, control => $controlsIterator->current(), controlsIterator => $controlsIterator}
+            {/if}
+        </div>
+    </div>
+{/define}
+
+{define #label}
+    <label n:if="$control->getLabel()" n:name="$control" n:class="$control->labelPrototype->class, $mode === horizontal ? $gridLabelClass, $mode === horizontal ? control-label" />
+{/define}
+
+{define #control-type-default}
+    {input $control}
+    {include #control-help, control => $control}
+{/define}
+
+{define #control-type-text}
+    <input n:name="$control" n:class="$control->controlPrototype->class, form-control">
+    {include #control-help, control => $control}
+{/define}
+
+{define #control-type-textarea}
+    <textarea n:name="$control" n:class="$control->controlPrototype->class, form-control" />
+    {include #control-help, control => $control}
+{/define}
+
+{define #control-type-select}
+    <select n:name="$control" n:class="$control->controlPrototype->class, form-control" />
+    {include #control-help, control => $control}
+{/define}
+
+{define #control-type-radio}
+    <br n:tag-if="$mode === basic">
+    {var $isInlineMode = $mode === inline || !$control->separatorPrototype->getName()}
+    {var $disabled = $control->disabled}
+    {foreach $control->items as $k => $v}
+        {var $isDisabled = $disabled === true || (is_array($disabled) && $disabled[$k])}
+        <div n:tag-if="!$isInlineMode" n:class="$control->separatorPrototype->class, radio, $isDisabled ? disabled">
+            <label n:name="$control:$k" n:class="$control->itemLabelPrototype->class, $isInlineMode ? radio-inline, $isInlineMode && $isDisabled ? disabled"><input n:name="$control:$k">{=$control->translate($v)}</label>
+        </div>
+    {/foreach}
+    {include #control-help, control => $control}
+{/define}
+
+{define #control-type-checkboxlist}
+    <br n:tag-if="$mode === basic">
+    {var $isInlineMode = $mode === inline || !$control->separatorPrototype->getName()}
+    {var $disabled = $control->disabled}
+    {foreach $control->items as $k => $v}
+        {var $isDisabled = $disabled === true || (is_array($disabled) && $disabled[$k])}
+        <div n:tag-if="!$isInlineMode" n:class="$control->separatorPrototype->class, checkbox, $isDisabled ? disabled">
+            <label n:name="$control:$k" n:class="$control->itemLabelPrototype->class, $isInlineMode ? checkbox-inline, $isInlineMode && $isDisabled ? disabled"><input n:name="$control:$k">{=$control->translate($v)}</label>
+        </div>
+    {/foreach}
+    {include #control-help, control => $control}
+{/define}
+
+{define #control-type-checkbox}
+    <div n:class="$control->getSeparatorPrototype()->class, $mode === inline ? checkbox-inline : checkbox, $control->disabled ? disabled">
+        {input $control}
+    </div>
+    {include #control-help, control => $control}
+{/define}
+
+{define #control-help}
+    <span n:if="$control->getOption('description') !== null" class="help-block">{$control->getOption('description')|safeTranslate}</span>
+    <span n:if="$mode !== inline" n:foreach="$control->errors as $error" class="help-block">{$error|safeTranslate}</span>
+{/define}
