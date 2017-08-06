@@ -1,0 +1,48 @@
+language: php
+php:
+    - 7.1
+    - 7.2
+
+env:
+    - COMPOSER_ARGS=""
+    - COMPOSER_ARGS="--prefer-stable"
+    - COMPOSER_ARGS="--prefer-stable --prefer-lowest"
+
+jobs:
+    include:
+        -   stage: Code Standard Checker
+            php: 7.1
+            install:
+                - mkdir -p /tmp/coding-standard
+                - composer --working-dir=/tmp/coding-standard init
+                - travis_retry composer --working-dir=/tmp/coding-standard require --no-interaction --prefer-dist --update-no-dev nepada/coding-standard ^4.0.0
+            script:
+                - /tmp/coding-standard/vendor/bin/phpcs --standard=/tmp/coding-standard/vendor/nepada/coding-standard/src/Nepada/ruleset.xml --encoding=utf-8 -sp src tests
+        -   stage: Code Coverage
+            script:
+                - vendor/bin/tester -p phpdbg tests -s --coverage ./coverage.xml --coverage-src ./src
+            after_script:
+                - travis_retry wget https://github.com/satooshi/php-coveralls/releases/download/v1.0.1/coveralls.phar
+                - php coveralls.phar --verbose --config tests/coveralls.yml
+    allow_failures:
+        -   php: 7.2
+        -   stage: Code Coverage
+
+install:
+    - travis_retry composer create-project --no-interaction jakub-onderka/php-parallel-lint /tmp/php-parallel-lint ^0.9
+    - travis_retry composer create-project --no-interaction xificurk/phpstan-shim /tmp/phpstan ^0.8
+    - travis_retry composer update --no-interaction --prefer-dist $COMPOSER_ARGS
+
+script:
+    - /tmp/php-parallel-lint/parallel-lint -e php,phpt --exclude tests/temp src tests
+    - vendor/bin/tester -s -p php -c tests/php.ini tests
+    - /tmp/phpstan/phpstan.phar analyse -c tests/phpstan.neon -l 7 src tests
+
+after_failure:
+    - for i in $(find tests -name \*.actual); do echo "--- $i"; cat $i; echo; echo; done
+
+sudo: false
+
+cache:
+    directories:
+        - $HOME/.composer/cache
