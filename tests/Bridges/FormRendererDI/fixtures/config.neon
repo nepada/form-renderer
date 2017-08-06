@@ -1,0 +1,14 @@
+extensions:
+    formRenderer: Nepada\Bridges\FormRendererDI\FormRendererExtension
+
+formRenderer:
+    default:
+        imports:
+            - %fixturesDir%/form.latte
+    bootstrap3:
+        mode: horizontal
+        imports:
+            - %fixturesDir%/form.latte
+
+application:
+    scanDirs: false
