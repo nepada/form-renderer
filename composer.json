@@ -3,7 +3,7 @@
     "type": "library",
     "license": "BSD-3-Clause",
     "description": "Latte template based form renderer for Nette forms with full support for Bootstrap 3.",
-    "keywords": ["bootstrap", "forms", "renderer", "nette"],
+    "keywords": ["forms", "renderer", "bootstrap", "nette", "latte"],
     "support": {
         "email": "petr@pada.cz",
         "issues": "https://github.com/nepada/form-renderer/issues"
@@ -17,7 +17,7 @@
     "require": {
         "php": ">=7.1.0",
         "nette/utils": "^2.4@dev",
-        "nette/forms": "^2.4.6@dev",
+        "nette/forms": "^2.4.3@dev",
         "nette/application": "^2.4@dev",
         "latte/latte": "^2.4.1@dev"
     },
