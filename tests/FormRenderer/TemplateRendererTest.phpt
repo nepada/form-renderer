@@ -156,4 +156,4 @@ class TemplateRendererTest extends TestCase
 }
 
 
-\run(new TemplateRendererTest());
+(new TemplateRendererTest())->run();

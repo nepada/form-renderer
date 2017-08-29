@@ -205,4 +205,4 @@ class Bootstrap3RendererTest extends TestCase
 }
 
 
-\run(new Bootstrap3RendererTest());
+(new Bootstrap3RendererTest())->run();

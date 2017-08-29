@@ -60,4 +60,4 @@ class FormRendererExtensionTest extends TestCase
 }
 
 
-\run(new FormRendererExtensionTest());
+(new FormRendererExtensionTest())->run();

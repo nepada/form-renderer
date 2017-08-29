@@ -28,9 +28,3 @@ $_SERVER = array_intersect_key(
 );
 $_SERVER['REQUEST_TIME'] = 1234567890;
 $_ENV = $_GET = $_POST = [];
-
-
-function run(Tester\TestCase $testCase): void
-{
-    $testCase->run(isset($_SERVER['argv'][1]) ? $_SERVER['argv'][1] : null);
-}
