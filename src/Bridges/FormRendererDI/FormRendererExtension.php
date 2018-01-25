@@ -33,10 +33,7 @@ class FormRendererExtension extends CompilerExtension
     ];
 
 
-    /**
-     * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingReturnTypeHint
-     */
-    public function loadConfiguration()
+    public function loadConfiguration(): void
     {
         $config = $this->validateConfig($this->defaults);
         $container = $this->getContainerBuilder();
