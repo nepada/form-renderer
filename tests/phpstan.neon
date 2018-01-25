@@ -1,6 +1,7 @@
 includes:
     - phar://phpstan.phar/vendor/phpstan/phpstan-nette/extension.neon
     - phar://phpstan.phar/vendor/phpstan/phpstan-nette/rules.neon
+    - phar://phpstan.phar/vendor/phpstan/phpstan-strict-rules/rules.neon
 
 parameters:
     excludes_analyse:
