@@ -3,7 +3,6 @@ declare(strict_types = 1);
 
 namespace NepadaTests\FormRenderer;
 
-use Nepada;
 use Nepada\FormRenderer;
 use NepadaTests\TestCase;
 use Nette\Utils\Html;

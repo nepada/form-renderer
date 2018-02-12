@@ -3,7 +3,6 @@ declare(strict_types = 1);
 
 namespace NepadaTests\Bridges\FormRendererDI;
 
-use Nepada;
 use Nepada\FormRenderer;
 use NepadaTests\TestCase;
 use Nette;
@@ -42,7 +41,7 @@ class FormRendererExtensionTest extends TestCase
 
     protected function setUp(): void
     {
-        $configurator = new Nette\Configurator;
+        $configurator = new Nette\Configurator();
         $configurator->setTempDirectory(TEMP_DIR);
         $configurator->setDebugMode(true);
         $configurator->addParameters(['fixturesDir' => __DIR__ . '/fixtures']);
