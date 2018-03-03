@@ -6,7 +6,6 @@ namespace Nepada\FormRenderer;
 use Latte;
 use Nette;
 
-
 class TemplateRenderer implements Nette\Forms\IFormRenderer
 {
 
@@ -23,7 +22,6 @@ class TemplateRenderer implements Nette\Forms\IFormRenderer
 
     /** @var Nette\Bridges\ApplicationLatte\Template */
     private $template;
-
 
     public function __construct(Nette\Application\UI\ITemplateFactory $templateFactory)
     {

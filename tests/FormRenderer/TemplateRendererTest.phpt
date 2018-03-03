@@ -12,7 +12,6 @@ use NepadaTests\TestCase;
 use Nette;
 use Tester\Assert;
 
-
 require_once __DIR__ . '/../bootstrap.php';
 
 
@@ -24,7 +23,6 @@ class TemplateRendererTest extends TestCase
 
     use TTemplateFactoryProvider;
     use TTestFormProvider;
-
 
     /**
      * @throws Nepada\FormRenderer\InvalidStateException Template factory returned unsupported template type %a%, only Nette\Bridges\ApplicationLatte\Template is supported.

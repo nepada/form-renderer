@@ -6,7 +6,6 @@ namespace NepadaTests;
 use Latte;
 use Nette;
 
-
 trait TTemplateFactoryProvider
 {
 

@@ -6,7 +6,6 @@ namespace NepadaTests;
 use Mockery;
 use Tester;
 
-
 class TestCase extends Tester\TestCase
 {
 

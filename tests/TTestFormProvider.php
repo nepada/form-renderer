@@ -8,7 +8,6 @@ use NepadaTests\FormRenderer\FooPresenter;
 use Nette;
 use Nette\Application\UI\Presenter;
 
-
 trait TTestFormProvider
 {
 

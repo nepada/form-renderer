@@ -5,7 +5,6 @@ namespace NepadaTests\FormRenderer;
 
 use Nette;
 
-
 class FooPresenter extends Nette\Application\UI\Presenter
 {
 

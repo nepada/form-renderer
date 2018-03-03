@@ -10,7 +10,6 @@ use Nepada\FormRenderer\InvalidStateException;
 use Nepada\FormRenderer\TemplateRenderer;
 use Nette\DI\CompilerExtension;
 
-
 class FormRendererExtension extends CompilerExtension
 {
 
@@ -26,7 +25,6 @@ class FormRendererExtension extends CompilerExtension
             'imports' => [],
         ],
     ];
-
 
     public function loadConfiguration(): void
     {

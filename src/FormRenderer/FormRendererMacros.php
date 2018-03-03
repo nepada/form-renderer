@@ -5,7 +5,6 @@ namespace Nepada\FormRenderer;
 
 use Latte;
 
-
 class FormRendererMacros extends Latte\Macros\MacroSet
 {
 

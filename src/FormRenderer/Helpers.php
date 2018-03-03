@@ -5,12 +5,10 @@ namespace Nepada\FormRenderer;
 
 use Nette;
 
-
 final class Helpers
 {
 
     use Nette\StaticClass;
-
 
     /**
      * @param string|mixed[]|null $value

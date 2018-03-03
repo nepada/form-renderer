@@ -7,7 +7,6 @@ use Nette;
 use Nette\Forms\Controls;
 use Nette\Forms\Form;
 
-
 class Bootstrap3Renderer implements Nette\Forms\IFormRenderer
 {
 
@@ -33,7 +32,6 @@ class Bootstrap3Renderer implements Nette\Forms\IFormRenderer
 
     /** @var int */
     private $controlCols = self::DEFAULT_CONTROL_COLS;
-
 
     public function __construct(Nette\Application\UI\ITemplateFactory $templateFactory)
     {

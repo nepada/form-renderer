@@ -6,7 +6,6 @@ namespace NepadaTests\FormRenderer;
 use Nette;
 use Nette\Utils\Html;
 
-
 class FooControl extends Nette\Forms\Controls\BaseControl
 {
 

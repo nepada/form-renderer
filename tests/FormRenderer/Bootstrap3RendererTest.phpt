@@ -10,7 +10,6 @@ use NepadaTests\TestCase;
 use Nette;
 use Tester\Assert;
 
-
 require_once __DIR__ . '/../bootstrap.php';
 
 
@@ -25,7 +24,6 @@ class Bootstrap3RendererTest extends TestCase
     {
         createTestForm as createStandardTestForm;
     }
-
 
     /**
      * @dataProvider getRendererModes
