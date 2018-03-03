@@ -17,7 +17,7 @@ jobs:
                 - composer --working-dir=/tmp/coding-standard init
                 - travis_retry composer --working-dir=/tmp/coding-standard require --no-interaction --prefer-dist --update-no-dev nepada/coding-standard ^4.0.0
             script:
-                - /tmp/coding-standard/vendor/bin/phpcs --standard=/tmp/coding-standard/vendor/nepada/coding-standard/src/Nepada/ruleset.xml --encoding=utf-8 -sp src tests
+                - /tmp/coding-standard/vendor/bin/phpcs --standard=/tmp/coding-standard/vendor/nepada/coding-standard/src/Nepada/ruleset.xml -sp src tests
         -   stage: Code Coverage
             script:
                 - vendor/bin/tester -p phpdbg tests -s --coverage ./coverage.xml --coverage-src ./src
