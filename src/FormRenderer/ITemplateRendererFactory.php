@@ -7,9 +7,6 @@ namespace Nepada\FormRenderer;
 interface ITemplateRendererFactory
 {
 
-    /**
-     * @return TemplateRenderer
-     */
     public function create(): TemplateRenderer;
 
 }

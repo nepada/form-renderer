@@ -25,25 +25,16 @@ class TemplateRenderer implements Nette\Forms\IFormRenderer
     private $template;
 
 
-    /**
-     * @param Nette\Application\UI\ITemplateFactory $templateFactory
-     */
     public function __construct(Nette\Application\UI\ITemplateFactory $templateFactory)
     {
         $this->templateFactory = $templateFactory;
     }
 
-    /**
-     * @param string $templateFile
-     */
     public function importTemplate(string $templateFile): void
     {
         array_unshift($this->templateImports, $templateFile);
     }
 
-    /**
-     * @return Nette\Bridges\ApplicationLatte\Template
-     */
     public function getTemplate(): Nette\Bridges\ApplicationLatte\Template
     {
         if ($this->template === null) {
@@ -53,10 +44,6 @@ class TemplateRenderer implements Nette\Forms\IFormRenderer
         return $this->template;
     }
 
-    /**
-     * @param Nette\Forms\Form $form
-     * @return string
-     */
     public function render(Nette\Forms\Form $form): string
     {
         $template = $this->getTemplate();
@@ -73,9 +60,6 @@ class TemplateRenderer implements Nette\Forms\IFormRenderer
         return (string) $template;
     }
 
-    /**
-     * @return Nette\Bridges\ApplicationLatte\Template
-     */
     private function createTemplate(): Nette\Bridges\ApplicationLatte\Template
     {
         $template = $this->templateFactory->createTemplate();

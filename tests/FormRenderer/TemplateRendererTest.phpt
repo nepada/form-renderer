@@ -135,9 +135,6 @@ class TemplateRendererTest extends TestCase
         Assert::matchFile(__DIR__ . '/expected/default-imports.html', $form->__toString());
     }
 
-    /**
-     * @return FormRenderer\TemplateRenderer
-     */
     private function createRenderer(): FormRenderer\TemplateRenderer
     {
         $renderer = new FormRenderer\TemplateRenderer($this->createTemplateFactory());

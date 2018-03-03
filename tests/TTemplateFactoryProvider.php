@@ -10,17 +10,11 @@ use Nette;
 trait TTemplateFactoryProvider
 {
 
-    /**
-     * @return Nette\Bridges\ApplicationLatte\TemplateFactory
-     */
     protected function createTemplateFactory(): Nette\Bridges\ApplicationLatte\TemplateFactory
     {
         return new Nette\Bridges\ApplicationLatte\TemplateFactory($this->createLatteFactory());
     }
 
-    /**
-     * @return Nette\Bridges\ApplicationLatte\ILatteFactory
-     */
     protected function createLatteFactory(): Nette\Bridges\ApplicationLatte\ILatteFactory
     {
         return new class() implements Nette\Bridges\ApplicationLatte\ILatteFactory

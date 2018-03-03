@@ -12,9 +12,6 @@ use Nette\Application\UI\Presenter;
 trait TTestFormProvider
 {
 
-    /**
-     * @return Nette\Application\UI\Form
-     */
     protected function createTestForm(): Nette\Application\UI\Form
     {
         $presenter = $this->mockPresenter();
@@ -52,9 +49,6 @@ trait TTestFormProvider
         return $form;
     }
 
-    /**
-     * @return Presenter
-     */
     private function mockPresenter(): Presenter
     {
         $presenter = new FooPresenter();

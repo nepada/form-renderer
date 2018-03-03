@@ -35,18 +35,12 @@ class Bootstrap3Renderer implements Nette\Forms\IFormRenderer
     private $controlCols = self::DEFAULT_CONTROL_COLS;
 
 
-    /**
-     * @param Nette\Application\UI\ITemplateFactory $templateFactory
-     */
     public function __construct(Nette\Application\UI\ITemplateFactory $templateFactory)
     {
         $this->templateRenderer = new TemplateRenderer($templateFactory);
         $this->templateRenderer->importTemplate(self::FORM_BLOCKS_TEMPLATE_FILE);
     }
 
-    /**
-     * @param string $templateFile
-     */
     public function importTemplate(string $templateFile): void
     {
         $this->templateRenderer->importTemplate($templateFile);
@@ -62,10 +56,6 @@ class Bootstrap3Renderer implements Nette\Forms\IFormRenderer
         $this->mode = self::MODE_INLINE;
     }
 
-    /**
-     * @param int $labelCols
-     * @param int $controlCols
-     */
     public function setHorizontalMode(int $labelCols = self::DEFAULT_LABEL_COLS, int $controlCols = self::DEFAULT_CONTROL_COLS): void
     {
         $this->mode = self::MODE_HORIZONTAL;
@@ -73,10 +63,6 @@ class Bootstrap3Renderer implements Nette\Forms\IFormRenderer
         $this->controlCols = $controlCols;
     }
 
-    /**
-     * @param Form $form
-     * @return string
-     */
     public function render(Form $form): string
     {
         $this->prepareForm($form);
@@ -90,9 +76,6 @@ class Bootstrap3Renderer implements Nette\Forms\IFormRenderer
         return $this->templateRenderer->render($form);
     }
 
-    /**
-     * @param Form $form
-     */
     protected function prepareForm(Form $form): void
     {
         $primaryButton = $this->findPrimaryButton($form);
@@ -118,10 +101,6 @@ class Bootstrap3Renderer implements Nette\Forms\IFormRenderer
         }
     }
 
-    /**
-     * @param Form $form
-     * @return Controls\SubmitButton|null
-     */
     protected function findPrimaryButton(Form $form): ?Controls\SubmitButton
     {
         foreach ($form->getComponents(true, Controls\SubmitButton::class) as $control) {

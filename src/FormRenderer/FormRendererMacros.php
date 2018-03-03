@@ -9,9 +9,6 @@ use Latte;
 class FormRendererMacros extends Latte\Macros\MacroSet
 {
 
-    /**
-     * @param Latte\Compiler $compiler
-     */
     public static function install(Latte\Compiler $compiler): void
     {
         $me = new static($compiler);

@@ -10,9 +10,6 @@ use Nette\Utils\Html;
 class FooControl extends Nette\Forms\Controls\BaseControl
 {
 
-    /**
-     * @param string|null $caption
-     */
     public function __construct(?string $caption = null)
     {
         parent::__construct($caption);

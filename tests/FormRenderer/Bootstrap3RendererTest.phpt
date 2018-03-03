@@ -161,9 +161,6 @@ class Bootstrap3RendererTest extends TestCase
         ];
     }
 
-    /**
-     * @return Nette\Application\UI\Form
-     */
     protected function createTestForm(): Nette\Application\UI\Form
     {
         $form = $this->createStandardTestForm();
@@ -180,10 +177,6 @@ class Bootstrap3RendererTest extends TestCase
         return $form;
     }
 
-    /**
-     * @param string $mode
-     * @return FormRenderer\Bootstrap3Renderer
-     */
     private function createRenderer(string $mode): FormRenderer\Bootstrap3Renderer
     {
         $renderer = new FormRenderer\Bootstrap3Renderer($this->createTemplateFactory());
