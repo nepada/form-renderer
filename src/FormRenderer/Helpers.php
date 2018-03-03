@@ -18,8 +18,10 @@ final class Helpers
     {
         $classes = [];
         foreach ((array) $value as $k => $v) {
-            if ($v != null) { // intentionally ==, skip NULLs & empty string
-                $classes = array_merge($classes, explode(' ', $v === true ? $k : $v));
+            if ($v === true) {
+                $classes = array_merge($classes, explode(' ', $k));
+            } elseif (is_string($v) && $v !== '') {
+                $classes = array_merge($classes, explode(' ', $v));
             }
         }
 
