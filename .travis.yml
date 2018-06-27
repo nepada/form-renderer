@@ -29,7 +29,7 @@ jobs:
 
 install:
     - travis_retry composer create-project --no-interaction jakub-onderka/php-parallel-lint /tmp/php-parallel-lint ^1.0
-    - travis_retry composer create-project --no-interaction xificurk/phpstan-shim /tmp/phpstan ^0.9
+    - travis_retry composer create-project --no-interaction xificurk/phpstan-shim /tmp/phpstan ^0.10
     - travis_retry composer update --no-interaction --prefer-dist $COMPOSER_ARGS
 
 script:
