@@ -4,7 +4,6 @@ declare(strict_types = 1);
 namespace NepadaTests\FormRenderer;
 
 use Mockery;
-use Nepada;
 use Nepada\FormRenderer;
 use NepadaTests\TTemplateFactoryProvider;
 use NepadaTests\TTestFormProvider;
@@ -33,7 +32,7 @@ class TemplateRendererTest extends TestCase
 
         $renderer = new FormRenderer\TemplateRenderer($templateFactory);
         Assert::exception(
-            function () use ($renderer) : void {
+            function () use ($renderer): void {
                 $renderer->getTemplate();
             },
             \LogicException::class,
