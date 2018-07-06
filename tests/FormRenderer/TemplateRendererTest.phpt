@@ -24,9 +24,6 @@ class TemplateRendererTest extends TestCase
     use TTemplateFactoryProvider;
     use TTestFormProvider;
 
-    /**
-     * @throws Nepada\FormRenderer\InvalidStateException Template factory returned unsupported template type %a%, only Nette\Bridges\ApplicationLatte\Template is supported.
-     */
     public function testUnsupportedTemplateType(): void
     {
         $template = Mockery::mock(Nette\Application\UI\ITemplate::class);
@@ -35,7 +32,13 @@ class TemplateRendererTest extends TestCase
         $templateFactory->shouldReceive('createTemplate')->andReturn($template);
 
         $renderer = new FormRenderer\TemplateRenderer($templateFactory);
-        $renderer->getTemplate();
+        Assert::exception(
+            function () use ($renderer) : void {
+                $renderer->getTemplate();
+            },
+            \LogicException::class,
+            'Template factory returned unsupported template type %a%, only Nette\Bridges\ApplicationLatte\Template is supported.'
+        );
     }
 
     public function testSimple(): void

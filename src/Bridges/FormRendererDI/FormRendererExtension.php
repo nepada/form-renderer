@@ -6,7 +6,6 @@ namespace Nepada\Bridges\FormRendererDI;
 use Nepada\FormRenderer\Bootstrap3Renderer;
 use Nepada\FormRenderer\IBootstrap3RendererFactory;
 use Nepada\FormRenderer\ITemplateRendererFactory;
-use Nepada\FormRenderer\InvalidStateException;
 use Nepada\FormRenderer\TemplateRenderer;
 use Nette\DI\CompilerExtension;
 
@@ -49,7 +48,7 @@ class FormRendererExtension extends CompilerExtension
         } elseif ($config['bootstrap3']['mode'] === Bootstrap3Renderer::MODE_BASIC) {
             $bootstrap3RendererFactory->addSetup('setBasicMode');
         } else {
-            throw new InvalidStateException("Unsupported bootstrap 3 renderer mode '{$config['bootstrap3']['mode']}'.");
+            throw new \InvalidArgumentException("Unsupported bootstrap 3 renderer mode '{$config['bootstrap3']['mode']}'.");
         }
     }
 

@@ -21,7 +21,6 @@ class FormRendererMacros extends Latte\Macros\MacroSet
      * @param Latte\MacroNode $node
      * @param Latte\PhpWriter $writer
      * @return string
-     * @throws Latte\CompileException
      */
     public function macroClass(Latte\MacroNode $node, Latte\PhpWriter $writer): string
     {

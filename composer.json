@@ -42,10 +42,7 @@
         "psr-4": {
             "Nepada\\Bridges\\": "src/Bridges/",
             "Nepada\\FormRenderer\\": "src/FormRenderer/"
-        },
-        "classmap": [
-            "src/FormRenderer/exceptions.php"
-        ]
+        }
     },
     "autoload-dev": {
         "classmap": [
