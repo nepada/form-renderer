@@ -1,8 +1,8 @@
 includes:
+    - phar://phpstan.phar/vendor/pepakriz/phpstan-exception-rules/extension.neon
     - phar://phpstan.phar/vendor/phpstan/phpstan-nette/extension.neon
     - phar://phpstan.phar/vendor/phpstan/phpstan-nette/rules.neon
     - phar://phpstan.phar/vendor/phpstan/phpstan-strict-rules/rules.neon
-    - phar://phpstan.phar/vendor/pepakriz/phpstan-exception-rules/extension.neon
 
 parameters:
     exceptionRules:
@@ -11,7 +11,3 @@ parameters:
         ignoredExceptions:
             - LogicException
             - Nette\InvalidStateException
-
-    excludes_analyse:
-        - %currentWorkingDirectory%/tests/bootstrap.php
-        - %currentWorkingDirectory%/tests/temp/*

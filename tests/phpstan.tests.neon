@@ -1,0 +1,17 @@
+includes:
+    - phar://phpstan.phar/vendor/phpstan/phpstan-mockery/extension.neon
+    - phar://phpstan.phar/vendor/phpstan/phpstan-nette/extension.neon
+    - phar://phpstan.phar/vendor/phpstan/phpstan-nette/rules.neon
+    - phar://phpstan.phar/vendor/phpstan/phpstan-strict-rules/rules.neon
+
+parameters:
+    fileExtensions:
+        - php
+        - phpt
+
+    autoload_directories:
+        - %currentWorkingDirectory%/tests
+
+    excludes_analyse:
+        - %currentWorkingDirectory%/tests/bootstrap.php
+        - %currentWorkingDirectory%/tests/temp/*
