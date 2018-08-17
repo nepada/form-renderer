@@ -163,14 +163,14 @@ class Bootstrap3RendererTest extends TestCase
     {
         $form = $this->createStandardTestForm();
 
-        $form->addButton('warning');
-        $form['warning']->getControlPrototype()->addClass('btn btn-warning');
+        $warningButton = $form->addButton('warning');
+        $warningButton->getControlPrototype()->addClass('btn btn-warning');
 
-        $form->addCheckboxList('inlinecheckboxlist', 'InlineCheckboxList', ['foo', 'bar']);
-        $form['inlinecheckboxlist']->getSeparatorPrototype()->setName('');
+        $checkboxList = $form->addCheckboxList('inlinecheckboxlist', 'InlineCheckboxList', ['foo', 'bar']);
+        $checkboxList->getSeparatorPrototype()->setName('');
 
-        $form->addRadioList('inlineradiolist', 'InlineRadioList', ['foo', 'bar']);
-        $form['inlineradiolist']->getSeparatorPrototype()->setName('');
+        $radioList = $form->addRadioList('inlineradiolist', 'InlineRadioList', ['foo', 'bar']);
+        $radioList->getSeparatorPrototype()->setName('');
 
         return $form;
     }
