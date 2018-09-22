@@ -4,7 +4,9 @@ declare(strict_types = 1);
 require __DIR__ . '/../vendor/autoload.php';
 
 // detect PHPStan
-if (!isset($_ENV['IS_PHPSTAN'])) {
+if (getenv('IS_PHPSTAN') !== false) {
+    $_ENV['IS_PHPSTAN'] = in_array(strtolower(getenv('IS_PHPSTAN')), ['1', 'true', 'yes', 'on'], true);
+} else {
     $trace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);
     $_ENV['IS_PHPSTAN'] = (bool) preg_match('~[/\\\\]phpstan(?:\.phar)?$~', end($trace)['file'] ?? '');
 }
