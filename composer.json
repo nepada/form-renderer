@@ -23,7 +23,7 @@
     },
     "require-dev": {
         "nette/tester": "^2.1",
-        "mockery/mockery": "^1.1",
+        "mockery/mockery": "^1.2",
         "nette/bootstrap": "^2.4@dev || ^3.0@dev",
         "nette/di": "^2.4.6@dev || ^3.0@dev",
 
