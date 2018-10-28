@@ -36,8 +36,8 @@ install:
 script:
     - /tmp/php-parallel-lint/parallel-lint -e php,phpt --exclude tests/temp src tests
     - vendor/bin/tester -s -p php -c tests/php.ini tests
-    - /tmp/phpstan/phpstan.phar analyse -c tests/phpstan.neon -l 7 src
-    - /tmp/phpstan/phpstan.phar analyse -c tests/phpstan.tests.neon -l 7 tests
+    - /tmp/phpstan/phpstan.phar analyse -c tests/phpstan.neon -l max src
+    - /tmp/phpstan/phpstan.phar analyse -c tests/phpstan.tests.neon -l max tests
 
 after_failure:
     - for i in $(find tests -name \*.actual); do echo "--- $i"; cat $i; echo; echo; done
