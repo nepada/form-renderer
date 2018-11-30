@@ -30,23 +30,33 @@ class FormRendererExtension extends CompilerExtension
         $config = $this->validateConfig($this->defaults);
         $container = $this->getContainerBuilder();
 
-        $defaultRendererFactory = $container->addDefinition($this->prefix('defaultRendererFactory'))
-            ->setImplement(ITemplateRendererFactory::class);
-        foreach ($config['default']['imports'] as $templateFile) {
-            $defaultRendererFactory->addSetup('importTemplate', [$templateFile]);
+        if (method_exists($container, 'addFactoryDefinition')) { // Nette 3.0
+            $defaultRendererFactory = $container->addFactoryDefinition($this->prefix('defaultRendererFactory'));
+            $defaultRendererFactoryResultDefinition = $defaultRendererFactory->getResultDefinition();
+            $bootstrap3RendererFactory = $container->addFactoryDefinition($this->prefix('bootstrap3RendererFactory'));
+            $bootstrap3RendererFactoryResultDefinition = $bootstrap3RendererFactory->getResultDefinition();
+        } else { // Nette 2.4 BC
+            $defaultRendererFactory = $container->addDefinition($this->prefix('defaultRendererFactory'));
+            $defaultRendererFactoryResultDefinition = $defaultRendererFactory;
+            $bootstrap3RendererFactory = $container->addDefinition($this->prefix('bootstrap3RendererFactory'));
+            $bootstrap3RendererFactoryResultDefinition = $bootstrap3RendererFactory;
         }
 
-        $bootstrap3RendererFactory = $container->addDefinition($this->prefix('bootstrap3RendererFactory'))
-            ->setImplement(IBootstrap3RendererFactory::class);
+        $defaultRendererFactory->setImplement(ITemplateRendererFactory::class);
+        foreach ($config['default']['imports'] as $templateFile) {
+            $defaultRendererFactoryResultDefinition->addSetup('importTemplate', [$templateFile]);
+        }
+
+        $bootstrap3RendererFactory->setImplement(IBootstrap3RendererFactory::class);
         foreach ($config['bootstrap3']['imports'] as $templateFile) {
-            $bootstrap3RendererFactory->addSetup('importTemplate', [$templateFile]);
+            $bootstrap3RendererFactoryResultDefinition->addSetup('importTemplate', [$templateFile]);
         }
         if ($config['bootstrap3']['mode'] === Bootstrap3Renderer::MODE_HORIZONTAL) {
-            $bootstrap3RendererFactory->addSetup('setHorizontalMode');
+            $bootstrap3RendererFactoryResultDefinition->addSetup('setHorizontalMode');
         } elseif ($config['bootstrap3']['mode'] === Bootstrap3Renderer::MODE_INLINE) {
-            $bootstrap3RendererFactory->addSetup('setInlineMode');
+            $bootstrap3RendererFactoryResultDefinition->addSetup('setInlineMode');
         } elseif ($config['bootstrap3']['mode'] === Bootstrap3Renderer::MODE_BASIC) {
-            $bootstrap3RendererFactory->addSetup('setBasicMode');
+            $bootstrap3RendererFactoryResultDefinition->addSetup('setBasicMode');
         } else {
             throw new \InvalidArgumentException("Unsupported bootstrap 3 renderer mode '{$config['bootstrap3']['mode']}'.");
         }

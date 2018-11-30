@@ -13,3 +13,10 @@ parameters:
         uncheckedExceptions:
             - LogicException
             - Nette\InvalidStateException
+
+    ignoreErrors:
+        -
+            message: "#Call to function method_exists\\(\\) with Nette\\\\DI\\\\ContainerBuilder and 'addFactoryDefinition' will always evaluate to true#" # BC with Nette 2.4
+            path: %currentWorkingDirectory%/src/Bridges/FormRendererDI/FormRendererExtension.php
+
+    reportUnmatchedIgnoredErrors: false # BC with Nette 2.4, see above
