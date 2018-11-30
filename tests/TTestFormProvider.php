@@ -15,6 +15,7 @@ trait TTestFormProvider
     {
         $presenter = $this->mockPresenter();
         $form = new Nette\Application\UI\Form($presenter, 'form');
+        $form->setAction('#');
         $form->getElementPrototype()->addClass('form-class1');
         $form->getElementPrototype()->addClass('form-class2');
 
@@ -51,6 +52,7 @@ trait TTestFormProvider
     private function mockPresenter(): Presenter
     {
         $presenter = new FooPresenter();
+        $presenter->setParent(null, 'Foo');
 
         $url = new Nette\Http\UrlScript('https://example.com/');
         $httpRequest = new Nette\Http\Request($url);
