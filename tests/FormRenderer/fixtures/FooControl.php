@@ -17,8 +17,8 @@ class FooControl extends Nette\Forms\Controls\BaseControl
     }
 
     /**
-     * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingReturnTypeHint
      * Generates control's HTML element.
+     *
      * @return Html|string
      */
     public function getControl()
@@ -36,7 +36,6 @@ class FooControl extends Nette\Forms\Controls\BaseControl
 
     /**
      * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
-     * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingReturnTypeHint
      * @param string|null $caption
      * @return Html|string
      */
