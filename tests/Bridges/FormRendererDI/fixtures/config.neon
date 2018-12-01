@@ -12,3 +12,6 @@ formRenderer:
 
 application:
     scanDirs: false
+
+di:
+    debugger: false
