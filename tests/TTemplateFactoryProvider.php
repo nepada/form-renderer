@@ -19,11 +19,7 @@ trait TTemplateFactoryProvider
         return new class() implements Nette\Bridges\ApplicationLatte\ILatteFactory
         {
 
-            /**
-             * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingReturnTypeHint
-             * @return Latte\Engine
-             */
-            public function create()
+            public function create(): Latte\Engine
             {
                 $latte = new Latte\Engine();
                 $latte->setTempDirectory(TEMP_DIR);
