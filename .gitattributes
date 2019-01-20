@@ -2,3 +2,4 @@
 .gitkeep export-ignore
 /.* export-ignore
 /tests export-ignore
+/phpstan*.neon.dist export-ignore

@@ -5,6 +5,10 @@ includes:
     - phar://phpstan.phar/vendor/phpstan/phpstan-strict-rules/rules.neon
 
 parameters:
+    level: max
+    paths:
+        - %currentWorkingDirectory%/src
+
     exceptionRules:
         uncheckedExceptions:
             - LogicException
