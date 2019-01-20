@@ -34,16 +34,4 @@ class FooControl extends Nette\Forms\Controls\BaseControl
         return $wrapper;
     }
 
-    /**
-     * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
-     * @param string|null $caption
-     * @return Html|string
-     */
-    public function getLabel($caption = null)
-    {
-        $label = parent::getLabel($caption);
-
-        return $label;
-    }
-
 }

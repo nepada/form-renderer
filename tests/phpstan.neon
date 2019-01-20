@@ -6,8 +6,6 @@ includes:
 
 parameters:
     exceptionRules:
-        checkedExceptions:
-            - RuntimeException
-        ignoredExceptions:
+        uncheckedExceptions:
             - LogicException
             - Nette\InvalidStateException
