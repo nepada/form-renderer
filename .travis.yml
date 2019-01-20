@@ -29,11 +29,10 @@ jobs:
         -   stage: Code Coverage
 
 install:
-    - travis_retry composer create-project --no-interaction jakub-onderka/php-parallel-lint /tmp/php-parallel-lint ^1.0
     - travis_retry composer update --no-interaction --prefer-dist $COMPOSER_ARGS
 
 script:
-    - /tmp/php-parallel-lint/parallel-lint -e php,phpt --exclude tests/temp src tests
+    - vendor/bin/parallel-lint -e php,phpt --exclude tests/temp src tests
     - vendor/bin/tester -s -p php -c tests/php.ini tests
     - vendor/bin/phpstan.phar analyse -c tests/phpstan.neon -l max src
     - vendor/bin/phpstan.phar analyse -c tests/phpstan.tests.neon -l max tests
