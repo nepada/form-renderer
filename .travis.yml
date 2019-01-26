@@ -13,13 +13,10 @@ jobs:
     include:
         -   stage: Code Standard Checker
             php: 7.1
-            install:
-                - mkdir -p /tmp/coding-standard
-                - composer --working-dir=/tmp/coding-standard init
-                - travis_retry composer --working-dir=/tmp/coding-standard require --no-interaction --prefer-dist --update-no-dev nepada/coding-standard ^5.0.0
             script:
-                - /tmp/coding-standard/vendor/bin/phpcs --standard=/tmp/coding-standard/vendor/nepada/coding-standard/src/Nepada/ruleset.xml -sp src tests
+                - vendor/bin/phpcs
         -   stage: Code Coverage
+            php: 7.1
             script:
                 - vendor/bin/tester -p phpdbg tests -s --coverage ./coverage.xml --coverage-src ./src
             after_script:

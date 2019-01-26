@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<ruleset>
+    <config name="installed_paths" value="../../nepada/coding-standard/src"/><!-- relative path from PHPCS source location -->
+
+    <arg value="ps"/><!-- show progress of the run, show sniff names -->
+    <arg name="cache" value=".phpcs-cache"/>
+
+    <arg name="extensions" value="php,phpt"/>
+    <file>src</file>
+    <file>tests</file>
+
+    <rule ref="Nepada">
+    </rule>
+
+    <rule ref="SlevomatCodingStandard.Namespaces.UnusedUses">
+        <properties>
+            <property name="ignoredAnnotationNames" type="array">
+                <element value="@testCase"/>
+                <element value="@dataProvider"/>
+            </property>
+        </properties>
+    </rule>
+
+    <!-- special settings for tests and bootstrap -->
+    <exclude-pattern>*/tests/temp/*</exclude-pattern>
+    <rule ref="PSR1.Files.SideEffects">
+        <exclude-pattern>*.phpt</exclude-pattern>
+        <exclude-pattern>*/bootstrap.php</exclude-pattern>
+    </rule>
+</ruleset>
