@@ -1,10 +1,10 @@
 <?php
 declare(strict_types = 1);
 
-namespace NepadaTests;
+namespace NepadaTests\FormRenderer;
 
-use NepadaTests\FormRenderer\FooControl;
-use NepadaTests\FormRenderer\FooPresenter;
+use NepadaTests\FormRenderer\Fixtures\FooControl;
+use NepadaTests\FormRenderer\Fixtures\FooPresenter;
 use Nette;
 use Nette\Application\UI\Presenter;
 

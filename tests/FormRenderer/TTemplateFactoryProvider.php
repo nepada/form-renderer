@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace NepadaTests;
+namespace NepadaTests\FormRenderer;
 
 use Latte;
 use Nette;

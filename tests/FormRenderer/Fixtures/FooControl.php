@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace NepadaTests\FormRenderer;
+namespace NepadaTests\FormRenderer\Fixtures;
 
 use Nette;
 use Nette\Utils\Html;

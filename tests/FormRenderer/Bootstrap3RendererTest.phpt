@@ -4,8 +4,6 @@ declare(strict_types = 1);
 namespace NepadaTests\FormRenderer;
 
 use Nepada\FormRenderer;
-use NepadaTests\TTemplateFactoryProvider;
-use NepadaTests\TTestFormProvider;
 use NepadaTests\TestCase;
 use Nette;
 use Tester\Assert;
@@ -138,10 +136,10 @@ class Bootstrap3RendererTest extends TestCase
         $form = $this->createTestForm();
 
         $renderer = $this->createRenderer($mode);
-        $renderer->importTemplate(__DIR__ . '/fixtures/customPair.latte');
-        $renderer->importTemplate(__DIR__ . '/fixtures/customPairType.latte');
-        $renderer->importTemplate(__DIR__ . '/fixtures/customControl.latte');
-        $renderer->importTemplate(__DIR__ . '/fixtures/customControlType.latte');
+        $renderer->importTemplate(__DIR__ . '/Fixtures/customPair.latte');
+        $renderer->importTemplate(__DIR__ . '/Fixtures/customPairType.latte');
+        $renderer->importTemplate(__DIR__ . '/Fixtures/customControl.latte');
+        $renderer->importTemplate(__DIR__ . '/Fixtures/customControlType.latte');
         $form->setRenderer($renderer);
 
         Assert::matchFile(__DIR__ . "/expected/bootstrap3-{$mode}-imports.html", $form->__toString());

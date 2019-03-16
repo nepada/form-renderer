@@ -12,6 +12,19 @@
     <rule ref="Nepada">
     </rule>
 
+    <rule ref="SlevomatCodingStandard.Files.TypeNameMatchesFileName">
+        <exclude-pattern>*/exceptions.php</exclude-pattern>
+        <properties>
+            <property name="rootNamespaces" type="array">
+                <element key="src" value="Nepada"/>
+                <element key="tests" value="NepadaTests"/>
+            </property>
+            <property name="extensions" type="array">
+                <element value="php"/>
+                <element value="phpt"/>
+            </property>
+        </properties>
+    </rule>
     <rule ref="SlevomatCodingStandard.Namespaces.UnusedUses">
         <properties>
             <property name="ignoredAnnotationNames" type="array">
