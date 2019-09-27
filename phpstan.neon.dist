@@ -15,8 +15,11 @@ parameters:
             - Nette\InvalidStateException
 
     ignoreErrors:
-        -
-            message: "#Call to function method_exists\\(\\) with Nette\\\\DI\\\\ContainerBuilder and 'addFactoryDefinition' will always evaluate to true#" # BC with Nette 2.4
+        - # false positive
+            message: "#Cannot access property \\$attrs on Latte\\\\HtmlNode\\|null#"
+            path: %currentWorkingDirectory%/src/FormRenderer/FormRendererMacros.php
+        - # BC with Nette 2.4
+            message: "#Call to function method_exists\\(\\) with Nette\\\\DI\\\\ContainerBuilder and 'addFactoryDefinition' will always evaluate to true#"
             path: %currentWorkingDirectory%/src/Bridges/FormRendererDI/FormRendererExtension.php
 
     reportUnmatchedIgnoredErrors: false # BC with Nette 2.4, see above
