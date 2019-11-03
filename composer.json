@@ -22,11 +22,11 @@
         "latte/latte": "^2.4.1@dev"
     },
     "require-dev": {
-        "nette/tester": "^2.1",
+        "nette/tester": "^2.3",
         "mockery/mockery": "^1.2",
-        "xificurk/phpstan-shim": "^0.11.6",
+        "xificurk/phpstan-shim": "^0.11.8",
         "jakub-onderka/php-parallel-lint": "^1.0",
-        "nepada/coding-standard": "^6.0.0",
+        "nepada/coding-standard": "^6.1.0",
 
         "nette/bootstrap": "^2.4@dev || ^3.0@dev",
         "nette/di": "^2.4.6@dev || ^3.0@dev",
