@@ -30,24 +30,18 @@ class FormRendererExtension extends CompilerExtension
         $config = $this->validateConfig($this->defaults);
         $container = $this->getContainerBuilder();
 
-        if (method_exists($container, 'addFactoryDefinition')) { // Nette 3.0
-            $defaultRendererFactory = $container->addFactoryDefinition($this->prefix('defaultRendererFactory'));
-            $defaultRendererFactoryResultDefinition = $defaultRendererFactory->getResultDefinition();
-            $bootstrap3RendererFactory = $container->addFactoryDefinition($this->prefix('bootstrap3RendererFactory'));
-            $bootstrap3RendererFactoryResultDefinition = $bootstrap3RendererFactory->getResultDefinition();
-        } else { // Nette 2.4 BC
-            $defaultRendererFactory = $container->addDefinition($this->prefix('defaultRendererFactory'));
-            $defaultRendererFactoryResultDefinition = $defaultRendererFactory;
-            $bootstrap3RendererFactory = $container->addDefinition($this->prefix('bootstrap3RendererFactory'));
-            $bootstrap3RendererFactoryResultDefinition = $bootstrap3RendererFactory;
-        }
+        $defaultRendererFactory = $container->addFactoryDefinition($this->prefix('defaultRendererFactory'))
+            ->setImplement(ITemplateRendererFactory::class);
 
-        $defaultRendererFactory->setImplement(ITemplateRendererFactory::class);
+        $defaultRendererFactoryResultDefinition = $defaultRendererFactory->getResultDefinition();
         foreach ($config['default']['imports'] as $templateFile) {
             $defaultRendererFactoryResultDefinition->addSetup('importTemplate', [$templateFile]);
         }
 
-        $bootstrap3RendererFactory->setImplement(IBootstrap3RendererFactory::class);
+        $bootstrap3RendererFactory = $container->addFactoryDefinition($this->prefix('bootstrap3RendererFactory'))
+            ->setImplement(IBootstrap3RendererFactory::class);
+
+        $bootstrap3RendererFactoryResultDefinition = $bootstrap3RendererFactory->getResultDefinition();
         foreach ($config['bootstrap3']['imports'] as $templateFile) {
             $bootstrap3RendererFactoryResultDefinition->addSetup('importTemplate', [$templateFile]);
         }

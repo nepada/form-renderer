@@ -19,7 +19,7 @@
         "nette/utils": "^3.0@dev",
         "nette/forms": "^3.0@dev",
         "nette/application": "^3.0@dev",
-        "latte/latte": "^2.5@dev"
+        "latte/latte": "^2.5.3@dev"
     },
     "require-dev": {
         "nette/tester": "^2.3",
