@@ -62,7 +62,7 @@ class TemplateRenderer implements Nette\Forms\IFormRenderer
     {
         $template = $this->templateFactory->createTemplate();
 
-        if (!$template instanceof Nette\Bridges\ApplicationLatte\Template) {
+        if (! $template instanceof Nette\Bridges\ApplicationLatte\Template) {
             $actualClass = get_class($template);
             $supportedClass = Nette\Bridges\ApplicationLatte\Template::class;
             throw new \LogicException("Template factory returned unsupported template type $actualClass, only $supportedClass is supported.");

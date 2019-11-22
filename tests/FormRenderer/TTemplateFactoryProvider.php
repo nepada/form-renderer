@@ -16,7 +16,7 @@ trait TTemplateFactoryProvider
 
     protected function createLatteFactory(): Nette\Bridges\ApplicationLatte\ILatteFactory
     {
-        return new class() implements Nette\Bridges\ApplicationLatte\ILatteFactory
+        return new class () implements Nette\Bridges\ApplicationLatte\ILatteFactory
         {
 
             public function create(): Latte\Engine
