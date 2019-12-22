@@ -21,17 +21,13 @@ class Bootstrap3Renderer implements Nette\Forms\IFormRenderer
 
     private const FORM_BLOCKS_TEMPLATE_FILE = __DIR__ . '/templates/bootstrap3.latte';
 
-    /** @var TemplateRenderer */
-    private $templateRenderer;
+    private TemplateRenderer $templateRenderer;
 
-    /** @var string */
-    private $mode = self::MODE_BASIC;
+    private string $mode = self::MODE_BASIC;
 
-    /** @var int */
-    private $labelCols = self::DEFAULT_LABEL_COLS;
+    private int $labelCols = self::DEFAULT_LABEL_COLS;
 
-    /** @var int */
-    private $controlCols = self::DEFAULT_CONTROL_COLS;
+    private int $controlCols = self::DEFAULT_CONTROL_COLS;
 
     public function __construct(Nette\Application\UI\ITemplateFactory $templateFactory)
     {

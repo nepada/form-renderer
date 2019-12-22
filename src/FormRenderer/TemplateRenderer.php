@@ -14,14 +14,12 @@ class TemplateRenderer implements Nette\Forms\IFormRenderer
     public const DEFAULT_FORM_BLOCKS_TEMPLATE_FILE = __DIR__ . '/templates/default.latte';
     private const TEMPLATE_FILE = __DIR__ . '/templates/form.latte';
 
-    /** @var Nette\Application\UI\ITemplateFactory */
-    private $templateFactory;
+    private Nette\Application\UI\ITemplateFactory $templateFactory;
 
     /** @var string[] */
-    private $templateImports = [];
+    private array $templateImports = [];
 
-    /** @var Nette\Bridges\ApplicationLatte\Template */
-    private $template;
+    private ?Nette\Bridges\ApplicationLatte\Template $template = null;
 
     public function __construct(Nette\Application\UI\ITemplateFactory $templateFactory)
     {
