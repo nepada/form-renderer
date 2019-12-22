@@ -5,7 +5,7 @@ namespace Nepada\FormRenderer;
 
 use Latte;
 
-class FormRendererMacros extends Latte\Macros\MacroSet
+final class FormRendererMacros extends Latte\Macros\MacroSet
 {
 
     public static function install(Latte\Compiler $compiler): void
