@@ -1,13 +1,13 @@
 includes:
-    - phar://phpstan.phar/vendor/pepakriz/phpstan-exception-rules/extension.neon
-    - phar://phpstan.phar/vendor/phpstan/phpstan-nette/extension.neon
-    - phar://phpstan.phar/vendor/phpstan/phpstan-nette/rules.neon
-    - phar://phpstan.phar/vendor/phpstan/phpstan-strict-rules/rules.neon
+    - vendor/phpstan/phpstan-strict-rules/rules.neon
+    - vendor/pepakriz/phpstan-exception-rules/extension.neon
+    - vendor/phpstan/phpstan-nette/extension.neon
+    - vendor/phpstan/phpstan-nette/rules.neon
 
 parameters:
     level: max
     paths:
-        - %currentWorkingDirectory%/src
+        - src
 
     exceptionRules:
         uncheckedExceptions:
@@ -17,4 +17,4 @@ parameters:
     ignoreErrors:
         - # false positive
             message: "#Cannot access property \\$attrs on Latte\\\\HtmlNode\\|null#"
-            path: %currentWorkingDirectory%/src/FormRenderer/FormRendererMacros.php
+            path: src/FormRenderer/FormRendererMacros.php

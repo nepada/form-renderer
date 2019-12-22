@@ -1,21 +1,22 @@
 includes:
-    - phar://phpstan.phar/vendor/phpstan/phpstan-mockery/extension.neon
-    - phar://phpstan.phar/vendor/phpstan/phpstan-nette/extension.neon
-    - phar://phpstan.phar/vendor/phpstan/phpstan-nette/rules.neon
-    - phar://phpstan.phar/vendor/phpstan/phpstan-strict-rules/rules.neon
+    - vendor/phpstan/phpstan-strict-rules/rules.neon
+    - vendor/phpstan/phpstan-nette/extension.neon
+    - vendor/phpstan/phpstan-nette/rules.neon
+    - vendor/damejidlo/phpstan-nette-tester/extension.neon
+    - vendor/phpstan/phpstan-mockery/extension.neon
 
 parameters:
     level: max
     paths:
-        - %currentWorkingDirectory%/tests
+        - tests
 
     fileExtensions:
         - php
         - phpt
 
     autoload_directories:
-        - %currentWorkingDirectory%/tests
+        - tests
 
     excludes_analyse:
-        - %currentWorkingDirectory%/tests/bootstrap.php
-        - %currentWorkingDirectory%/tests/temp/*
+        - tests/bootstrap.php
+        - tests/temp/*
