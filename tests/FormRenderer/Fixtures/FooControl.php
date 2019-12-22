@@ -19,7 +19,7 @@ class FooControl extends Nette\Forms\Controls\BaseControl
     /**
      * Generates control's HTML element.
      *
-     * @return Html|string
+     * @return Html<mixed>|string
      */
     public function getControl()
     {
