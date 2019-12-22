@@ -24,9 +24,7 @@ trait TTemplateFactoryProvider
                 $latte = new Latte\Engine();
                 $latte->setTempDirectory(TEMP_DIR);
 
-                $latte->addFilter('translate', function (Latte\Runtime\FilterInfo $fi, ...$args) {
-                    return reset($args);
-                });
+                $latte->addFilter('translate', fn (Latte\Runtime\FilterInfo $fi, ...$args) => reset($args));
 
                 return $latte;
             }

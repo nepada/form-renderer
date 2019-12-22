@@ -34,7 +34,7 @@ class TemplateRendererTest extends TestCase
                 $renderer->getTemplate();
             },
             \LogicException::class,
-            'Template factory returned unsupported template type %a%, only Nette\Bridges\ApplicationLatte\Template is supported.'
+            'Template factory returned unsupported template type %a%, only Nette\Bridges\ApplicationLatte\Template is supported.',
         );
     }
 

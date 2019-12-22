@@ -47,9 +47,7 @@ class TemplateRenderer implements Nette\Forms\IFormRenderer
 
         $latte = $template->getLatte();
         $latte->addProvider('formRendererImports', $this->templateImports);
-        $latte->addFilter('safeTranslate', function (Latte\Runtime\FilterInfo $fi, ...$args) use ($form) {
-            return $this->translate($form->getTranslator(), ...$args);
-        });
+        $latte->addFilter('safeTranslate', fn (Latte\Runtime\FilterInfo $fi, ...$args) => $this->translate($form->getTranslator(), ...$args));
 
         $template->form = $form;
 

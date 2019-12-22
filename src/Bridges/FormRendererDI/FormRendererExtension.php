@@ -26,7 +26,7 @@ class FormRendererExtension extends CompilerExtension
         $bootstrap3Mode = Nette\Schema\Expect::anyOf(
             Bootstrap3Renderer::MODE_BASIC,
             Bootstrap3Renderer::MODE_INLINE,
-            Bootstrap3Renderer::MODE_HORIZONTAL
+            Bootstrap3Renderer::MODE_HORIZONTAL,
         )->default(Bootstrap3Renderer::MODE_BASIC);
 
         $bootstrap3 = Nette\Schema\Expect::structure([
