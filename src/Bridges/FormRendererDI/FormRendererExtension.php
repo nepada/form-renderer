@@ -42,8 +42,8 @@ class FormRendererExtension extends CompilerExtension
 
     public function loadConfiguration(): void
     {
-        /** @var \stdClass $config */
         $config = $this->getConfig();
+        assert($config instanceof \stdClass);
         $container = $this->getContainerBuilder();
 
         $defaultRendererFactory = $container->addFactoryDefinition($this->prefix('defaultRendererFactory'))

@@ -40,4 +40,7 @@
         <exclude-pattern>*.phpt</exclude-pattern>
         <exclude-pattern>*/bootstrap.php</exclude-pattern>
     </rule>
+    <rule ref="SlevomatCodingStandard.PHP.RequireExplicitAssertion">
+        <exclude-pattern>*.phpt</exclude-pattern>
+    </rule>
 </ruleset>
