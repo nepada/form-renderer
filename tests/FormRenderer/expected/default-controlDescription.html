@@ -22,14 +22,14 @@
         </td>
     </tr>
         </table>
-    
+
         <fieldset>
     <legend><span>Group 2 label</span></legend>
     <p><span>Group 2 description.</span></p>
         <table>
     <tr>
         <th>
-    
+
         </th>
         <td>
     <label for="frm-form-container-checkbox"><input type="checkbox" name="container[checkbox]" id="frm-form-container-checkbox">Checkbox</label>
@@ -68,12 +68,12 @@
     <label for="frm-form-container-innerContainer-upload">Upload</label>
         </th>
         <td>
-    <input type="file" name="container[innerContainer][upload]" id="frm-form-container-innerContainer-upload">
+    <input type="file" name="container[innerContainer][upload]" id="frm-form-container-innerContainer-upload" data-nette-rules='[{"op":":fileSize","msg":"The size of the uploaded file can be up to 1048576 bytes.","arg":1048576}]'>
     <small>Control upload description.</small>
         </td>
     </tr>
         </table>
-    
+
         </fieldset>
         </fieldset>
         <table>
@@ -96,7 +96,7 @@
         </td>
     </tr>
         </table>
-    
+
     <input type="hidden" name="hidden" value=""><input type="hidden" name="_do" value="form-submit"><!--[if IE]><input type=IEbug disabled style="display:none"><![endif]-->
 </form>
 

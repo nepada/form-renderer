@@ -1,5 +1,5 @@
     <form class="form-class1 form-class2 form-horizontal" action="#" method="post" id="frm-form" enctype="multipart/form-data">
-        
+
         <fieldset id="custom-group-id">
     <legend>Group 1</legend>
     <p>Group 1 description.</p>
@@ -56,7 +56,7 @@
     <div class="form-group custom-form-container-innerContainer-upload">
     <label class="col-sm-3 control-label" for="frm-form-container-innerContainer-upload">Upload</label>
         <div class="col-sm-9">
-    <input type="file" name="container[innerContainer][upload]" id="frm-form-container-innerContainer-upload">
+    <input type="file" name="container[innerContainer][upload]" id="frm-form-container-innerContainer-upload" data-nette-rules='[{"op":":fileSize","msg":"The size of the uploaded file can be up to 1048576 bytes.","arg":1048576}]'>
         </div>
     </div>
         </fieldset>

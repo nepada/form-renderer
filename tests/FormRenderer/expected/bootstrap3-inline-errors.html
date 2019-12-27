@@ -107,7 +107,7 @@
     </div>
     <div class="form-group has-error">
     <label for="frm-form-container-innerContainer-upload">Upload</label>
-    <input type="file" name="container[innerContainer][upload]" id="frm-form-container-innerContainer-upload">
+    <input type="file" name="container[innerContainer][upload]" id="frm-form-container-innerContainer-upload" data-nette-rules='[{"op":":fileSize","msg":"The size of the uploaded file can be up to 1048576 bytes.","arg":1048576}]'>
     </div>
         </fieldset>
         </fieldset>
