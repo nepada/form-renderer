@@ -9,10 +9,12 @@ use Nette;
 use Nette\Application\UI\Form;
 use Nette\Application\UI\Presenter;
 
-trait TTestFormProvider
+final class TestFormFactory
 {
 
-    protected function createTestForm(): Form
+    use Nette\SmartObject;
+
+    public function create(): Form
     {
         $presenter = $this->mockPresenter();
         $form = new Form($presenter, 'form');

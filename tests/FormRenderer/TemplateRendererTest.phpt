@@ -18,8 +18,17 @@ require_once __DIR__ . '/../bootstrap.php';
 class TemplateRendererTest extends TestCase
 {
 
-    use TTemplateFactoryProvider;
-    use TTestFormProvider;
+    private TemplateFactoryFactory $templateFactoryFactory;
+
+    private TestFormFactory $testFormFactory;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->templateFactoryFactory = new TemplateFactoryFactory();
+        $this->testFormFactory = new TestFormFactory();
+    }
 
     public function testUnsupportedTemplateType(): void
     {
@@ -40,7 +49,7 @@ class TemplateRendererTest extends TestCase
 
     public function testSimple(): void
     {
-        $form = $this->createTestForm();
+        $form = $this->testFormFactory->create();
 
         $renderer = $this->createRenderer();
         $form->setRenderer($renderer);
@@ -50,7 +59,7 @@ class TemplateRendererTest extends TestCase
 
     public function testErrors(): void
     {
-        $form = $this->createTestForm();
+        $form = $this->testFormFactory->create();
         $form->addError('Form error 1.');
         $form->addError('Form error 2.');
         foreach ($form->getControls() as $control) {
@@ -69,7 +78,7 @@ class TemplateRendererTest extends TestCase
 
     public function testRequiredControl(): void
     {
-        $form = $this->createTestForm();
+        $form = $this->testFormFactory->create();
         foreach ($form->getControls() as $control) {
             $control->setRequired('REQUIRED');
         }
@@ -82,7 +91,7 @@ class TemplateRendererTest extends TestCase
 
     public function testControlDescription(): void
     {
-        $form = $this->createTestForm();
+        $form = $this->testFormFactory->create();
         foreach ($form->getControls() as $control) {
             $control->setOption('description', "Control {$control->getName()} description.");
         }
@@ -95,7 +104,7 @@ class TemplateRendererTest extends TestCase
 
     public function testCustomControlId(): void
     {
-        $form = $this->createTestForm();
+        $form = $this->testFormFactory->create();
         foreach ($form->getControls() as $control) {
             $control->setOption('id', sprintf('custom-%s', $control->lookupPath()));
         }
@@ -108,7 +117,7 @@ class TemplateRendererTest extends TestCase
 
     public function testCustomControlClass(): void
     {
-        $form = $this->createTestForm();
+        $form = $this->testFormFactory->create();
         foreach ($form->getControls() as $control) {
             $control->setOption('class', sprintf('custom-%s', $control->lookupPath()));
         }
@@ -121,7 +130,7 @@ class TemplateRendererTest extends TestCase
 
     public function testTemplateImports(): void
     {
-        $form = $this->createTestForm();
+        $form = $this->testFormFactory->create();
 
         $renderer = $this->createRenderer();
         $renderer->importTemplate(__DIR__ . '/Fixtures/customPair.latte');
@@ -135,7 +144,7 @@ class TemplateRendererTest extends TestCase
 
     private function createRenderer(): FormRenderer\TemplateRenderer
     {
-        $renderer = new FormRenderer\TemplateRenderer($this->createTemplateFactory());
+        $renderer = new FormRenderer\TemplateRenderer($this->templateFactoryFactory->create());
         $renderer->importTemplate(FormRenderer\TemplateRenderer::DEFAULT_FORM_BLOCKS_TEMPLATE_FILE);
 
         return $renderer;

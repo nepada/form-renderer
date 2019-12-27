@@ -6,10 +6,12 @@ namespace NepadaTests\FormRenderer;
 use Latte;
 use Nette;
 
-trait TTemplateFactoryProvider
+final class TemplateFactoryFactory
 {
 
-    protected function createTemplateFactory(): Nette\Bridges\ApplicationLatte\TemplateFactory
+    use Nette\SmartObject;
+
+    public function create(): Nette\Bridges\ApplicationLatte\TemplateFactory
     {
         return new Nette\Bridges\ApplicationLatte\TemplateFactory($this->createLatteFactory());
     }

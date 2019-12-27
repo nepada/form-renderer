@@ -17,10 +17,16 @@ require_once __DIR__ . '/../bootstrap.php';
 class Bootstrap3RendererTest extends TestCase
 {
 
-    use TTemplateFactoryProvider;
-    use TTestFormProvider
+    private TemplateFactoryFactory $templateFactoryFactory;
+
+    private TestFormFactory $testFormFactory;
+
+    protected function setUp(): void
     {
-        createTestForm as createStandardTestForm;
+        parent::setUp();
+
+        $this->templateFactoryFactory = new TemplateFactoryFactory();
+        $this->testFormFactory = new TestFormFactory();
     }
 
     /**
@@ -159,7 +165,7 @@ class Bootstrap3RendererTest extends TestCase
 
     protected function createTestForm(): Nette\Application\UI\Form
     {
-        $form = $this->createStandardTestForm();
+        $form = $this->testFormFactory->create();
 
         $warningButton = $form->addButton('warning');
         $warningButton->getControlPrototype()->addClass('btn btn-warning');
@@ -175,7 +181,7 @@ class Bootstrap3RendererTest extends TestCase
 
     private function createRenderer(string $mode): FormRenderer\Bootstrap3Renderer
     {
-        $renderer = new FormRenderer\Bootstrap3Renderer($this->createTemplateFactory());
+        $renderer = new FormRenderer\Bootstrap3Renderer($this->templateFactoryFactory->create());
         if ($mode === FormRenderer\Bootstrap3Renderer::MODE_INLINE) {
             $renderer->setInlineMode();
         } elseif ($mode === FormRenderer\Bootstrap3Renderer::MODE_HORIZONTAL) {
