@@ -6,15 +6,16 @@ namespace NepadaTests\FormRenderer;
 use NepadaTests\FormRenderer\Fixtures\FooControl;
 use NepadaTests\FormRenderer\Fixtures\FooPresenter;
 use Nette;
+use Nette\Application\UI\Form;
 use Nette\Application\UI\Presenter;
 
 trait TTestFormProvider
 {
 
-    protected function createTestForm(): Nette\Application\UI\Form
+    protected function createTestForm(): Form
     {
         $presenter = $this->mockPresenter();
-        $form = new Nette\Application\UI\Form($presenter, 'form');
+        $form = new Form($presenter, 'form');
         $form->setAction('#');
         $form->getElementPrototype()->addClass('form-class1');
         $form->getElementPrototype()->addClass('form-class2');
@@ -39,7 +40,10 @@ trait TTestFormProvider
 
         $innerContainer = $container->addContainer('innerContainer');
         $innerContainer->addSelect('selectbox', 'Selectbox', [5 => 'five', 6 => 'six']);
-        $innerContainer->addUpload('upload', 'Upload');
+        $uploadInput = $innerContainer->addUpload('upload', 'Upload');
+        if (iterator_count($uploadInput->getRules()->getIterator()) === 1) { // compatibility with nette/forms <3.0.3
+            $uploadInput->addRule(Form::MAX_FILE_SIZE, null, 2 ** 20);
+        }
 
         $form->setCurrentGroup(null);
         $form->addComponent(new FooControl('Foo'), 'foo');

@@ -80,7 +80,7 @@
     <div class="form-group has-error">
     <label class="col-sm-3 control-label" for="frm-form-container-innerContainer-upload">Upload</label>
         <div class="col-sm-9">
-    <input type="file" name="container[innerContainer][upload]" id="frm-form-container-innerContainer-upload">
+    <input type="file" name="container[innerContainer][upload]" id="frm-form-container-innerContainer-upload" data-nette-rules='[{"op":":fileSize","msg":"The size of the uploaded file can be up to 1048576 bytes.","arg":1048576}]'>
     <span class="help-block">Control upload error 1.</span>
     <span class="help-block">Control upload error 2.</span>
         </div>
