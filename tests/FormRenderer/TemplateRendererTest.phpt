@@ -18,7 +18,7 @@ require_once __DIR__ . '/../bootstrap.php';
 class TemplateRendererTest extends TestCase
 {
 
-    private TemplateFactoryFactory $templateFactoryFactory;
+    private TemplateRendererFactory $templateRendererFactory;
 
     private TestFormFactory $testFormFactory;
 
@@ -26,7 +26,7 @@ class TemplateRendererTest extends TestCase
     {
         parent::setUp();
 
-        $this->templateFactoryFactory = new TemplateFactoryFactory();
+        $this->templateRendererFactory = new TemplateRendererFactory();
         $this->testFormFactory = new TestFormFactory();
     }
 
@@ -144,7 +144,7 @@ class TemplateRendererTest extends TestCase
 
     private function createRenderer(): FormRenderer\TemplateRenderer
     {
-        $renderer = new FormRenderer\TemplateRenderer($this->templateFactoryFactory->create());
+        $renderer = $this->templateRendererFactory->create();
         $renderer->importTemplate(FormRenderer\TemplateRenderer::DEFAULT_FORM_BLOCKS_TEMPLATE_FILE);
 
         return $renderer;

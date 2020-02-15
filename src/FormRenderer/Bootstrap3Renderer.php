@@ -21,7 +21,9 @@ class Bootstrap3Renderer implements Nette\Forms\IFormRenderer
 
     private const FORM_BLOCKS_TEMPLATE_FILE = __DIR__ . '/templates/bootstrap3.latte';
 
-    private TemplateRenderer $templateRenderer;
+    private ITemplateRendererFactory $templateRendererFactory;
+
+    private ?TemplateRenderer $templateRenderer = null;
 
     private string $mode = self::MODE_BASIC;
 
@@ -29,15 +31,14 @@ class Bootstrap3Renderer implements Nette\Forms\IFormRenderer
 
     private int $controlCols = self::DEFAULT_CONTROL_COLS;
 
-    public function __construct(Nette\Application\UI\ITemplateFactory $templateFactory)
+    public function __construct(ITemplateRendererFactory $templateRendererFactory)
     {
-        $this->templateRenderer = new TemplateRenderer($templateFactory);
-        $this->templateRenderer->importTemplate(self::FORM_BLOCKS_TEMPLATE_FILE);
+        $this->templateRendererFactory = $templateRendererFactory;
     }
 
     public function importTemplate(string $templateFile): void
     {
-        $this->templateRenderer->importTemplate($templateFile);
+        $this->getTemplateRenderer()->importTemplate($templateFile);
     }
 
     public function setBasicMode(): void
@@ -61,13 +62,24 @@ class Bootstrap3Renderer implements Nette\Forms\IFormRenderer
     {
         $this->prepareForm($form);
 
-        $template = $this->templateRenderer->getTemplate();
+        $templateRenderer = $this->getTemplateRenderer();
+        $template = $templateRenderer->getTemplate();
         $template->mode = $this->mode;
         $template->gridOffsetClass = sprintf('col-sm-offset-%d', $this->labelCols);
         $template->gridLabelClass = sprintf('col-sm-%d', $this->labelCols);
         $template->gridControlClass = sprintf('col-sm-%d', $this->controlCols);
 
-        return $this->templateRenderer->render($form);
+        return $templateRenderer->render($form);
+    }
+
+    protected function getTemplateRenderer(): TemplateRenderer
+    {
+        if ($this->templateRenderer === null) {
+            $this->templateRenderer = $this->templateRendererFactory->create();
+            $this->templateRenderer->importTemplate(self::FORM_BLOCKS_TEMPLATE_FILE);
+        }
+
+        return $this->templateRenderer;
     }
 
     protected function prepareForm(Form $form): void

@@ -17,7 +17,7 @@ require_once __DIR__ . '/../bootstrap.php';
 class Bootstrap3RendererTest extends TestCase
 {
 
-    private TemplateFactoryFactory $templateFactoryFactory;
+    private TemplateRendererFactory $templateRendererFactory;
 
     private TestFormFactory $testFormFactory;
 
@@ -25,7 +25,7 @@ class Bootstrap3RendererTest extends TestCase
     {
         parent::setUp();
 
-        $this->templateFactoryFactory = new TemplateFactoryFactory();
+        $this->templateRendererFactory = new TemplateRendererFactory();
         $this->testFormFactory = new TestFormFactory();
     }
 
@@ -181,7 +181,7 @@ class Bootstrap3RendererTest extends TestCase
 
     private function createRenderer(string $mode): FormRenderer\Bootstrap3Renderer
     {
-        $renderer = new FormRenderer\Bootstrap3Renderer($this->templateFactoryFactory->create());
+        $renderer = new FormRenderer\Bootstrap3Renderer($this->templateRendererFactory);
         if ($mode === FormRenderer\Bootstrap3Renderer::MODE_INLINE) {
             $renderer->setInlineMode();
         } elseif ($mode === FormRenderer\Bootstrap3Renderer::MODE_HORIZONTAL) {

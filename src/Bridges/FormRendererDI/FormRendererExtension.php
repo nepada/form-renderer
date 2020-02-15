@@ -46,6 +46,10 @@ class FormRendererExtension extends CompilerExtension
         assert($config instanceof \stdClass);
         $container = $this->getContainerBuilder();
 
+        $templateRendererFactory = $container->addFactoryDefinition($this->prefix('templateRendererFactory'))
+            ->setImplement(ITemplateRendererFactory::class)
+            ->setAutowired(false);
+
         $defaultRendererFactory = $container->addFactoryDefinition($this->prefix('defaultRendererFactory'))
             ->setImplement(ITemplateRendererFactory::class);
 
@@ -58,6 +62,7 @@ class FormRendererExtension extends CompilerExtension
             ->setImplement(IBootstrap3RendererFactory::class);
 
         $bootstrap3RendererFactoryResultDefinition = $bootstrap3RendererFactory->getResultDefinition();
+        $bootstrap3RendererFactoryResultDefinition->setArguments(['templateRendererFactory' => $templateRendererFactory]);
         foreach ($config->bootstrap3->imports as $templateFile) {
             $bootstrap3RendererFactoryResultDefinition->addSetup('importTemplate', [$templateFile]);
         }
