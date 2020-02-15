@@ -4,6 +4,7 @@ declare(strict_types = 1);
 namespace Nepada\Bridges\FormRendererDI;
 
 use Nepada\FormRenderer\Bootstrap3Renderer;
+use Nepada\FormRenderer\Filters\ISafeTranslateFilterFactory;
 use Nepada\FormRenderer\IBootstrap3RendererFactory;
 use Nepada\FormRenderer\ITemplateRendererFactory;
 use Nepada\FormRenderer\TemplateRenderer;
@@ -45,6 +46,9 @@ class FormRendererExtension extends CompilerExtension
         $config = $this->getConfig();
         assert($config instanceof \stdClass);
         $container = $this->getContainerBuilder();
+
+        $container->addFactoryDefinition($this->prefix('filters.safeTranslateFilterFactory'))
+            ->setImplement(ISafeTranslateFilterFactory::class);
 
         $templateRendererFactory = $container->addFactoryDefinition($this->prefix('templateRendererFactory'))
             ->setImplement(ITemplateRendererFactory::class)

@@ -15,7 +15,7 @@ final class TemplateRendererFactory implements ITemplateRendererFactory
 
     public function create(): TemplateRenderer
     {
-        return new TemplateRenderer($this->createTemplateFactory());
+        return new TemplateRenderer($this->createTemplateFactory(), new SafeTranslateFilterFactory());
     }
 
     private function createTemplateFactory(): Nette\Bridges\ApplicationLatte\TemplateFactory

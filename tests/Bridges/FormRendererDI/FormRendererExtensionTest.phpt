@@ -21,6 +21,7 @@ class FormRendererExtensionTest extends TestCase
 
     public function testServices(): void
     {
+        Assert::type(FormRenderer\Filters\ISafeTranslateFilterFactory::class, $this->container->getService('formRenderer.filters.safeTranslateFilterFactory'));
         Assert::type(FormRenderer\ITemplateRendererFactory::class, $this->container->getService('formRenderer.templateRendererFactory'));
         Assert::type(FormRenderer\ITemplateRendererFactory::class, $this->container->getService('formRenderer.defaultRendererFactory'));
         Assert::type(FormRenderer\IBootstrap3RendererFactory::class, $this->container->getService('formRenderer.bootstrap3RendererFactory'));

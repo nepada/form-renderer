@@ -4,6 +4,7 @@ declare(strict_types = 1);
 namespace Nepada\FormRenderer;
 
 use Latte;
+use Nepada\FormRenderer\Filters\ISafeTranslateFilterFactory;
 use Nette;
 
 class TemplateRenderer implements Nette\Forms\IFormRenderer
@@ -16,14 +17,17 @@ class TemplateRenderer implements Nette\Forms\IFormRenderer
 
     private Nette\Application\UI\ITemplateFactory $templateFactory;
 
+    private ISafeTranslateFilterFactory $safeTranslateFilterFactory;
+
     /** @var string[] */
     private array $templateImports = [];
 
     private ?Nette\Bridges\ApplicationLatte\Template $template = null;
 
-    public function __construct(Nette\Application\UI\ITemplateFactory $templateFactory)
+    public function __construct(Nette\Application\UI\ITemplateFactory $templateFactory, ISafeTranslateFilterFactory $safeTranslateFilterFactory)
     {
         $this->templateFactory = $templateFactory;
+        $this->safeTranslateFilterFactory = $safeTranslateFilterFactory;
     }
 
     public function importTemplate(string $templateFile): void
@@ -47,7 +51,7 @@ class TemplateRenderer implements Nette\Forms\IFormRenderer
 
         $latte = $template->getLatte();
         $latte->addProvider('formRendererImports', $this->templateImports);
-        $latte->addFilter('safeTranslate', fn (Latte\Runtime\FilterInfo $fi, ...$args) => $this->translate($form->getTranslator(), ...$args));
+        $latte->addFilter('safeTranslate', $this->safeTranslateFilterFactory->create($form->getTranslator()));
 
         $template->form = $form;
 
@@ -70,24 +74,6 @@ class TemplateRenderer implements Nette\Forms\IFormRenderer
         };
 
         return $template;
-    }
-
-    /**
-     * @param Nette\Localization\ITranslator|null $translator
-     * @param mixed ...$args
-     * @return mixed
-     */
-    private function translate(?Nette\Localization\ITranslator $translator, ...$args)
-    {
-        if ($translator === null) {
-            return count($args) > 0 ? reset($args) : null;
-        }
-
-        if (count($args) === 1 && $args[0] instanceof Nette\Utils\IHtmlString) {
-            return $args[0];
-        }
-
-        return $translator->translate(...$args);
     }
 
 }

@@ -80,7 +80,7 @@ Just make sure that one of your template files defines block named `#form` - thi
 #### Filter `safeTranslate` in templates
 
 For translations the templates may use custom `safeTranslate` filter. The key differences from standard `translate` filter are:
-1) It avoids translating instances of `Nette\Utils\IHtmlString`.
+1) It avoids translating instances of `Nette\Utils\IHtmlString` and `Latte\Runtime\IHtmlString`.
 2) It uses a translator from the form instance that is being rendered.
 3) If the form has no translator set, than it simply returns the passed string untranslated. 
 

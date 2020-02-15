@@ -37,7 +37,7 @@ class TemplateRendererTest extends TestCase
         $templateFactory = Mockery::mock(Nette\Application\UI\ITemplateFactory::class);
         $templateFactory->shouldReceive('createTemplate')->andReturn($template);
 
-        $renderer = new FormRenderer\TemplateRenderer($templateFactory);
+        $renderer = new FormRenderer\TemplateRenderer($templateFactory, new SafeTranslateFilterFactory());
         Assert::exception(
             function () use ($renderer): void {
                 $renderer->getTemplate();
