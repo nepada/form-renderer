@@ -30,10 +30,10 @@ class FormRendererExtensionTest extends TestCase
         $form = new Nette\Forms\Form();
 
         $defaultRenderer = $this->container->getByType(FormRenderer\ITemplateRendererFactory::class)->create();
-        Assert::same('FORM', $defaultRenderer->render($form));
+        Assert::same("FORM\n\nform.latte,default.latte\n", $defaultRenderer->render($form));
 
         $bootstrap3Renderer = $this->container->getByType(FormRenderer\IBootstrap3RendererFactory::class)->create();
-        Assert::same('FORM horizontal', $bootstrap3Renderer->render($form));
+        Assert::same("FORM\nhorizontal\nform.latte,bootstrap3.latte\n", $bootstrap3Renderer->render($form));
     }
 
     protected function setUp(): void

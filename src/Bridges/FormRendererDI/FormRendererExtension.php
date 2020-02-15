@@ -18,7 +18,7 @@ class FormRendererExtension extends CompilerExtension
         $imports = Nette\Schema\Expect::listOf('string');
 
         $default = Nette\Schema\Expect::structure([
-            'imports' => $imports->default([
+            'imports' => (clone $imports)->default([
                 TemplateRenderer::DEFAULT_FORM_BLOCKS_TEMPLATE_FILE,
             ]),
         ]);
@@ -30,7 +30,7 @@ class FormRendererExtension extends CompilerExtension
         )->default(Bootstrap3Renderer::MODE_BASIC);
 
         $bootstrap3 = Nette\Schema\Expect::structure([
-            'imports' => $imports,
+            'imports' => clone $imports,
             'mode' => $bootstrap3Mode,
         ]);
 
