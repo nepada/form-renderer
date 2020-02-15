@@ -1,9 +1,10 @@
 <?php
 declare(strict_types = 1);
 
-namespace Nepada\FormRenderer;
+namespace Nepada\FormRenderer\Macros;
 
 use Latte;
+use Nepada\FormRenderer\Helpers;
 
 final class FormRendererMacros extends Latte\Macros\MacroSet
 {

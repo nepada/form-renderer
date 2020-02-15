@@ -66,7 +66,7 @@ class TemplateRenderer implements Nette\Forms\IFormRenderer
 
         $latte = $template->getLatte();
         $latte->onCompile[] = function (Latte\Engine $latte): void {
-            FormRendererMacros::install($latte->getCompiler());
+            Macros\FormRendererMacros::install($latte->getCompiler());
         };
 
         return $template;

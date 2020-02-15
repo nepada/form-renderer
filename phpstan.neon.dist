@@ -17,4 +17,4 @@ parameters:
     ignoreErrors:
         - # false positive
             message: "#Cannot access property \\$attrs on Latte\\\\HtmlNode\\|null#"
-            path: src/FormRenderer/FormRendererMacros.php
+            path: src/FormRenderer/Macros/FormRendererMacros.php
