@@ -24,15 +24,13 @@ class FormRendererExtension extends CompilerExtension
             ]),
         ]);
 
-        $bootstrap3Mode = Nette\Schema\Expect::anyOf(
-            Bootstrap3Renderer::MODE_BASIC,
-            Bootstrap3Renderer::MODE_INLINE,
-            Bootstrap3Renderer::MODE_HORIZONTAL,
-        )->default(Bootstrap3Renderer::MODE_BASIC);
-
         $bootstrap3 = Nette\Schema\Expect::structure([
             'imports' => clone $imports,
-            'mode' => $bootstrap3Mode,
+            'mode' => Nette\Schema\Expect::anyOf(
+                Bootstrap3Renderer::MODE_BASIC,
+                Bootstrap3Renderer::MODE_INLINE,
+                Bootstrap3Renderer::MODE_HORIZONTAL,
+            )->default(Bootstrap3Renderer::MODE_BASIC),
         ]);
 
         return Nette\Schema\Expect::structure([
@@ -50,34 +48,47 @@ class FormRendererExtension extends CompilerExtension
         $container->addFactoryDefinition($this->prefix('filters.safeTranslateFilterFactory'))
             ->setImplement(ISafeTranslateFilterFactory::class);
 
-        $templateRendererFactory = $container->addFactoryDefinition($this->prefix('templateRendererFactory'))
+        $container->addFactoryDefinition($this->prefix('templateRendererFactory'))
             ->setImplement(ITemplateRendererFactory::class)
             ->setAutowired(false);
 
-        $defaultRendererFactory = $container->addFactoryDefinition($this->prefix('defaultRendererFactory'))
+        $this->setupDefaultRenderer($config->default);
+        $this->setupBootstrap3Renderer($config->bootstrap3);
+    }
+
+    private function setupDefaultRenderer(\stdClass $config): void
+    {
+        $container = $this->getContainerBuilder();
+
+        $factory = $container->addFactoryDefinition($this->prefix('defaultRendererFactory'))
             ->setImplement(ITemplateRendererFactory::class);
 
-        $defaultRendererFactoryResultDefinition = $defaultRendererFactory->getResultDefinition();
-        foreach ($config->default->imports as $templateFile) {
-            $defaultRendererFactoryResultDefinition->addSetup('importTemplate', [$templateFile]);
+        $resultDefinition = $factory->getResultDefinition();
+        foreach ($config->imports as $templateFile) {
+            $resultDefinition->addSetup('importTemplate', [$templateFile]);
         }
+    }
 
-        $bootstrap3RendererFactory = $container->addFactoryDefinition($this->prefix('bootstrap3RendererFactory'))
+    private function setupBootstrap3Renderer(\stdClass $config): void
+    {
+        $container = $this->getContainerBuilder();
+
+        $factory = $container->addFactoryDefinition($this->prefix('bootstrap3RendererFactory'))
             ->setImplement(IBootstrap3RendererFactory::class);
 
-        $bootstrap3RendererFactoryResultDefinition = $bootstrap3RendererFactory->getResultDefinition();
-        $bootstrap3RendererFactoryResultDefinition->setArguments(['templateRendererFactory' => $templateRendererFactory]);
-        foreach ($config->bootstrap3->imports as $templateFile) {
-            $bootstrap3RendererFactoryResultDefinition->addSetup('importTemplate', [$templateFile]);
+        $resultDefinition = $factory->getResultDefinition();
+        $resultDefinition->setArguments(['templateRendererFactory' => $this->prefix('@templateRendererFactory')]);
+        foreach ($config->imports as $templateFile) {
+            $resultDefinition->addSetup('importTemplate', [$templateFile]);
         }
-        if ($config->bootstrap3->mode === Bootstrap3Renderer::MODE_HORIZONTAL) {
-            $bootstrap3RendererFactoryResultDefinition->addSetup('setHorizontalMode');
-        } elseif ($config->bootstrap3->mode === Bootstrap3Renderer::MODE_INLINE) {
-            $bootstrap3RendererFactoryResultDefinition->addSetup('setInlineMode');
-        } elseif ($config->bootstrap3->mode === Bootstrap3Renderer::MODE_BASIC) {
-            $bootstrap3RendererFactoryResultDefinition->addSetup('setBasicMode');
+        if ($config->mode === Bootstrap3Renderer::MODE_HORIZONTAL) {
+            $resultDefinition->addSetup('setHorizontalMode');
+        } elseif ($config->mode === Bootstrap3Renderer::MODE_INLINE) {
+            $resultDefinition->addSetup('setInlineMode');
+        } elseif ($config->mode === Bootstrap3Renderer::MODE_BASIC) {
+            $resultDefinition->addSetup('setBasicMode');
         } else {
-            throw new \InvalidArgumentException("Unsupported bootstrap 3 renderer mode '{$config->bootstrap3->mode}'.");
+            throw new \InvalidArgumentException("Unsupported bootstrap 3 renderer mode '{$config->mode}'.");
         }
     }
 
