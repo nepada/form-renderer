@@ -16,7 +16,7 @@ jobs:
         -   stage: Code Coverage
             php: 7.4
             script:
-                - vendor/bin/tester -s -p phpdbg -c tests/php.ini tests --coverage ./coverage.xml --coverage-src ./src
+                - vendor/bin/tester -s -c tests/php-coverage.ini tests --coverage ./coverage.xml --coverage-src ./src
             after_script:
                 - travis_retry wget https://github.com/php-coveralls/php-coveralls/releases/download/v2.0.0/php-coveralls.phar
                 - php php-coveralls.phar --verbose --config tests/coveralls.yml
