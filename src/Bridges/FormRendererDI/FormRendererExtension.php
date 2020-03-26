@@ -4,8 +4,10 @@ declare(strict_types = 1);
 namespace Nepada\Bridges\FormRendererDI;
 
 use Nepada\FormRenderer\Bootstrap3Renderer;
+use Nepada\FormRenderer\Bootstrap4Renderer;
 use Nepada\FormRenderer\Filters\ISafeTranslateFilterFactory;
 use Nepada\FormRenderer\IBootstrap3RendererFactory;
+use Nepada\FormRenderer\IBootstrap4RendererFactory;
 use Nepada\FormRenderer\ITemplateRendererFactory;
 use Nepada\FormRenderer\TemplateRenderer;
 use Nette;
@@ -33,9 +35,20 @@ class FormRendererExtension extends CompilerExtension
             )->default(Bootstrap3Renderer::MODE_BASIC),
         ]);
 
+        $bootstrap4 = Nette\Schema\Expect::structure([
+            'imports' => clone $imports,
+            'mode' => Nette\Schema\Expect::anyOf(
+                Bootstrap4Renderer::MODE_BASIC,
+                Bootstrap4Renderer::MODE_INLINE,
+                Bootstrap4Renderer::MODE_HORIZONTAL,
+            )->default(Bootstrap4Renderer::MODE_BASIC),
+            'useCustomControls' => Nette\Schema\Expect::bool(false),
+        ]);
+
         return Nette\Schema\Expect::structure([
             'default' => $default,
             'bootstrap3' => $bootstrap3,
+            'bootstrap4' => $bootstrap4,
         ]);
     }
 
@@ -54,6 +67,7 @@ class FormRendererExtension extends CompilerExtension
 
         $this->setupDefaultRenderer($config->default);
         $this->setupBootstrap3Renderer($config->bootstrap3);
+        $this->setupBootstrap4Renderer($config->bootstrap4);
     }
 
     private function setupDefaultRenderer(\stdClass $config): void
@@ -89,6 +103,30 @@ class FormRendererExtension extends CompilerExtension
             $resultDefinition->addSetup('setBasicMode');
         } else {
             throw new \InvalidArgumentException("Unsupported bootstrap 3 renderer mode '{$config->mode}'.");
+        }
+    }
+
+    private function setupBootstrap4Renderer(\stdClass $config): void
+    {
+        $container = $this->getContainerBuilder();
+
+        $factory = $container->addFactoryDefinition($this->prefix('bootstrap4RendererFactory'))
+            ->setImplement(IBootstrap4RendererFactory::class);
+
+        $resultDefinition = $factory->getResultDefinition();
+        $resultDefinition->setArguments(['templateRendererFactory' => $this->prefix('@templateRendererFactory')]);
+        $resultDefinition->addSetup('setUseCustomControls', [$config->useCustomControls]);
+        foreach ($config->imports as $templateFile) {
+            $resultDefinition->addSetup('importTemplate', [$templateFile]);
+        }
+        if ($config->mode === Bootstrap4Renderer::MODE_HORIZONTAL) {
+            $resultDefinition->addSetup('setHorizontalMode');
+        } elseif ($config->mode === Bootstrap4Renderer::MODE_INLINE) {
+            $resultDefinition->addSetup('setInlineMode');
+        } elseif ($config->mode === Bootstrap4Renderer::MODE_BASIC) {
+            $resultDefinition->addSetup('setBasicMode');
+        } else {
+            throw new \InvalidArgumentException("Unsupported bootstrap 4 renderer mode '{$config->mode}'.");
         }
     }
 

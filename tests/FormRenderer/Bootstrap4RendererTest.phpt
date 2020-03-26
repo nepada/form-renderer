@@ -14,7 +14,7 @@ require_once __DIR__ . '/../bootstrap.php';
 /**
  * @testCase
  */
-class Bootstrap3RendererTest extends TestCase
+class Bootstrap4RendererTest extends TestCase
 {
 
     private TemplateRendererFactory $templateRendererFactory;
@@ -39,7 +39,21 @@ class Bootstrap3RendererTest extends TestCase
         $renderer = $this->createRenderer($mode);
         $form->setRenderer($renderer);
 
-        Assert::matchFile(__DIR__ . "/expected/bootstrap3-{$mode}.html", $form->__toString());
+        Assert::matchFile(__DIR__ . "/expected/bootstrap4-{$mode}.html", $form->__toString());
+    }
+
+    /**
+     * @dataProvider getRendererModes
+     * @param string $mode
+     */
+    public function testUseCustomControls(string $mode): void
+    {
+        $form = $this->createTestForm();
+        $renderer = $this->createRenderer($mode);
+        $renderer->setUseCustomControls(true);
+        $form->setRenderer($renderer);
+
+        Assert::matchFile(__DIR__ . "/expected/bootstrap4-{$mode}-customControls.html", $form->__toString());
     }
 
     /**
@@ -62,7 +76,7 @@ class Bootstrap3RendererTest extends TestCase
         $renderer = $this->createRenderer($mode);
         $form->setRenderer($renderer);
 
-        Assert::matchFile(__DIR__ . "/expected/bootstrap3-{$mode}-errors.html", $form->__toString());
+        Assert::matchFile(__DIR__ . "/expected/bootstrap4-{$mode}-errors.html", $form->__toString());
     }
 
     /**
@@ -79,7 +93,7 @@ class Bootstrap3RendererTest extends TestCase
         $renderer = $this->createRenderer($mode);
         $form->setRenderer($renderer);
 
-        Assert::matchFile(__DIR__ . "/expected/bootstrap3-{$mode}-requiredControl.html", $form->__toString());
+        Assert::matchFile(__DIR__ . "/expected/bootstrap4-{$mode}-requiredControl.html", $form->__toString());
     }
 
     /**
@@ -96,7 +110,7 @@ class Bootstrap3RendererTest extends TestCase
         $renderer = $this->createRenderer($mode);
         $form->setRenderer($renderer);
 
-        Assert::matchFile(__DIR__ . "/expected/bootstrap3-{$mode}-controlDescription.html", $form->__toString());
+        Assert::matchFile(__DIR__ . "/expected/bootstrap4-{$mode}-controlDescription.html", $form->__toString());
     }
 
     /**
@@ -113,7 +127,7 @@ class Bootstrap3RendererTest extends TestCase
         $renderer = $this->createRenderer($mode);
         $form->setRenderer($renderer);
 
-        Assert::matchFile(__DIR__ . "/expected/bootstrap3-{$mode}-customControlId.html", $form->__toString());
+        Assert::matchFile(__DIR__ . "/expected/bootstrap4-{$mode}-customControlId.html", $form->__toString());
     }
 
     /**
@@ -130,7 +144,7 @@ class Bootstrap3RendererTest extends TestCase
         $renderer = $this->createRenderer($mode);
         $form->setRenderer($renderer);
 
-        Assert::matchFile(__DIR__ . "/expected/bootstrap3-{$mode}-customControlClass.html", $form->__toString());
+        Assert::matchFile(__DIR__ . "/expected/bootstrap4-{$mode}-customControlClass.html", $form->__toString());
     }
 
     /**
@@ -148,7 +162,7 @@ class Bootstrap3RendererTest extends TestCase
         $renderer->importTemplate(__DIR__ . '/Fixtures/customControlType.latte');
         $form->setRenderer($renderer);
 
-        Assert::matchFile(__DIR__ . "/expected/bootstrap3-{$mode}-imports.html", $form->__toString());
+        Assert::matchFile(__DIR__ . "/expected/bootstrap4-{$mode}-imports.html", $form->__toString());
     }
 
     /**
@@ -157,9 +171,9 @@ class Bootstrap3RendererTest extends TestCase
     public function getRendererModes(): array
     {
         return [
-            ['mode' => FormRenderer\Bootstrap3Renderer::MODE_BASIC],
-            ['mode' => FormRenderer\Bootstrap3Renderer::MODE_INLINE],
-            ['mode' => FormRenderer\Bootstrap3Renderer::MODE_HORIZONTAL],
+            ['mode' => FormRenderer\Bootstrap4Renderer::MODE_BASIC],
+            ['mode' => FormRenderer\Bootstrap4Renderer::MODE_INLINE],
+            ['mode' => FormRenderer\Bootstrap4Renderer::MODE_HORIZONTAL],
         ];
     }
 
@@ -171,20 +185,29 @@ class Bootstrap3RendererTest extends TestCase
         $warningButton->getControlPrototype()->addClass('btn btn-warning');
 
         $checkboxList = $form->addCheckboxList('inlinecheckboxlist', 'InlineCheckboxList', ['foo', 'bar']);
+        $checkboxList->setDisabled(['0']);
         $checkboxList->getSeparatorPrototype()->setName('');
 
         $radioList = $form->addRadioList('inlineradiolist', 'InlineRadioList', ['foo', 'bar']);
+        $radioList->setDisabled(['0']);
         $radioList->getSeparatorPrototype()->setName('');
+
+        $range = $form->addText('range', 'Range');
+        $range->setHtmlType('range')->setOption('type', 'range');
+
+        $switch = $form->addCheckbox('switch', 'Switch');
+        $switch->setOption('type', 'switch');
+        $switch->setOption('description', 'Switch description');
 
         return $form;
     }
 
-    private function createRenderer(string $mode): FormRenderer\Bootstrap3Renderer
+    private function createRenderer(string $mode): FormRenderer\Bootstrap4Renderer
     {
-        $renderer = new FormRenderer\Bootstrap3Renderer($this->templateRendererFactory);
-        if ($mode === FormRenderer\Bootstrap3Renderer::MODE_INLINE) {
+        $renderer = new FormRenderer\Bootstrap4Renderer($this->templateRendererFactory);
+        if ($mode === FormRenderer\Bootstrap4Renderer::MODE_INLINE) {
             $renderer->setInlineMode();
-        } elseif ($mode === FormRenderer\Bootstrap3Renderer::MODE_HORIZONTAL) {
+        } elseif ($mode === FormRenderer\Bootstrap4Renderer::MODE_HORIZONTAL) {
             $renderer->setHorizontalMode();
         }
 
@@ -194,4 +217,4 @@ class Bootstrap3RendererTest extends TestCase
 }
 
 
-(new Bootstrap3RendererTest())->run();
+(new Bootstrap4RendererTest())->run();

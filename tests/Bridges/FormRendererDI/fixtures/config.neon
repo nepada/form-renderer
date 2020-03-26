@@ -9,6 +9,11 @@ formRenderer:
         mode: horizontal
         imports:
             - %fixturesDir%/form.latte
+    bootstrap4:
+        mode: horizontal
+        useCustomControls: false
+        imports:
+            - %fixturesDir%/form.latte
 
 application:
     scanDirs: false

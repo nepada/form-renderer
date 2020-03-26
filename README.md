@@ -113,3 +113,32 @@ formRenderer:
 1) It adds `btn btn-primary` classes to the control prototype of first `SubmitButton` in the form, unless there already is such a control in the form.
 2) It adds `btn btn-default` classes to the control prototype of every `Button` control, unless it already has `btn` class set.
 3) Changes `type` option on all `CheckboxList` controls from `checkbox` to `checkboxlist`.
+
+
+### Bootstrap4Renderer
+
+Form renderer compatible with Bootstrap 4, it internally uses `TemplateRenderer` with [custom template](src/FormRenderer/templates/boostrap4.latte).
+
+The template supports three rendering modes:
+```php
+$renderer->setBasicMode(); // Basic form
+$renderer->setInlineMode(); // Inline form
+$renderer->setHorizontalMode(4, 8); // Horizontal form (you can optionally set the size of label and control columns)
+```
+
+You can enable the use of [custom form controls](https://getbootstrap.com/docs/4.4/components/forms/#custom-forms) by `$renderer->setUseCustomControls(true)`. To render a checkbox as a switch, you need to set type option: `$checkboxInput->setOption('type', 'switch')`. 
+
+Rendering mode, custom form controls and template files with custom rendering rules can be set in your `config.neon`:
+```yaml
+formRenderer:
+    bootstrap4:
+        mode: horizontal
+        useCustomControls: true
+        imports:
+            - %appDir%/templates/@form-extras.latte
+```
+
+`Bootstrap4Renderer` makes a couple of adjustments to the form before it is passed over to `TemplateRenderer`:
+1) It adds `btn btn-primary` classes to the control prototype of first `SubmitButton` in the form, unless there already is such a control in the form.
+2) It adds `btn btn-secondary` classes to the control prototype of every `Button` control, unless it already has `btn` class set.
+3) Changes `type` option on all `CheckboxList` controls from `checkbox` to `checkboxlist`.
