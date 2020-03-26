@@ -8,8 +8,8 @@
 {/block}
 
 {define #form-errors}
-    <ul n:if="$form->ownErrors" class="error">
-        <li n:foreach="$form->ownErrors as $error">{$error|safeTranslate}</li>
+    <ul n:if="$form->getOwnErrors()" class="error">
+        <li n:foreach="$form->getOwnErrors() as $error">{$error|safeTranslate}</li>
     </ul>
 {/define}
 
@@ -48,7 +48,7 @@
 {/define}
 
 {define #pair-type-default}
-    <tr n:class="$control->getOption('class'), $control->required ? required" n:attr="id => $control->getOption('id')">
+    <tr n:class="$control->getOption('class'), $control->isRequired() ? required" n:attr="id => $control->getOption('id')">
         <th>
             {include #label, control => $control}
         </th>
@@ -80,7 +80,7 @@
 {define #control-type-default}
     {input $control}
     <small n:if="$control->getOption('description') !== null">{$control->getOption('description')|safeTranslate}</small>
-    <span n:if="$control->errors" class="error" n:inner-foreach="$control->errors as $error">
+    <span n:if="$control->getErrors()" class="error" n:inner-foreach="$control->getErrors() as $error">
         {$error|safeTranslate}
     </span>
 {/define}

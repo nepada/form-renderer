@@ -1,7 +1,7 @@
 {import helpers/override-split.latte}
 
 {block #form}
-    <form n:name="$form" n:class="$form->elementPrototype->class, $mode === horizontal ? form-horizontal, $mode === inline ? form-inline">
+    <form n:name="$form" n:class="$form->getElementPrototype()->class, $mode === horizontal ? form-horizontal, $mode === inline ? form-inline">
         {include #form-errors}
         {include #form-body}
     </form>
@@ -9,11 +9,11 @@
 
 {define #form-errors}
     {if $mode === inline}
-        <div n:foreach="$form->errors as $error" class="alert alert-danger">
+        <div n:foreach="$form->getErrors() as $error" class="alert alert-danger">
             {$error|safeTranslate}
         </div>
     {else}
-        <div n:foreach="$form->ownErrors as $error" class="alert alert-danger">
+        <div n:foreach="$form->getOwnErrors() as $error" class="alert alert-danger">
             {$error|safeTranslate}
         </div>
     {/if}
@@ -52,7 +52,7 @@
 {/define}
 
 {define #pair-type-default}
-    <div n:class="form-group, $control->getOption('class'), $control->required ? required, $control->hasErrors() ? has-error" n:attr="id => $control->getOption('id')">
+    <div n:class="form-group, $control->getOption('class'), $control->isRequired() ? required, $control->hasErrors() ? has-error" n:attr="id => $control->getOption('id')">
         {include #label, control => $control}
         <div n:tag-if="$mode === horizontal" n:class="!$control->getLabel() ? $gridOffsetClass, $gridControlClass">
             {include #helpers-override-split, blockNamePrefix => control, control => $control}
@@ -76,7 +76,7 @@
 {/define}
 
 {define #label}
-    <label n:if="$control->getLabel()" n:name="$control" n:class="$control->labelPrototype->class, $mode === horizontal ? $gridLabelClass, $mode === horizontal ? control-label" />
+    <label n:if="$control->getLabel()" n:name="$control" n:class="$control->getLabelPrototype()->class, $mode === horizontal ? $gridLabelClass, $mode === horizontal ? control-label" />
 {/define}
 
 {define #control-type-default}
@@ -85,28 +85,28 @@
 {/define}
 
 {define #control-type-text}
-    <input n:name="$control" n:class="$control->controlPrototype->class, form-control">
+    <input n:name="$control" n:class="$control->getControlPrototype()->class, form-control">
     {include #control-help, control => $control}
 {/define}
 
 {define #control-type-textarea}
-    <textarea n:name="$control" n:class="$control->controlPrototype->class, form-control" />
+    <textarea n:name="$control" n:class="$control->getControlPrototype()->class, form-control" />
     {include #control-help, control => $control}
 {/define}
 
 {define #control-type-select}
-    <select n:name="$control" n:class="$control->controlPrototype->class, form-control" />
+    <select n:name="$control" n:class="$control->getControlPrototype()->class, form-control" />
     {include #control-help, control => $control}
 {/define}
 
 {define #control-type-radio}
     <br n:tag-if="$mode === basic">
-    {var $isInlineMode = $mode === inline || !$control->separatorPrototype->getName()}
-    {var $disabled = $control->disabled}
-    {foreach $control->items as $k => $v}
+    {var $isInlineMode = $mode === inline || !$control->getSeparatorPrototype()->getName()}
+    {var $disabled = $control->isDisabled()}
+    {foreach $control->getItems() as $k => $v}
         {var $isDisabled = $disabled === true || (is_array($disabled) && $disabled[$k])}
-        <div n:tag-if="!$isInlineMode" n:class="$control->separatorPrototype->class, radio, $isDisabled ? disabled">
-            <label n:name="$control:$k" n:class="$control->itemLabelPrototype->class, $isInlineMode ? radio-inline, $isInlineMode && $isDisabled ? disabled"><input n:name="$control:$k">{=$control->translate($v)}</label>
+        <div n:tag-if="!$isInlineMode" n:class="$control->getSeparatorPrototype()->class, radio, $isDisabled ? disabled">
+            <label n:name="$control:$k" n:class="$control->getItemLabelPrototype()->class, $isInlineMode ? radio-inline, $isInlineMode && $isDisabled ? disabled"><input n:name="$control:$k">{=$control->translate($v)}</label>
         </div>
     {/foreach}
     {include #control-help, control => $control}
@@ -114,19 +114,19 @@
 
 {define #control-type-checkboxlist}
     <br n:tag-if="$mode === basic">
-    {var $isInlineMode = $mode === inline || !$control->separatorPrototype->getName()}
-    {var $disabled = $control->disabled}
-    {foreach $control->items as $k => $v}
+    {var $isInlineMode = $mode === inline || !$control->getSeparatorPrototype()->getName()}
+    {var $disabled = $control->isDisabled()}
+    {foreach $control->getItems() as $k => $v}
         {var $isDisabled = $disabled === true || (is_array($disabled) && $disabled[$k])}
-        <div n:tag-if="!$isInlineMode" n:class="$control->separatorPrototype->class, checkbox, $isDisabled ? disabled">
-            <label n:name="$control:$k" n:class="$control->itemLabelPrototype->class, $isInlineMode ? checkbox-inline, $isInlineMode && $isDisabled ? disabled"><input n:name="$control:$k">{=$control->translate($v)}</label>
+        <div n:tag-if="!$isInlineMode" n:class="$control->getSeparatorPrototype()->class, checkbox, $isDisabled ? disabled">
+            <label n:name="$control:$k" n:class="$control->getItemLabelPrototype()->class, $isInlineMode ? checkbox-inline, $isInlineMode && $isDisabled ? disabled"><input n:name="$control:$k">{=$control->translate($v)}</label>
         </div>
     {/foreach}
     {include #control-help, control => $control}
 {/define}
 
 {define #control-type-checkbox}
-    <div n:class="$control->getSeparatorPrototype()->class, $mode === inline ? checkbox-inline : checkbox, $control->disabled ? disabled">
+    <div n:class="$control->getSeparatorPrototype()->class, $mode === inline ? checkbox-inline : checkbox, $control->isDisabled() ? disabled">
         {input $control}
     </div>
     {include #control-help, control => $control}
@@ -134,5 +134,5 @@
 
 {define #control-help}
     <span n:if="$control->getOption('description') !== null" class="help-block">{$control->getOption('description')|safeTranslate}</span>
-    <span n:if="$mode !== inline" n:foreach="$control->errors as $error" class="help-block">{$error|safeTranslate}</span>
+    <span n:if="$mode !== inline" n:foreach="$control->getErrors() as $error" class="help-block">{$error|safeTranslate}</span>
 {/define}
