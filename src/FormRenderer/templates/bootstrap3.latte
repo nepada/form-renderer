@@ -1,3 +1,5 @@
+{import helpers/override-split.latte}
+
 {block #form}
     <form n:name="$form" n:class="$form->elementPrototype->class, $mode === horizontal ? form-horizontal, $mode === inline ? form-inline">
         {include #form-errors}
@@ -45,15 +47,7 @@
 {define #controls}
     {foreach $group->getControls() as $control}
         {continueIf $control->getOption('rendered') || $control->getOption('type') === 'hidden'}
-        {var $controlName = $control->lookupPath(\Nette\Forms\Form::class)}
-        {var $controlType = $control->getOption('type', 'default')}
-        {ifset #pair-name-{$controlName}}
-            {include #"pair-name-{$controlName}", control => $control, controlsIterator => $iterator}
-        {elseifset #pair-type-{$controlType}}
-            {include #"pair-type-{$controlType}", control => $control, controlsIterator => $iterator}
-        {else}
-            {include #pair-type-default, control => $control, controlsIterator => $iterator}
-        {/ifset}
+        {include #helpers-override-split, blockNamePrefix => pair, control => $control, parameters => [controlsIterator => $iterator]}
     {/foreach}
 {/define}
 
@@ -61,15 +55,7 @@
     <div n:class="form-group, $control->getOption('class'), $control->required ? required, $control->hasErrors() ? has-error" n:attr="id => $control->getOption('id')">
         {include #label, control => $control}
         <div n:tag-if="$mode === horizontal" n:class="!$control->getLabel() ? $gridOffsetClass, $gridControlClass">
-            {var $controlName = $control->lookupPath(\Nette\Forms\Form::class)}
-            {var $controlType = $control->getOption('type', 'default')}
-            {ifset #control-name-{$controlName}}
-                {include #"control-name-{$controlName}", control => $control}
-            {elseifset #control-type-{$controlType}}
-                {include #"control-type-{$controlType}", control => $control}
-            {else}
-                {include #control-type-default, control => $control}
-            {/ifset}
+            {include #helpers-override-split, blockNamePrefix => control, control => $control}
         </div>
     </div>
 {/define}
