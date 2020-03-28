@@ -1,0 +1,11 @@
+services:
+    -
+        type: Spaze\PHPStan\Rules\Disallowed\FunctionCalls
+        tags:
+            - phpstan.rules.rule
+        arguments:
+            forbiddenCalls:
+                -
+                    function: 'var_dump()'
+                -
+                    function: 'print_r()'
