@@ -3,11 +3,11 @@ declare(strict_types = 1);
 
 namespace NepadaTests\FormRenderer;
 
-use Nepada\FormRenderer\Filters\ISafeTranslateFilterFactory;
 use Nepada\FormRenderer\Filters\SafeTranslateFilter;
+use Nepada\FormRenderer\Filters\SafeTranslateFilterFactory;
 use Nette;
 
-final class SafeTranslateFilterFactory implements ISafeTranslateFilterFactory
+final class TestSafeTranslateFilterFactory implements SafeTranslateFilterFactory
 {
 
     use Nette\SmartObject;

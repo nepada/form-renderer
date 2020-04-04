@@ -5,7 +5,7 @@ namespace Nepada\FormRenderer\Filters;
 
 use Nette;
 
-interface ISafeTranslateFilterFactory
+interface SafeTranslateFilterFactory
 {
 
     public function create(?Nette\Localization\ITranslator $translator): SafeTranslateFilter;

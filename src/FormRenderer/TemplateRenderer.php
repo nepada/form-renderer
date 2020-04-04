@@ -4,7 +4,7 @@ declare(strict_types = 1);
 namespace Nepada\FormRenderer;
 
 use Latte;
-use Nepada\FormRenderer\Filters\ISafeTranslateFilterFactory;
+use Nepada\FormRenderer\Filters\SafeTranslateFilterFactory;
 use Nette;
 
 class TemplateRenderer implements Nette\Forms\IFormRenderer
@@ -17,14 +17,14 @@ class TemplateRenderer implements Nette\Forms\IFormRenderer
 
     private Nette\Application\UI\ITemplateFactory $templateFactory;
 
-    private ISafeTranslateFilterFactory $safeTranslateFilterFactory;
+    private SafeTranslateFilterFactory $safeTranslateFilterFactory;
 
     /** @var string[] */
     private array $templateImports = [];
 
     private ?Nette\Bridges\ApplicationLatte\Template $template = null;
 
-    public function __construct(Nette\Application\UI\ITemplateFactory $templateFactory, ISafeTranslateFilterFactory $safeTranslateFilterFactory)
+    public function __construct(Nette\Application\UI\ITemplateFactory $templateFactory, SafeTranslateFilterFactory $safeTranslateFilterFactory)
     {
         $this->templateFactory = $templateFactory;
         $this->safeTranslateFilterFactory = $safeTranslateFilterFactory;

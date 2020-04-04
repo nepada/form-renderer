@@ -35,14 +35,14 @@ Nette gives you two options how to render a form:
 
 ### TemplateRenderer
 
-You can use `ITemplateRendererFactory` service to create the renderer with preconfigured [default template](src/FormRenderer/templates/default.latte). It renders a form more or less the same way as `DefaultFormRenderer`.
+You can use `TemplateRendererFactory` service to create the renderer with preconfigured [default template](src/FormRenderer/templates/default.latte). It renders a form more or less the same way as `DefaultFormRenderer`.
 
 #### Customizing rendering
 
 You can customize rendering by importing blocks from a template file - blocks imported later override the previously imported ones of the same name. You can also pass custom variables to the template.
 
 ```php
-/** @var Nepada\FormRenderer\ITemplateRendererFactory $factory */
+/** @var Nepada\FormRenderer\TemplateRendererFactory $factory */
 $renderer = $factory->create();
 $renderer->importTemplate(__DIR__ . '/custom-form-rendering-blocks.latte');
 $renderer->getTemlate()->foo = 'bar'; 
@@ -70,7 +70,7 @@ You don't need to use the default template, you can create one from scratch with
 ```yaml
 services:
     customRenderer:
-        implement: Nepada\FormRenderer\ITemplateRendererFactory
+        implement: Nepada\FormRenderer\TemplateRendererFactory
         setup:
           - importTemplate('%appDir%/templates/@form.latte')
           - importTemplate('%appDir%/templates/@form-extras.latte')

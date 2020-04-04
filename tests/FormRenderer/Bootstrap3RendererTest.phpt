@@ -17,7 +17,7 @@ require_once __DIR__ . '/../bootstrap.php';
 class Bootstrap3RendererTest extends TestCase
 {
 
-    private TemplateRendererFactory $templateRendererFactory;
+    private TestTemplateRendererFactory $templateRendererFactory;
 
     private TestFormFactory $testFormFactory;
 
@@ -25,7 +25,7 @@ class Bootstrap3RendererTest extends TestCase
     {
         parent::setUp();
 
-        $this->templateRendererFactory = new TemplateRendererFactory();
+        $this->templateRendererFactory = new TestTemplateRendererFactory();
         $this->testFormFactory = new TestFormFactory();
     }
 

@@ -26,3 +26,6 @@ parameters:
         - # false positive
             path: tests/FormRenderer/Bootstrap4RendererTest.phpt
             message: '~Parameter #1 \$value of method Nette\\Forms\\Controls\\MultiChoiceControl::setDisabled\(\) expects array<bool>\|bool, array<int, string> given~'
+        - # false positive
+            path: tests/FormRenderer/TestTemplateRendererFactory.php
+            message: '~Constant TEMP_DIR not found~'

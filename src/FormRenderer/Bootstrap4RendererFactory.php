@@ -3,7 +3,7 @@ declare(strict_types = 1);
 
 namespace Nepada\FormRenderer;
 
-interface IBootstrap4RendererFactory
+interface Bootstrap4RendererFactory
 {
 
     public function create(): Bootstrap4Renderer;

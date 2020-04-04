@@ -4,18 +4,18 @@ declare(strict_types = 1);
 namespace NepadaTests\FormRenderer;
 
 use Latte;
-use Nepada\FormRenderer\ITemplateRendererFactory;
 use Nepada\FormRenderer\TemplateRenderer;
+use Nepada\FormRenderer\TemplateRendererFactory;
 use Nette;
 
-final class TemplateRendererFactory implements ITemplateRendererFactory
+final class TestTemplateRendererFactory implements TemplateRendererFactory
 {
 
     use Nette\SmartObject;
 
     public function create(): TemplateRenderer
     {
-        return new TemplateRenderer($this->createTemplateFactory(), new SafeTranslateFilterFactory());
+        return new TemplateRenderer($this->createTemplateFactory(), new TestSafeTranslateFilterFactory());
     }
 
     private function createTemplateFactory(): Nette\Bridges\ApplicationLatte\TemplateFactory

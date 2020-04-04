@@ -4,12 +4,12 @@ declare(strict_types = 1);
 namespace Nepada\Bridges\FormRendererDI;
 
 use Nepada\FormRenderer\Bootstrap3Renderer;
+use Nepada\FormRenderer\Bootstrap3RendererFactory;
 use Nepada\FormRenderer\Bootstrap4Renderer;
-use Nepada\FormRenderer\Filters\ISafeTranslateFilterFactory;
-use Nepada\FormRenderer\IBootstrap3RendererFactory;
-use Nepada\FormRenderer\IBootstrap4RendererFactory;
-use Nepada\FormRenderer\ITemplateRendererFactory;
+use Nepada\FormRenderer\Bootstrap4RendererFactory;
+use Nepada\FormRenderer\Filters\SafeTranslateFilterFactory;
 use Nepada\FormRenderer\TemplateRenderer;
+use Nepada\FormRenderer\TemplateRendererFactory;
 use Nette;
 use Nette\DI\CompilerExtension;
 
@@ -59,10 +59,10 @@ class FormRendererExtension extends CompilerExtension
         $container = $this->getContainerBuilder();
 
         $container->addFactoryDefinition($this->prefix('filters.safeTranslateFilterFactory'))
-            ->setImplement(ISafeTranslateFilterFactory::class);
+            ->setImplement(SafeTranslateFilterFactory::class);
 
         $container->addFactoryDefinition($this->prefix('templateRendererFactory'))
-            ->setImplement(ITemplateRendererFactory::class)
+            ->setImplement(TemplateRendererFactory::class)
             ->setAutowired(false);
 
         $this->setupDefaultRenderer($config->default);
@@ -75,7 +75,7 @@ class FormRendererExtension extends CompilerExtension
         $container = $this->getContainerBuilder();
 
         $factory = $container->addFactoryDefinition($this->prefix('defaultRendererFactory'))
-            ->setImplement(ITemplateRendererFactory::class);
+            ->setImplement(TemplateRendererFactory::class);
 
         $resultDefinition = $factory->getResultDefinition();
         foreach ($config->imports as $templateFile) {
@@ -88,7 +88,7 @@ class FormRendererExtension extends CompilerExtension
         $container = $this->getContainerBuilder();
 
         $factory = $container->addFactoryDefinition($this->prefix('bootstrap3RendererFactory'))
-            ->setImplement(IBootstrap3RendererFactory::class);
+            ->setImplement(Bootstrap3RendererFactory::class);
 
         $resultDefinition = $factory->getResultDefinition();
         $resultDefinition->setArguments(['templateRendererFactory' => $this->prefix('@templateRendererFactory')]);
@@ -111,7 +111,7 @@ class FormRendererExtension extends CompilerExtension
         $container = $this->getContainerBuilder();
 
         $factory = $container->addFactoryDefinition($this->prefix('bootstrap4RendererFactory'))
-            ->setImplement(IBootstrap4RendererFactory::class);
+            ->setImplement(Bootstrap4RendererFactory::class);
 
         $resultDefinition = $factory->getResultDefinition();
         $resultDefinition->setArguments(['templateRendererFactory' => $this->prefix('@templateRendererFactory')]);

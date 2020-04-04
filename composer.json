@@ -45,7 +45,8 @@
         "psr-4": {
             "Nepada\\Bridges\\": "src/Bridges/",
             "Nepada\\FormRenderer\\": "src/FormRenderer/"
-        }
+        },
+        "files": ["src/compatibility.php"]
     },
     "autoload-dev": {
         "psr-4": {

@@ -18,7 +18,7 @@ require_once __DIR__ . '/../bootstrap.php';
 class TemplateRendererTest extends TestCase
 {
 
-    private TemplateRendererFactory $templateRendererFactory;
+    private TestTemplateRendererFactory $templateRendererFactory;
 
     private TestFormFactory $testFormFactory;
 
@@ -26,7 +26,7 @@ class TemplateRendererTest extends TestCase
     {
         parent::setUp();
 
-        $this->templateRendererFactory = new TemplateRendererFactory();
+        $this->templateRendererFactory = new TestTemplateRendererFactory();
         $this->testFormFactory = new TestFormFactory();
     }
 
@@ -37,7 +37,7 @@ class TemplateRendererTest extends TestCase
         $templateFactory = Mockery::mock(Nette\Application\UI\ITemplateFactory::class);
         $templateFactory->shouldReceive('createTemplate')->andReturn($template);
 
-        $renderer = new FormRenderer\TemplateRenderer($templateFactory, new SafeTranslateFilterFactory());
+        $renderer = new FormRenderer\TemplateRenderer($templateFactory, new TestSafeTranslateFilterFactory());
         Assert::exception(
             function () use ($renderer): void {
                 $renderer->getTemplate();

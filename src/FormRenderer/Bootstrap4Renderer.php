@@ -21,7 +21,7 @@ class Bootstrap4Renderer implements Nette\Forms\IFormRenderer
 
     private const FORM_BLOCKS_TEMPLATE_FILE = __DIR__ . '/templates/bootstrap4.latte';
 
-    private ITemplateRendererFactory $templateRendererFactory;
+    private TemplateRendererFactory $templateRendererFactory;
 
     private ?TemplateRenderer $templateRenderer = null;
 
@@ -33,7 +33,7 @@ class Bootstrap4Renderer implements Nette\Forms\IFormRenderer
 
     private int $controlCols = self::DEFAULT_CONTROL_COLS;
 
-    public function __construct(ITemplateRendererFactory $templateRendererFactory)
+    public function __construct(TemplateRendererFactory $templateRendererFactory)
     {
         $this->templateRendererFactory = $templateRendererFactory;
     }
