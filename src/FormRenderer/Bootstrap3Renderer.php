@@ -85,6 +85,7 @@ class Bootstrap3Renderer implements Nette\Forms\IFormRenderer
     protected function prepareForm(Form $form): void
     {
         $primaryButton = $this->findPrimaryButton($form);
+        /** @var Controls\Button $control */
         foreach ($form->getComponents(true, Controls\Button::class) as $control) {
             $controlPrototype = $control->getControlPrototype();
             $classes = Helpers::parseClassList($controlPrototype->getClass());
@@ -100,6 +101,7 @@ class Bootstrap3Renderer implements Nette\Forms\IFormRenderer
             }
         }
 
+        /** @var Controls\CheckboxList $control */
         foreach ($form->getComponents(true, Controls\CheckboxList::class) as $control) {
             if ($control->getOption('type') === 'checkbox') {
                 $control->setOption('type', 'checkboxlist');
@@ -109,6 +111,7 @@ class Bootstrap3Renderer implements Nette\Forms\IFormRenderer
 
     protected function findPrimaryButton(Form $form): ?Controls\SubmitButton
     {
+        /** @var Controls\SubmitButton $control */
         foreach ($form->getComponents(true, Controls\SubmitButton::class) as $control) {
             $classes = Helpers::parseClassList($control->getControlPrototype()->getClass());
             if (in_array('btn-primary', $classes, true)) {
