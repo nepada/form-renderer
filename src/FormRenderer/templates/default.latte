@@ -9,7 +9,7 @@
 
 {define #form-errors}
     <ul n:if="$form->getOwnErrors()" class="error">
-        <li n:foreach="$form->getOwnErrors() as $error">{$error|safeTranslate}</li>
+        <li n:foreach="$form->getOwnErrors() as $error">{$error}</li>
     </ul>
 {/define}
 
@@ -81,6 +81,6 @@
     {input $control}
     <small n:if="$control->getOption('description') !== null">{$control->getOption('description')|safeTranslate}</small>
     <span n:if="$control->getErrors()" class="error" n:inner-foreach="$control->getErrors() as $error">
-        {$error|safeTranslate}
+        {$error}
     </span>
 {/define}

@@ -10,11 +10,11 @@
 {define #form-errors}
     {if $mode === inline}
         <div n:foreach="$form->getErrors() as $error" class="alert alert-danger">
-            {$error|safeTranslate}
+            {$error}
         </div>
     {else}
         <div n:foreach="$form->getOwnErrors() as $error" class="alert alert-danger">
-            {$error|safeTranslate}
+            {$error}
         </div>
     {/if}
 {/define}
@@ -134,5 +134,5 @@
 
 {define #control-help}
     <span n:if="$control->getOption('description') !== null" class="help-block">{$control->getOption('description')|safeTranslate}</span>
-    <span n:if="$mode !== inline" n:foreach="$control->getErrors() as $error" class="help-block">{$error|safeTranslate}</span>
+    <span n:if="$mode !== inline" n:foreach="$control->getErrors() as $error" class="help-block">{$error}</span>
 {/define}

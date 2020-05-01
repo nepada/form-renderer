@@ -9,7 +9,7 @@
 
 {define #form-errors}
     <div n:foreach="$form->getOwnErrors() as $error" class="alert alert-danger">
-        {$error|safeTranslate}
+        {$error}
     </div>
 {/define}
 
@@ -120,7 +120,7 @@
 {/define}
 
 {define #control-errors}
-    <div n:foreach="$control->getErrors() as $error" n:class="$mode === inline ? invalid-tooltip : invalid-feedback">{$error|safeTranslate}</div>
+    <div n:foreach="$control->getErrors() as $error" n:class="$mode === inline ? invalid-tooltip : invalid-feedback">{$error}</div>
 {/define}
 
 {define #control-help}
