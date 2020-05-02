@@ -1,18 +1,18 @@
-    <form class="form-class1 form-class2 form-horizontal" action="#" method="post" id="frm-form" enctype="multipart/form-data">
+    <form class="form-class1 form-class2 form-horizontal" action="#" method="post" enctype="multipart/form-data">
 
         <fieldset id="custom-group-id">
     <legend>Group 1</legend>
     <p>Group 1 description.</p>
     <div class="form-group">
-    <label class="col-sm-3 control-label" for="frm-form-text">Text</label>
+    <label class="col-sm-3 control-label" for="frm-text">Text</label>
         <div class="col-sm-9">
-    <input type="text" name="text" id="frm-form-text" class="form-control">
+    <input type="text" name="text" id="frm-text" class="form-control">
         </div>
     </div>
     <div class="form-group">
-    <label class="col-sm-3 control-label" for="frm-form-textarea">TextArea</label>
+    <label class="col-sm-3 control-label" for="frm-textarea">TextArea</label>
         <div class="col-sm-9">
-    <textarea class="form-control" name="textarea" id="frm-form-textarea"></textarea>
+    <textarea class="form-control" name="textarea" id="frm-textarea"></textarea>
         </div>
     </div>
         <fieldset>
@@ -21,7 +21,7 @@
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-9">
     <div class="checkbox">
-        <label for="frm-form-container-checkbox"><input type="checkbox" name="container[checkbox]" id="frm-form-container-checkbox">Checkbox</label>
+        <label for="frm-container-checkbox"><input type="checkbox" name="container[checkbox]" id="frm-container-checkbox">Checkbox</label>
     </div>
         </div>
     </div>
@@ -29,10 +29,10 @@
     <label class="col-sm-3 control-label">CheckBoxList</label>
         <div class="col-sm-9">
         <div class="checkbox">
-            <label for="frm-form-container-checkboxlist-1"><input type="checkbox" name="container[checkboxlist][]" id="frm-form-container-checkboxlist-1" value="1">one</label>
+            <label for="frm-container-checkboxlist-1"><input type="checkbox" name="container[checkboxlist][]" id="frm-container-checkboxlist-1" value="1">one</label>
         </div>
         <div class="checkbox">
-            <label for="frm-form-container-checkboxlist-2"><input type="checkbox" name="container[checkboxlist][]" id="frm-form-container-checkboxlist-2" value="2">two</label>
+            <label for="frm-container-checkboxlist-2"><input type="checkbox" name="container[checkboxlist][]" id="frm-container-checkboxlist-2" value="2">two</label>
         </div>
         </div>
     </div>
@@ -40,31 +40,31 @@
     <label class="col-sm-3 control-label">RadioList</label>
         <div class="col-sm-9">
         <div class="radio">
-            <label for="frm-form-container-radiolist-3"><input type="radio" name="container[radiolist]" id="frm-form-container-radiolist-3" value="3">three</label>
+            <label for="frm-container-radiolist-3"><input type="radio" name="container[radiolist]" id="frm-container-radiolist-3" value="3">three</label>
         </div>
         <div class="radio">
-            <label for="frm-form-container-radiolist-4"><input type="radio" name="container[radiolist]" id="frm-form-container-radiolist-4" value="4">four</label>
+            <label for="frm-container-radiolist-4"><input type="radio" name="container[radiolist]" id="frm-container-radiolist-4" value="4">four</label>
         </div>
         </div>
     </div>
     <div class="form-group">
-    <label class="col-sm-3 control-label" for="frm-form-container-innerContainer-selectbox">Selectbox</label>
+    <label class="col-sm-3 control-label" for="frm-container-innerContainer-selectbox">Selectbox</label>
         <div class="col-sm-9">
-    <select class="form-control" name="container[innerContainer][selectbox]" id="frm-form-container-innerContainer-selectbox"><option value="5">five</option><option value="6">six</option></select>
+    <select class="form-control" name="container[innerContainer][selectbox]" id="frm-container-innerContainer-selectbox"><option value="5">five</option><option value="6">six</option></select>
         </div>
     </div>
     <div class="form-group">
-    <label class="col-sm-3 control-label" for="frm-form-container-innerContainer-upload">Upload</label>
+    <label class="col-sm-3 control-label" for="frm-container-innerContainer-upload">Upload</label>
         <div class="col-sm-9">
-    <input type="file" name="container[innerContainer][upload]" id="frm-form-container-innerContainer-upload" data-nette-rules='[{"op":":fileSize","msg":"The size of the uploaded file can be up to 1048576 bytes.","arg":1048576}]'>
+    <input type="file" name="container[innerContainer][upload]" id="frm-container-innerContainer-upload" data-nette-rules='[{"op":":fileSize","msg":"The size of the uploaded file can be up to 1048576 bytes.","arg":1048576}]'>
         </div>
     </div>
         </fieldset>
         </fieldset>
     <div class="form-group">
-    <label class="label-class1 label-class2 col-sm-3 control-label" for="frm-form-foo">Foo</label>
+    <label class="label-class1 label-class2 col-sm-3 control-label" for="frm-foo">Foo</label>
         <div class="col-sm-9">
-    <div data-foo="foo" class="control-class1 control-class2"><input name="foo" id="frm-form-foo"><span>foo</span></div>
+    <div data-foo="foo" class="control-class1 control-class2"><input name="foo" id="frm-foo"><span>foo</span></div>
         </div>
     </div>
     <div class="form-group">
@@ -77,16 +77,16 @@
     <div class="form-group">
     <label class="col-sm-3 control-label">InlineCheckboxList</label>
         <div class="col-sm-9">
-            <label class="checkbox-inline" for="frm-form-inlinecheckboxlist-0"><input type="checkbox" name="inlinecheckboxlist[]" id="frm-form-inlinecheckboxlist-0" value="0">foo</label>
-            <label class="checkbox-inline" for="frm-form-inlinecheckboxlist-1"><input type="checkbox" name="inlinecheckboxlist[]" id="frm-form-inlinecheckboxlist-1" value="1">bar</label>
+            <label class="checkbox-inline" for="frm-inlinecheckboxlist-0"><input type="checkbox" name="inlinecheckboxlist[]" id="frm-inlinecheckboxlist-0" value="0">foo</label>
+            <label class="checkbox-inline" for="frm-inlinecheckboxlist-1"><input type="checkbox" name="inlinecheckboxlist[]" id="frm-inlinecheckboxlist-1" value="1">bar</label>
         </div>
     </div>
     <div class="form-group">
     <label class="col-sm-3 control-label">InlineRadioList</label>
         <div class="col-sm-9">
-            <label class="radio-inline" for="frm-form-inlineradiolist-0"><input type="radio" name="inlineradiolist" id="frm-form-inlineradiolist-0" value="0">foo</label>
-            <label class="radio-inline" for="frm-form-inlineradiolist-1"><input type="radio" name="inlineradiolist" id="frm-form-inlineradiolist-1" value="1">bar</label>
+            <label class="radio-inline" for="frm-inlineradiolist-0"><input type="radio" name="inlineradiolist" id="frm-inlineradiolist-0" value="0">foo</label>
+            <label class="radio-inline" for="frm-inlineradiolist-1"><input type="radio" name="inlineradiolist" id="frm-inlineradiolist-1" value="1">bar</label>
         </div>
     </div>
-<input type="hidden" name="hidden" value=""><input type="hidden" name="_do" value="form-submit"><!--[if IE]><input type=IEbug disabled style="display:none"><![endif]-->
+<input type="hidden" name="hidden" value=""><!--[if IE]><input type=IEbug disabled style="display:none"><![endif]-->
     </form>

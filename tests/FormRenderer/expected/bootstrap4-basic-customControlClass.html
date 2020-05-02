@@ -1,78 +1,78 @@
-    <form class="form-class1 form-class2" action="#" method="post" id="frm-form" enctype="multipart/form-data">
+    <form class="form-class1 form-class2" action="#" method="post" enctype="multipart/form-data">
 
         <fieldset id="custom-group-id">
     <legend>Group 1</legend>
     <p>Group 1 description.</p>
-    <div class="custom-form-text form-group">
-    <label for="frm-form-text">Text</label>
-    <input type="text" name="text" id="frm-form-text" class="form-control">
+    <div class="custom-text form-group">
+    <label for="frm-text">Text</label>
+    <input type="text" name="text" id="frm-text" class="form-control">
 
 
     </div>
-    <div class="custom-form-textarea form-group">
-    <label for="frm-form-textarea">TextArea</label>
-    <textarea class="form-control" name="textarea" id="frm-form-textarea"></textarea>
+    <div class="custom-textarea form-group">
+    <label for="frm-textarea">TextArea</label>
+    <textarea class="form-control" name="textarea" id="frm-textarea"></textarea>
 
 
     </div>
         <fieldset>
     <legend><span>Group 2 label</span></legend>
     <p><span>Group 2 description.</span></p>
-    <div class="custom-form-container-checkbox form-group">
+    <div class="custom-container-checkbox form-group">
     <div class="form-check">
-        <input type="checkbox" name="container[checkbox]" id="frm-form-container-checkbox" class="form-check-input">
-        <label class="form-check-label" for="frm-form-container-checkbox">Checkbox</label>
+        <input type="checkbox" name="container[checkbox]" id="frm-container-checkbox" class="form-check-input">
+        <label class="form-check-label" for="frm-container-checkbox">Checkbox</label>
     </div>
 
 
     </div>
-    <div class="custom-form-container-checkboxlist form-group">
+    <div class="custom-container-checkboxlist form-group">
     <label>CheckBoxList</label>
         <div>
     <div class="form-check">
-        <input type="checkbox" name="container[checkboxlist][]" id="frm-form-container-checkboxlist-1" value="1" class="form-check-input">
-        <label class="form-check-label" for="frm-form-container-checkboxlist-1">one</label>
+        <input type="checkbox" name="container[checkboxlist][]" id="frm-container-checkboxlist-1" value="1" class="form-check-input">
+        <label class="form-check-label" for="frm-container-checkboxlist-1">one</label>
     </div>
     <div class="form-check">
-        <input type="checkbox" name="container[checkboxlist][]" id="frm-form-container-checkboxlist-2" value="2" class="form-check-input">
-        <label class="form-check-label" for="frm-form-container-checkboxlist-2">two</label>
+        <input type="checkbox" name="container[checkboxlist][]" id="frm-container-checkboxlist-2" value="2" class="form-check-input">
+        <label class="form-check-label" for="frm-container-checkboxlist-2">two</label>
     </div>
         </div>
 
 
     </div>
-    <div class="custom-form-container-radiolist form-group">
+    <div class="custom-container-radiolist form-group">
     <label>RadioList</label>
         <div>
     <div class="form-check">
-        <input type="radio" name="container[radiolist]" id="frm-form-container-radiolist-3" value="3" class="form-check-input">
-        <label class="form-check-label" for="frm-form-container-radiolist-3">three</label>
+        <input type="radio" name="container[radiolist]" id="frm-container-radiolist-3" value="3" class="form-check-input">
+        <label class="form-check-label" for="frm-container-radiolist-3">three</label>
     </div>
     <div class="form-check">
-        <input type="radio" name="container[radiolist]" id="frm-form-container-radiolist-4" value="4" class="form-check-input">
-        <label class="form-check-label" for="frm-form-container-radiolist-4">four</label>
+        <input type="radio" name="container[radiolist]" id="frm-container-radiolist-4" value="4" class="form-check-input">
+        <label class="form-check-label" for="frm-container-radiolist-4">four</label>
     </div>
         </div>
 
 
     </div>
-    <div class="custom-form-container-innerContainer-selectbox form-group">
-    <label for="frm-form-container-innerContainer-selectbox">Selectbox</label>
-    <select class="form-control" name="container[innerContainer][selectbox]" id="frm-form-container-innerContainer-selectbox"><option value="5">five</option><option value="6">six</option></select>
+    <div class="custom-container-innerContainer-selectbox form-group">
+    <label for="frm-container-innerContainer-selectbox">Selectbox</label>
+    <select class="form-control" name="container[innerContainer][selectbox]" id="frm-container-innerContainer-selectbox"><option value="5">five</option><option value="6">six</option></select>
 
 
     </div>
-    <div class="custom-form-container-innerContainer-upload form-group">
-    <label for="frm-form-container-innerContainer-upload">Upload</label>
-        <input type="file" name="container[innerContainer][upload]" id="frm-form-container-innerContainer-upload" data-nette-rules='[{"op":":fileSize","msg":"The size of the uploaded file can be up to 1048576 bytes.","arg":1048576}]' class="form-control-file">
+    <div class="custom-container-innerContainer-upload form-group">
+    <label for="frm-container-innerContainer-upload">Upload</label>
+        <input type="file" name="container[innerContainer][upload]" id="frm-container-innerContainer-upload" data-nette-rules='[{"op":":fileSize","msg":"The size of the uploaded file can be up to 1048576 bytes.","arg":1048576}]' class="form-control-file">
 
 
     </div>
         </fieldset>
         </fieldset>
-    <div class="custom-form-foo form-group">
-    <label class="label-class1 label-class2" for="frm-form-foo">Foo</label>
-    <div data-foo="foo" class="control-class1 control-class2"><input name="foo" id="frm-form-foo"><span>foo</span></div>
+    <div class="custom-foo form-group">
+    <label class="label-class1 label-class2" for="frm-foo">Foo</label>
+    <div data-foo="foo" class="control-class1 control-class2"><input name="foo" id="frm-foo"><span>foo</span></div>
 
 
     </div>
@@ -87,49 +87,49 @@
 
 
     </div>
-    <div class="custom-form-inlinecheckboxlist form-group">
+    <div class="custom-inlinecheckboxlist form-group">
     <label>InlineCheckboxList</label>
         <div>
     <div class="form-check form-check-inline">
-        <input type="checkbox" name="inlinecheckboxlist[]" id="frm-form-inlinecheckboxlist-0" disabled value="0" class="form-check-input">
-        <label class="form-check-label" for="frm-form-inlinecheckboxlist-0">foo</label>
+        <input type="checkbox" name="inlinecheckboxlist[]" id="frm-inlinecheckboxlist-0" disabled value="0" class="form-check-input">
+        <label class="form-check-label" for="frm-inlinecheckboxlist-0">foo</label>
     </div>
     <div class="form-check form-check-inline">
-        <input type="checkbox" name="inlinecheckboxlist[]" id="frm-form-inlinecheckboxlist-1" value="1" class="form-check-input">
-        <label class="form-check-label" for="frm-form-inlinecheckboxlist-1">bar</label>
+        <input type="checkbox" name="inlinecheckboxlist[]" id="frm-inlinecheckboxlist-1" value="1" class="form-check-input">
+        <label class="form-check-label" for="frm-inlinecheckboxlist-1">bar</label>
     </div>
         </div>
 
 
     </div>
-    <div class="custom-form-inlineradiolist form-group">
+    <div class="custom-inlineradiolist form-group">
     <label>InlineRadioList</label>
         <div>
     <div class="form-check form-check-inline">
-        <input type="radio" name="inlineradiolist" id="frm-form-inlineradiolist-0" disabled value="0" class="form-check-input">
-        <label class="form-check-label" for="frm-form-inlineradiolist-0">foo</label>
+        <input type="radio" name="inlineradiolist" id="frm-inlineradiolist-0" disabled value="0" class="form-check-input">
+        <label class="form-check-label" for="frm-inlineradiolist-0">foo</label>
     </div>
     <div class="form-check form-check-inline">
-        <input type="radio" name="inlineradiolist" id="frm-form-inlineradiolist-1" value="1" class="form-check-input">
-        <label class="form-check-label" for="frm-form-inlineradiolist-1">bar</label>
+        <input type="radio" name="inlineradiolist" id="frm-inlineradiolist-1" value="1" class="form-check-input">
+        <label class="form-check-label" for="frm-inlineradiolist-1">bar</label>
     </div>
         </div>
 
 
     </div>
-    <div class="custom-form-range form-group">
-    <label for="frm-form-range">Range</label>
-    <input type="range" name="range" id="frm-form-range" class="form-control-range">
+    <div class="custom-range form-group">
+    <label for="frm-range">Range</label>
+    <input type="range" name="range" id="frm-range" class="form-control-range">
 
 
     </div>
-    <div class="custom-form-switch form-group">
+    <div class="custom-switch form-group">
     <div class="form-check">
-        <input type="checkbox" name="switch" id="frm-form-switch" class="form-check-input">
-        <label class="form-check-label" for="frm-form-switch">Switch</label>
+        <input type="checkbox" name="switch" id="frm-switch" class="form-check-input">
+        <label class="form-check-label" for="frm-switch">Switch</label>
     </div>
 
     <small class="form-text text-muted">Switch description</small>
 
     </div>
-<input type="hidden" name="hidden" value=""><input type="hidden" name="_do" value="form-submit">    </form>
+<input type="hidden" name="hidden" value="">    </form>

@@ -1,14 +1,14 @@
-    <form action="#" method="post" id="frm-form" class="form-class1 form-class2" enctype="multipart/form-data">
+    <form action="#" method="post" class="form-class1 form-class2" enctype="multipart/form-data">
         <fieldset id="custom-group-id">
     <legend>Group 1</legend>
     <p>Group 1 description.</p>
         <table>
     <tr>
         <th>
-    <label for="frm-form-text">Text</label>
+    <label for="frm-text">Text</label>
         </th>
         <td>
-    <input type="text" name="text" id="frm-form-text">
+    <input type="text" name="text" id="frm-text">
         </td>
     </tr>
     CUSTOM TEXTAREA PAIR TYPE RENDERING
@@ -23,7 +23,7 @@
 
         </th>
         <td>
-    <label for="frm-form-container-checkbox"><input type="checkbox" name="container[checkbox]" id="frm-form-container-checkbox">Checkbox</label>
+    <label for="frm-container-checkbox"><input type="checkbox" name="container[checkbox]" id="frm-container-checkbox">Checkbox</label>
         </td>
     </tr>
     <tr>
@@ -44,18 +44,18 @@
     </tr>
     <tr>
         <th>
-    <label for="frm-form-container-innerContainer-selectbox">Selectbox</label>
+    <label for="frm-container-innerContainer-selectbox">Selectbox</label>
         </th>
         <td>
-    <select name="container[innerContainer][selectbox]" id="frm-form-container-innerContainer-selectbox"><option value="5">five</option><option value="6">six</option></select>
+    <select name="container[innerContainer][selectbox]" id="frm-container-innerContainer-selectbox"><option value="5">five</option><option value="6">six</option></select>
         </td>
     </tr>
     <tr>
         <th>
-    <label for="frm-form-container-innerContainer-upload">Upload</label>
+    <label for="frm-container-innerContainer-upload">Upload</label>
         </th>
         <td>
-    <input type="file" name="container[innerContainer][upload]" id="frm-form-container-innerContainer-upload" data-nette-rules='[{"op":":fileSize","msg":"The size of the uploaded file can be up to 1048576 bytes.","arg":1048576}]'>
+    <input type="file" name="container[innerContainer][upload]" id="frm-container-innerContainer-upload" data-nette-rules='[{"op":":fileSize","msg":"The size of the uploaded file can be up to 1048576 bytes.","arg":1048576}]'>
         </td>
     </tr>
         </table>
@@ -73,7 +73,7 @@
     </tr>
         </table>
 
-    <input type="hidden" name="hidden" value=""><input type="hidden" name="_do" value="form-submit"><!--[if IE]><input type=IEbug disabled style="display:none"><![endif]-->
+    <input type="hidden" name="hidden" value=""><!--[if IE]><input type=IEbug disabled style="display:none"><![endif]-->
 </form>
 
 

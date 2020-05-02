@@ -162,7 +162,7 @@ class Bootstrap3RendererTest extends TestCase
         ];
     }
 
-    protected function createTestForm(): Nette\Application\UI\Form
+    protected function createTestForm(): Nette\Forms\Form
     {
         $form = $this->testFormFactory->create();
 

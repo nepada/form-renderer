@@ -4,10 +4,8 @@ declare(strict_types = 1);
 namespace NepadaTests\FormRenderer;
 
 use NepadaTests\FormRenderer\Fixtures\FooControl;
-use NepadaTests\FormRenderer\Fixtures\FooPresenter;
 use Nette;
-use Nette\Application\UI\Form;
-use Nette\Application\UI\Presenter;
+use Nette\Forms\Form;
 
 final class TestFormFactory
 {
@@ -16,8 +14,7 @@ final class TestFormFactory
 
     public function create(): Form
     {
-        $presenter = $this->mockPresenter();
-        $form = new Form($presenter, 'form');
+        $form = new Form();
         $form->setAction('#');
         $form->getElementPrototype()->addClass('form-class1');
         $form->getElementPrototype()->addClass('form-class2');
@@ -53,29 +50,6 @@ final class TestFormFactory
         $form->addButton('button', 'Button');
 
         return $form;
-    }
-
-    private function mockPresenter(): Presenter
-    {
-        $presenter = new FooPresenter();
-        $presenter->setParent(null, 'Foo');
-
-        $url = new Nette\Http\UrlScript('https://example.com/');
-        $httpRequest = new Nette\Http\Request($url);
-        $httpResponse = new Nette\Http\Response();
-        $router = new Nette\Application\Routers\Route('/<presenter>/<action>');
-        $presenter->injectPrimary(null, null, $router, $httpRequest, $httpResponse);
-
-        $request = new Nette\Application\Request('Foo', 'GET');
-        $requestReflection = new \ReflectionProperty(Presenter::class, 'request');
-        $requestReflection->setAccessible(true);
-        $requestReflection->setValue($presenter, $request);
-
-        $initGlobalParametersReflection = new \ReflectionMethod(Presenter::class, 'initGlobalParameters');
-        $initGlobalParametersReflection->setAccessible(true);
-        $initGlobalParametersReflection->invoke($presenter);
-
-        return $presenter;
     }
 
 }

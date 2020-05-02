@@ -1,62 +1,62 @@
-    <form class="form-class1 form-class2 form-inline" action="#" method="post" id="frm-form" enctype="multipart/form-data">
+    <form class="form-class1 form-class2 form-inline" action="#" method="post" enctype="multipart/form-data">
 
         <fieldset id="custom-group-id">
     <legend>Group 1</legend>
     <p>Group 1 description.</p>
-    <div id="custom-form-text" class="form-group">
-    <label for="frm-form-text">Text</label>
-    <input type="text" name="text" id="frm-form-text" class="form-control">
+    <div id="custom-text" class="form-group">
+    <label for="frm-text">Text</label>
+    <input type="text" name="text" id="frm-text" class="form-control">
     </div>
-    <div id="custom-form-textarea" class="form-group">
-    <label for="frm-form-textarea">TextArea</label>
-    <textarea class="form-control" name="textarea" id="frm-form-textarea"></textarea>
+    <div id="custom-textarea" class="form-group">
+    <label for="frm-textarea">TextArea</label>
+    <textarea class="form-control" name="textarea" id="frm-textarea"></textarea>
     </div>
         <fieldset>
     <legend><span>Group 2 label</span></legend>
     <p><span>Group 2 description.</span></p>
-    <div id="custom-form-container-checkbox" class="form-group">
+    <div id="custom-container-checkbox" class="form-group">
     <div class="checkbox-inline">
-        <label for="frm-form-container-checkbox"><input type="checkbox" name="container[checkbox]" id="frm-form-container-checkbox">Checkbox</label>
+        <label for="frm-container-checkbox"><input type="checkbox" name="container[checkbox]" id="frm-container-checkbox">Checkbox</label>
     </div>
     </div>
-    <div id="custom-form-container-checkboxlist" class="form-group">
+    <div id="custom-container-checkboxlist" class="form-group">
     <label>CheckBoxList</label>
-            <label class="checkbox-inline" for="frm-form-container-checkboxlist-1"><input type="checkbox" name="container[checkboxlist][]" id="frm-form-container-checkboxlist-1" value="1">one</label>
-            <label class="checkbox-inline" for="frm-form-container-checkboxlist-2"><input type="checkbox" name="container[checkboxlist][]" id="frm-form-container-checkboxlist-2" value="2">two</label>
+            <label class="checkbox-inline" for="frm-container-checkboxlist-1"><input type="checkbox" name="container[checkboxlist][]" id="frm-container-checkboxlist-1" value="1">one</label>
+            <label class="checkbox-inline" for="frm-container-checkboxlist-2"><input type="checkbox" name="container[checkboxlist][]" id="frm-container-checkboxlist-2" value="2">two</label>
     </div>
-    <div id="custom-form-container-radiolist" class="form-group">
+    <div id="custom-container-radiolist" class="form-group">
     <label>RadioList</label>
-            <label class="radio-inline" for="frm-form-container-radiolist-3"><input type="radio" name="container[radiolist]" id="frm-form-container-radiolist-3" value="3">three</label>
-            <label class="radio-inline" for="frm-form-container-radiolist-4"><input type="radio" name="container[radiolist]" id="frm-form-container-radiolist-4" value="4">four</label>
+            <label class="radio-inline" for="frm-container-radiolist-3"><input type="radio" name="container[radiolist]" id="frm-container-radiolist-3" value="3">three</label>
+            <label class="radio-inline" for="frm-container-radiolist-4"><input type="radio" name="container[radiolist]" id="frm-container-radiolist-4" value="4">four</label>
     </div>
-    <div id="custom-form-container-innerContainer-selectbox" class="form-group">
-    <label for="frm-form-container-innerContainer-selectbox">Selectbox</label>
-    <select class="form-control" name="container[innerContainer][selectbox]" id="frm-form-container-innerContainer-selectbox"><option value="5">five</option><option value="6">six</option></select>
+    <div id="custom-container-innerContainer-selectbox" class="form-group">
+    <label for="frm-container-innerContainer-selectbox">Selectbox</label>
+    <select class="form-control" name="container[innerContainer][selectbox]" id="frm-container-innerContainer-selectbox"><option value="5">five</option><option value="6">six</option></select>
     </div>
-    <div id="custom-form-container-innerContainer-upload" class="form-group">
-    <label for="frm-form-container-innerContainer-upload">Upload</label>
-    <input type="file" name="container[innerContainer][upload]" id="frm-form-container-innerContainer-upload" data-nette-rules='[{"op":":fileSize","msg":"The size of the uploaded file can be up to 1048576 bytes.","arg":1048576}]'>
+    <div id="custom-container-innerContainer-upload" class="form-group">
+    <label for="frm-container-innerContainer-upload">Upload</label>
+    <input type="file" name="container[innerContainer][upload]" id="frm-container-innerContainer-upload" data-nette-rules='[{"op":":fileSize","msg":"The size of the uploaded file can be up to 1048576 bytes.","arg":1048576}]'>
     </div>
         </fieldset>
         </fieldset>
-    <div id="custom-form-foo" class="form-group">
-    <label class="label-class1 label-class2" for="frm-form-foo">Foo</label>
-    <div data-foo="foo" class="control-class1 control-class2"><input name="foo" id="frm-form-foo"><span>foo</span></div>
+    <div id="custom-foo" class="form-group">
+    <label class="label-class1 label-class2" for="frm-foo">Foo</label>
+    <div data-foo="foo" class="control-class1 control-class2"><input name="foo" id="frm-foo"><span>foo</span></div>
     </div>
     <div class="form-group">
                 <input type="submit" name="send" class="btn btn-primary" value="SubmitButton">
                 <input type="button" name="button" class="btn btn-default" value="Button">
                 <input type="button" name="warning" class="btn btn-warning">
     </div>
-    <div id="custom-form-inlinecheckboxlist" class="form-group">
+    <div id="custom-inlinecheckboxlist" class="form-group">
     <label>InlineCheckboxList</label>
-            <label class="checkbox-inline" for="frm-form-inlinecheckboxlist-0"><input type="checkbox" name="inlinecheckboxlist[]" id="frm-form-inlinecheckboxlist-0" value="0">foo</label>
-            <label class="checkbox-inline" for="frm-form-inlinecheckboxlist-1"><input type="checkbox" name="inlinecheckboxlist[]" id="frm-form-inlinecheckboxlist-1" value="1">bar</label>
+            <label class="checkbox-inline" for="frm-inlinecheckboxlist-0"><input type="checkbox" name="inlinecheckboxlist[]" id="frm-inlinecheckboxlist-0" value="0">foo</label>
+            <label class="checkbox-inline" for="frm-inlinecheckboxlist-1"><input type="checkbox" name="inlinecheckboxlist[]" id="frm-inlinecheckboxlist-1" value="1">bar</label>
     </div>
-    <div id="custom-form-inlineradiolist" class="form-group">
+    <div id="custom-inlineradiolist" class="form-group">
     <label>InlineRadioList</label>
-            <label class="radio-inline" for="frm-form-inlineradiolist-0"><input type="radio" name="inlineradiolist" id="frm-form-inlineradiolist-0" value="0">foo</label>
-            <label class="radio-inline" for="frm-form-inlineradiolist-1"><input type="radio" name="inlineradiolist" id="frm-form-inlineradiolist-1" value="1">bar</label>
+            <label class="radio-inline" for="frm-inlineradiolist-0"><input type="radio" name="inlineradiolist" id="frm-inlineradiolist-0" value="0">foo</label>
+            <label class="radio-inline" for="frm-inlineradiolist-1"><input type="radio" name="inlineradiolist" id="frm-inlineradiolist-1" value="1">bar</label>
     </div>
-<input type="hidden" name="hidden" value=""><input type="hidden" name="_do" value="form-submit"><!--[if IE]><input type=IEbug disabled style="display:none"><![endif]-->
+<input type="hidden" name="hidden" value=""><!--[if IE]><input type=IEbug disabled style="display:none"><![endif]-->
     </form>
