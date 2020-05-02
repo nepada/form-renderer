@@ -6,7 +6,6 @@ namespace NepadaTests\FormRenderer;
 use Nepada\FormRenderer;
 use NepadaTests\TestCase;
 use Nette;
-use Tester\Assert;
 
 require_once __DIR__ . '/../bootstrap.php';
 
@@ -39,7 +38,7 @@ class Bootstrap3RendererTest extends TestCase
         $renderer = $this->createRenderer($mode);
         $form->setRenderer($renderer);
 
-        Assert::matchFile(__DIR__ . "/expected/bootstrap3-{$mode}.html", $form->__toString());
+        HtmlAssert::matchFile(__DIR__ . "/expected/bootstrap3-{$mode}.html", $form->__toString());
     }
 
     /**
@@ -62,7 +61,7 @@ class Bootstrap3RendererTest extends TestCase
         $renderer = $this->createRenderer($mode);
         $form->setRenderer($renderer);
 
-        Assert::matchFile(__DIR__ . "/expected/bootstrap3-{$mode}-errors.html", $form->__toString());
+        HtmlAssert::matchFile(__DIR__ . "/expected/bootstrap3-{$mode}-errors.html", $form->__toString());
     }
 
     /**
@@ -79,7 +78,7 @@ class Bootstrap3RendererTest extends TestCase
         $renderer = $this->createRenderer($mode);
         $form->setRenderer($renderer);
 
-        Assert::matchFile(__DIR__ . "/expected/bootstrap3-{$mode}-requiredControl.html", $form->__toString());
+        HtmlAssert::matchFile(__DIR__ . "/expected/bootstrap3-{$mode}-requiredControl.html", $form->__toString());
     }
 
     /**
@@ -96,7 +95,7 @@ class Bootstrap3RendererTest extends TestCase
         $renderer = $this->createRenderer($mode);
         $form->setRenderer($renderer);
 
-        Assert::matchFile(__DIR__ . "/expected/bootstrap3-{$mode}-controlDescription.html", $form->__toString());
+        HtmlAssert::matchFile(__DIR__ . "/expected/bootstrap3-{$mode}-controlDescription.html", $form->__toString());
     }
 
     /**
@@ -113,7 +112,7 @@ class Bootstrap3RendererTest extends TestCase
         $renderer = $this->createRenderer($mode);
         $form->setRenderer($renderer);
 
-        Assert::matchFile(__DIR__ . "/expected/bootstrap3-{$mode}-customControlId.html", $form->__toString());
+        HtmlAssert::matchFile(__DIR__ . "/expected/bootstrap3-{$mode}-customControlId.html", $form->__toString());
     }
 
     /**
@@ -130,7 +129,7 @@ class Bootstrap3RendererTest extends TestCase
         $renderer = $this->createRenderer($mode);
         $form->setRenderer($renderer);
 
-        Assert::matchFile(__DIR__ . "/expected/bootstrap3-{$mode}-customControlClass.html", $form->__toString());
+        HtmlAssert::matchFile(__DIR__ . "/expected/bootstrap3-{$mode}-customControlClass.html", $form->__toString());
     }
 
     /**
@@ -148,7 +147,7 @@ class Bootstrap3RendererTest extends TestCase
         $renderer->importTemplate(__DIR__ . '/Fixtures/customControlType.latte');
         $form->setRenderer($renderer);
 
-        Assert::matchFile(__DIR__ . "/expected/bootstrap3-{$mode}-imports.html", $form->__toString());
+        HtmlAssert::matchFile(__DIR__ . "/expected/bootstrap3-{$mode}-imports.html", $form->__toString());
     }
 
     /**

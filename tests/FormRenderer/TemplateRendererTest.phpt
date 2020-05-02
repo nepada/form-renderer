@@ -54,7 +54,7 @@ class TemplateRendererTest extends TestCase
         $renderer = $this->createRenderer();
         $form->setRenderer($renderer);
 
-        Assert::matchFile(__DIR__ . '/expected/default.html', $form->__toString());
+        HtmlAssert::matchFile(__DIR__ . '/expected/default.html', $form->__toString());
     }
 
     public function testErrors(): void
@@ -73,7 +73,7 @@ class TemplateRendererTest extends TestCase
         $renderer = $this->createRenderer();
         $form->setRenderer($renderer);
 
-        Assert::matchFile(__DIR__ . '/expected/default-errors.html', $form->__toString());
+        HtmlAssert::matchFile(__DIR__ . '/expected/default-errors.html', $form->__toString());
     }
 
     public function testRequiredControl(): void
@@ -86,7 +86,7 @@ class TemplateRendererTest extends TestCase
         $renderer = $this->createRenderer();
         $form->setRenderer($renderer);
 
-        Assert::matchFile(__DIR__ . '/expected/default-requiredControl.html', $form->__toString());
+        HtmlAssert::matchFile(__DIR__ . '/expected/default-requiredControl.html', $form->__toString());
     }
 
     public function testControlDescription(): void
@@ -99,7 +99,7 @@ class TemplateRendererTest extends TestCase
         $renderer = $this->createRenderer();
         $form->setRenderer($renderer);
 
-        Assert::matchFile(__DIR__ . '/expected/default-controlDescription.html', $form->__toString());
+        HtmlAssert::matchFile(__DIR__ . '/expected/default-controlDescription.html', $form->__toString());
     }
 
     public function testCustomControlId(): void
@@ -112,7 +112,7 @@ class TemplateRendererTest extends TestCase
         $renderer = $this->createRenderer();
         $form->setRenderer($renderer);
 
-        Assert::matchFile(__DIR__ . '/expected/default-customControlId.html', $form->__toString());
+        HtmlAssert::matchFile(__DIR__ . '/expected/default-customControlId.html', $form->__toString());
     }
 
     public function testCustomControlClass(): void
@@ -125,7 +125,7 @@ class TemplateRendererTest extends TestCase
         $renderer = $this->createRenderer();
         $form->setRenderer($renderer);
 
-        Assert::matchFile(__DIR__ . '/expected/default-customControlClass.html', $form->__toString());
+        HtmlAssert::matchFile(__DIR__ . '/expected/default-customControlClass.html', $form->__toString());
     }
 
     public function testTemplateImports(): void
@@ -139,7 +139,7 @@ class TemplateRendererTest extends TestCase
         $renderer->importTemplate(__DIR__ . '/Fixtures/customControlType.latte');
         $form->setRenderer($renderer);
 
-        Assert::matchFile(__DIR__ . '/expected/default-imports.html', $form->__toString());
+        HtmlAssert::matchFile(__DIR__ . '/expected/default-imports.html', $form->__toString());
     }
 
     private function createRenderer(): FormRenderer\TemplateRenderer

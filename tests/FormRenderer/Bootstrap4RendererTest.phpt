@@ -6,7 +6,6 @@ namespace NepadaTests\FormRenderer;
 use Nepada\FormRenderer;
 use NepadaTests\TestCase;
 use Nette;
-use Tester\Assert;
 
 require_once __DIR__ . '/../bootstrap.php';
 
@@ -39,7 +38,7 @@ class Bootstrap4RendererTest extends TestCase
         $renderer = $this->createRenderer($mode);
         $form->setRenderer($renderer);
 
-        Assert::matchFile(__DIR__ . "/expected/bootstrap4-{$mode}.html", $form->__toString());
+        HtmlAssert::matchFile(__DIR__ . "/expected/bootstrap4-{$mode}.html", $form->__toString());
     }
 
     /**
@@ -53,7 +52,7 @@ class Bootstrap4RendererTest extends TestCase
         $renderer->setUseCustomControls(true);
         $form->setRenderer($renderer);
 
-        Assert::matchFile(__DIR__ . "/expected/bootstrap4-{$mode}-customControls.html", $form->__toString());
+        HtmlAssert::matchFile(__DIR__ . "/expected/bootstrap4-{$mode}-customControls.html", $form->__toString());
     }
 
     /**
@@ -76,7 +75,7 @@ class Bootstrap4RendererTest extends TestCase
         $renderer = $this->createRenderer($mode);
         $form->setRenderer($renderer);
 
-        Assert::matchFile(__DIR__ . "/expected/bootstrap4-{$mode}-errors.html", $form->__toString());
+        HtmlAssert::matchFile(__DIR__ . "/expected/bootstrap4-{$mode}-errors.html", $form->__toString());
     }
 
     /**
@@ -93,7 +92,7 @@ class Bootstrap4RendererTest extends TestCase
         $renderer = $this->createRenderer($mode);
         $form->setRenderer($renderer);
 
-        Assert::matchFile(__DIR__ . "/expected/bootstrap4-{$mode}-requiredControl.html", $form->__toString());
+        HtmlAssert::matchFile(__DIR__ . "/expected/bootstrap4-{$mode}-requiredControl.html", $form->__toString());
     }
 
     /**
@@ -110,7 +109,7 @@ class Bootstrap4RendererTest extends TestCase
         $renderer = $this->createRenderer($mode);
         $form->setRenderer($renderer);
 
-        Assert::matchFile(__DIR__ . "/expected/bootstrap4-{$mode}-controlDescription.html", $form->__toString());
+        HtmlAssert::matchFile(__DIR__ . "/expected/bootstrap4-{$mode}-controlDescription.html", $form->__toString());
     }
 
     /**
@@ -127,7 +126,7 @@ class Bootstrap4RendererTest extends TestCase
         $renderer = $this->createRenderer($mode);
         $form->setRenderer($renderer);
 
-        Assert::matchFile(__DIR__ . "/expected/bootstrap4-{$mode}-customControlId.html", $form->__toString());
+        HtmlAssert::matchFile(__DIR__ . "/expected/bootstrap4-{$mode}-customControlId.html", $form->__toString());
     }
 
     /**
@@ -144,7 +143,7 @@ class Bootstrap4RendererTest extends TestCase
         $renderer = $this->createRenderer($mode);
         $form->setRenderer($renderer);
 
-        Assert::matchFile(__DIR__ . "/expected/bootstrap4-{$mode}-customControlClass.html", $form->__toString());
+        HtmlAssert::matchFile(__DIR__ . "/expected/bootstrap4-{$mode}-customControlClass.html", $form->__toString());
     }
 
     /**
@@ -162,7 +161,7 @@ class Bootstrap4RendererTest extends TestCase
         $renderer->importTemplate(__DIR__ . '/Fixtures/customControlType.latte');
         $form->setRenderer($renderer);
 
-        Assert::matchFile(__DIR__ . "/expected/bootstrap4-{$mode}-imports.html", $form->__toString());
+        HtmlAssert::matchFile(__DIR__ . "/expected/bootstrap4-{$mode}-imports.html", $form->__toString());
     }
 
     /**
