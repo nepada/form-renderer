@@ -99,13 +99,8 @@
 {/define}
 
 {define #control-type-checkboxlist}
-    <div n:tag-if="$mode === inline" n:class="position-relative">
-        <div n:class="
-            $mode === inline ? form-inline,
-            ($control|validationClass)
-        ">
-            {include #helpers-override-split, blockNamePrefix => input, control => $control}
-        </div>
+    <div n:class="$mode === inline ? 'position-relative form-inline'">
+        {include #helpers-override-split, blockNamePrefix => input, control => $control}
         {if $mode === inline}{include #control-errors, control => $control}{/if}
     </div>
     {include #control-help, control => $control}
