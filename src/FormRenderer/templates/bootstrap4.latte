@@ -65,12 +65,10 @@
     <div n:class="form-group, $mode === horizontal ? row">
         <div n:tag-if="$mode === horizontal" n:class="$gridControlClass, $gridOffsetClass" n:inner-block="#control-type-button">
             {if !$control->getOption('rendered')}
-                <div n:tag-if="$mode === inline" n:class="position-relative, $inlineSpacingClasses">
+                <div n:tag-if="$mode === inline" n:class="$inlineSpacingClasses">
                     {input $control}
-                    {if $mode === inline}{include #control-errors, control => $control}{/if}
                 </div>
                 {include #control-help, control => $control}
-                {if $mode !== inline}{include #control-errors, control => $control}{/if}
             {/if}
             {if !$controlsIterator->isLast() && $controlsIterator->getNextValue()->getOption('type') === 'button'}
                 {php $controlsIterator->next()}
