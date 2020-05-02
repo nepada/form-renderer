@@ -66,9 +66,7 @@
         <div n:tag-if="$mode === horizontal" n:class="$gridControlClass, $gridOffsetClass" n:inner-block="#control-type-button">
             {if !$control->getOption('rendered')}
                 <div n:tag-if="$mode === inline" n:class="position-relative, $inlineSpacingClasses">
-                    <span n:tag-if="$control->hasErrors()" class="is-invalid">
-                        {input $control}
-                    </span>
+                    {input $control}
                     {if $mode === inline}{include #control-errors, control => $control}{/if}
                 </div>
                 {include #control-help, control => $control}
@@ -119,7 +117,7 @@
 {/define}
 
 {define #control-errors}
-    <div n:foreach="$control->getErrors() as $error" n:class="$mode === inline ? invalid-tooltip : invalid-feedback">{$error}</div>
+    <div n:foreach="$control->getErrors() as $error" n:class="d-block, $mode === inline ? invalid-tooltip : invalid-feedback">{$error}</div>
 {/define}
 
 {define #control-help}
@@ -180,8 +178,7 @@
 {define #input-type-checkbox}
     <div n:class="
         $control->getSeparatorPrototype()->class,
-        $useCustomControls ? 'custom-control custom-checkbox' : form-check,
-        ($control|validationClass)
+        $useCustomControls ? 'custom-control custom-checkbox' : form-check
     ">
         <input n:name="$control:" n:class="
             $control->getControlPrototype()->class,
@@ -198,8 +195,7 @@
 {define #input-type-switch}
     <div n:class="
         $control->getSeparatorPrototype()->class,
-        $useCustomControls ? 'custom-control custom-switch' : form-check,
-        ($control|validationClass)
+        $useCustomControls ? 'custom-control custom-switch' : form-check
     ">
         <input n:name="$control:" n:class="
             $control->getControlPrototype()->class,

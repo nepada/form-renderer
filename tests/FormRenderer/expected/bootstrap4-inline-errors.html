@@ -20,8 +20,8 @@
     <label class="mb-2 mr-2" for="frm-form-text">Text</label>
     <div class="position-relative mb-2 mr-2">
     <input type="text" name="text" id="frm-form-text" class="form-control is-invalid">
-            <div class="invalid-tooltip">Control text error 1.</div>
-    <div class="invalid-tooltip">Control text error 2.</div>
+            <div class="d-block invalid-tooltip">Control text error 1.</div>
+    <div class="d-block invalid-tooltip">Control text error 2.</div>
 
     </div>
 
@@ -30,8 +30,8 @@
     <label class="mb-2 mr-2" for="frm-form-textarea">TextArea</label>
     <div class="position-relative mb-2 mr-2">
     <textarea class="form-control is-invalid" name="textarea" id="frm-form-textarea"></textarea>
-            <div class="invalid-tooltip">Control textarea error 1.</div>
-    <div class="invalid-tooltip">Control textarea error 2.</div>
+            <div class="d-block invalid-tooltip">Control textarea error 1.</div>
+    <div class="d-block invalid-tooltip">Control textarea error 2.</div>
 
     </div>
 
@@ -43,12 +43,12 @@
     <div class="form-inline">
     <div class="form-group">
     <div class="position-relative mb-2 mr-2">
-    <div class="form-check is-invalid">
+    <div class="form-check">
         <input type="checkbox" name="container[checkbox]" id="frm-form-container-checkbox" class="form-check-input is-invalid">
         <label class="form-check-label" for="frm-form-container-checkbox">Checkbox</label>
     </div>
-            <div class="invalid-tooltip">Control checkbox error 1.</div>
-    <div class="invalid-tooltip">Control checkbox error 2.</div>
+            <div class="d-block invalid-tooltip">Control checkbox error 1.</div>
+    <div class="d-block invalid-tooltip">Control checkbox error 2.</div>
 
     </div>
 
@@ -66,8 +66,8 @@
         <label class="form-check-label" for="frm-form-container-checkboxlist-2">two</label>
     </div>
         </div>
-            <div class="invalid-tooltip">Control checkboxlist error 1.</div>
-    <div class="invalid-tooltip">Control checkboxlist error 2.</div>
+            <div class="d-block invalid-tooltip">Control checkboxlist error 1.</div>
+    <div class="d-block invalid-tooltip">Control checkboxlist error 2.</div>
 
     </div>
 
@@ -85,8 +85,8 @@
         <label class="form-check-label" for="frm-form-container-radiolist-4">four</label>
     </div>
         </div>
-            <div class="invalid-tooltip">Control radiolist error 1.</div>
-    <div class="invalid-tooltip">Control radiolist error 2.</div>
+            <div class="d-block invalid-tooltip">Control radiolist error 1.</div>
+    <div class="d-block invalid-tooltip">Control radiolist error 2.</div>
 
     </div>
 
@@ -95,8 +95,8 @@
     <label class="mb-2 mr-2" for="frm-form-container-innerContainer-selectbox">Selectbox</label>
     <div class="position-relative mb-2 mr-2">
     <select class="form-control is-invalid" name="container[innerContainer][selectbox]" id="frm-form-container-innerContainer-selectbox"><option value="5">five</option><option value="6">six</option></select>
-            <div class="invalid-tooltip">Control selectbox error 1.</div>
-    <div class="invalid-tooltip">Control selectbox error 2.</div>
+            <div class="d-block invalid-tooltip">Control selectbox error 1.</div>
+    <div class="d-block invalid-tooltip">Control selectbox error 2.</div>
 
     </div>
 
@@ -105,8 +105,8 @@
     <label class="mb-2 mr-2" for="frm-form-container-innerContainer-upload">Upload</label>
     <div class="position-relative mb-2 mr-2">
         <input type="file" name="container[innerContainer][upload]" id="frm-form-container-innerContainer-upload" data-nette-rules='[{"op":":fileSize","msg":"The size of the uploaded file can be up to 1048576 bytes.","arg":1048576}]' class="form-control-file is-invalid">
-            <div class="invalid-tooltip">Control upload error 1.</div>
-    <div class="invalid-tooltip">Control upload error 2.</div>
+            <div class="d-block invalid-tooltip">Control upload error 1.</div>
+    <div class="d-block invalid-tooltip">Control upload error 2.</div>
 
     </div>
 
@@ -119,25 +119,25 @@
     <label class="label-class1 label-class2 mb-2 mr-2" for="frm-form-foo">Foo</label>
     <div class="position-relative mb-2 mr-2">
     <div data-foo="foo" class="control-class1 control-class2"><input name="foo" id="frm-form-foo"><span>foo</span></div>
-            <div class="invalid-tooltip">Control foo error 1.</div>
-    <div class="invalid-tooltip">Control foo error 2.</div>
+            <div class="d-block invalid-tooltip">Control foo error 1.</div>
+    <div class="d-block invalid-tooltip">Control foo error 2.</div>
 
     </div>
 
     </div>
     <div class="form-group">
                 <div class="position-relative mb-2 mr-2">
-                        <input type="submit" name="send" class="btn btn-primary" value="SubmitButton">
+                    <input type="submit" name="send" class="btn btn-primary" value="SubmitButton">
 
                 </div>
 
                 <div class="position-relative mb-2 mr-2">
-                        <input type="button" name="button" class="btn btn-secondary" value="Button">
+                    <input type="button" name="button" class="btn btn-secondary" value="Button">
 
                 </div>
 
                 <div class="position-relative mb-2 mr-2">
-                        <input type="button" name="warning" class="btn btn-warning">
+                    <input type="button" name="warning" class="btn btn-warning">
 
                 </div>
 
@@ -155,8 +155,8 @@
         <label class="form-check-label" for="frm-form-inlinecheckboxlist-1">bar</label>
     </div>
         </div>
-            <div class="invalid-tooltip">Control inlinecheckboxlist error 1.</div>
-    <div class="invalid-tooltip">Control inlinecheckboxlist error 2.</div>
+            <div class="d-block invalid-tooltip">Control inlinecheckboxlist error 1.</div>
+    <div class="d-block invalid-tooltip">Control inlinecheckboxlist error 2.</div>
 
     </div>
 
@@ -174,8 +174,8 @@
         <label class="form-check-label" for="frm-form-inlineradiolist-1">bar</label>
     </div>
         </div>
-            <div class="invalid-tooltip">Control inlineradiolist error 1.</div>
-    <div class="invalid-tooltip">Control inlineradiolist error 2.</div>
+            <div class="d-block invalid-tooltip">Control inlineradiolist error 1.</div>
+    <div class="d-block invalid-tooltip">Control inlineradiolist error 2.</div>
 
     </div>
 
@@ -184,20 +184,20 @@
     <label class="mb-2 mr-2" for="frm-form-range">Range</label>
     <div class="position-relative mb-2 mr-2">
     <input type="range" name="range" id="frm-form-range" class="form-control-range is-invalid">
-            <div class="invalid-tooltip">Control range error 1.</div>
-    <div class="invalid-tooltip">Control range error 2.</div>
+            <div class="d-block invalid-tooltip">Control range error 1.</div>
+    <div class="d-block invalid-tooltip">Control range error 2.</div>
 
     </div>
 
     </div>
     <div class="form-group">
     <div class="position-relative mb-2 mr-2">
-    <div class="form-check is-invalid">
+    <div class="form-check">
         <input type="checkbox" name="switch" id="frm-form-switch" class="form-check-input is-invalid">
         <label class="form-check-label" for="frm-form-switch">Switch</label>
     </div>
-            <div class="invalid-tooltip">Control switch error 1.</div>
-    <div class="invalid-tooltip">Control switch error 2.</div>
+            <div class="d-block invalid-tooltip">Control switch error 1.</div>
+    <div class="d-block invalid-tooltip">Control switch error 2.</div>
 
     </div>
     <small class="form-text text-muted mb-2 mr-2">Switch description</small>
