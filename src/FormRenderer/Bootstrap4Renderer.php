@@ -28,6 +28,8 @@ class Bootstrap4Renderer implements Nette\Forms\IFormRenderer
 
     private bool $renderValidState = false;
 
+    private bool $useErrorTooltips = false;
+
     private bool $useCustomControls = false;
 
     private string $mode = self::MODE_BASIC;
@@ -49,6 +51,11 @@ class Bootstrap4Renderer implements Nette\Forms\IFormRenderer
     public function setRenderValidState(bool $renderValidState = true): void
     {
         $this->renderValidState = $renderValidState;
+    }
+
+    public function setUseErrorTooltips(bool $useErrorTooltips = true): void
+    {
+        $this->useErrorTooltips = $useErrorTooltips;
     }
 
     public function setUseCustomControls(bool $useCustomControls = true): void
@@ -80,6 +87,7 @@ class Bootstrap4Renderer implements Nette\Forms\IFormRenderer
         $templateRenderer = $this->getTemplateRenderer();
         $template = $templateRenderer->getTemplate();
         $template->addFilter('validationClass', new ValidationClassFilter('is-invalid', $this->shouldRenderValidState($form) ? 'is-valid' : null));
+        $template->useErrorTooltips = $this->shouldUseErrorTooltips();
         $template->useCustomControls = $this->useCustomControls;
         $template->mode = $this->mode;
         $template->gridOffsetClass = $this->mode === self::MODE_HORIZONTAL ? sprintf('offset-sm-%d', $this->labelCols) : null;
@@ -143,6 +151,11 @@ class Bootstrap4Renderer implements Nette\Forms\IFormRenderer
     protected function shouldRenderValidState(Form $form): bool
     {
         return $this->renderValidState && (bool) $form->isSubmitted();
+    }
+
+    protected function shouldUseErrorTooltips(): bool
+    {
+        return $this->mode === self::MODE_INLINE || $this->useErrorTooltips;
     }
 
 }

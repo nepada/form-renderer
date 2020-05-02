@@ -115,6 +115,11 @@ class Bootstrap4RendererTest extends TestCase
         $form->setRenderer($renderer);
 
         HtmlAssert::matchFile(__DIR__ . "/expected/bootstrap4-{$mode}-errors.html", $form->__toString());
+
+        if ($mode !== FormRenderer\Bootstrap4Renderer::MODE_INLINE) {
+            $renderer->setUseErrorTooltips();
+            HtmlAssert::matchFile(__DIR__ . "/expected/bootstrap4-{$mode}-errors-tooltips.html", $form->__toString());
+        }
     }
 
     /**

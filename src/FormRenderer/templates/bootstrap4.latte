@@ -88,21 +88,21 @@
 {/define}
 
 {define #control-type-default}
-    <div n:tag-if="$mode === inline" n:class="position-relative, $inlineSpacingClasses">
+    <div n:tag-if="$useErrorTooltips" n:class="position-relative, $mode === inline ? $inlineSpacingClasses">
         {include #helpers-override-split, blockNamePrefix => input, control => $control}
-        {if $mode === inline}{include #control-errors, control => $control}{/if}
+        {if $useErrorTooltips}{include #control-errors, control => $control}{/if}
     </div>
     {include #control-help, control => $control}
-    {if $mode !== inline}{include #control-errors, control => $control}{/if}
+    {if !$useErrorTooltips}{include #control-errors, control => $control}{/if}
 {/define}
 
 {define #control-type-checkboxlist}
-    <div n:class="$mode === inline ? 'position-relative form-inline'">
+    <div n:class="$useErrorTooltips ? position-relative, $mode === inline ? form-inline">
         {include #helpers-override-split, blockNamePrefix => input, control => $control}
-        {if $mode === inline}{include #control-errors, control => $control}{/if}
+        {if $useErrorTooltips}{include #control-errors, control => $control}{/if}
     </div>
     {include #control-help, control => $control}
-    {if $mode !== inline}{include #control-errors, control => $control}{/if}
+    {if !$useErrorTooltips}{include #control-errors, control => $control}{/if}
 {/define}
 
 {define #control-type-radio}
@@ -110,7 +110,7 @@
 {/define}
 
 {define #control-errors}
-    {if $mode === inline}
+    {if $useErrorTooltips}
         <div n:if="count($control->getErrors()) > 0" class="d-block invalid-tooltip" n:inner-foreach="$control->getErrors() as $error">{$error}{sep} {/sep}</div>
     {else}
         <div n:foreach="$control->getErrors() as $error" class="d-block invalid-feedback">{$error}</div>

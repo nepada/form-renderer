@@ -13,6 +13,7 @@ formRenderer:
     bootstrap4:
         mode: horizontal
         useCustomControls: false
+        useErrorTooltips: false
         renderValidState: false
         imports:
             - %fixturesDir%/form.latte

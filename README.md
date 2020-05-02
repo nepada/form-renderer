@@ -104,6 +104,8 @@ $renderer->setHorizontalMode(4, 8); // Horizontal form (you can optionally set t
 
 Use `$renderer->setRenderValidState(true)` to enable/disable rendering of "valid" form control state for filled inputs after form submission.
 
+In inline mode the error messages are always rendered as tooltips. In the other modes you can switch between standard and tooltip rendering by calling `$renderer->setUseErrorTooltips(true)`.
+
 You can enable the use of [custom form controls](https://getbootstrap.com/docs/4.4/components/forms/#custom-forms) by `$renderer->setUseCustomControls(true)`.
 
 To render a checkbox as a switch, you need to set type option: `$checkboxInput->setOption('type', 'switch')`. 
@@ -119,6 +121,7 @@ formRenderer:
     bootstrap4:
         mode: horizontal
         renderValidState: true
+        useErrorTooltips: true
         useCustomControls: true
         imports:
             - %appDir%/templates/@form-extras.latte

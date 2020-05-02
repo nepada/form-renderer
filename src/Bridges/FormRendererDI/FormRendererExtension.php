@@ -45,6 +45,7 @@ class FormRendererExtension extends CompilerExtension
             )->default(Bootstrap4Renderer::MODE_BASIC),
             'useCustomControls' => Nette\Schema\Expect::bool(false),
             'renderValidState' => Nette\Schema\Expect::bool(false),
+            'useErrorTooltips' => Nette\Schema\Expect::bool(false),
         ]);
 
         return Nette\Schema\Expect::structure([
@@ -119,6 +120,7 @@ class FormRendererExtension extends CompilerExtension
         $resultDefinition = $factory->getResultDefinition();
         $resultDefinition->setArguments(['templateRendererFactory' => $this->prefix('@templateRendererFactory')]);
         $resultDefinition->addSetup('setRenderValidState', [$config->renderValidState]);
+        $resultDefinition->addSetup('setUseErrorTooltips', [$config->useErrorTooltips]);
         $resultDefinition->addSetup('setUseCustomControls', [$config->useCustomControls]);
         foreach ($config->imports as $templateFile) {
             $resultDefinition->addSetup('importTemplate', [$templateFile]);
