@@ -105,7 +105,7 @@
     <div n:tag-if="$mode === inline" n:class="position-relative">
         <div n:class="
             $mode === inline ? form-inline,
-            $control->hasErrors() ? is-invalid
+            ($control|validationClass)
         ">
             {include #helpers-override-split, blockNamePrefix => input, control => $control}
         </div>
@@ -139,7 +139,7 @@
     <input n:name="$control" n:class="
         $control->getControlPrototype()->class,
         form-control,
-        $control->hasErrors() ? is-invalid
+        ($control|validationClass)
     ">
 {/define}
 
@@ -147,7 +147,7 @@
     <textarea n:name="$control" n:class="
         $control->getControlPrototype()->class,
         form-control,
-        $control->hasErrors() ? is-invalid
+        ($control|validationClass)
     "/>
 {/define}
 
@@ -155,7 +155,7 @@
     <select n:name="$control" n:class="
         $control->getControlPrototype()->class,
         $useCustomControls ? custom-select : form-control,
-        $control->hasErrors() ? is-invalid
+        ($control|validationClass)
     " />
 {/define}
 
@@ -163,7 +163,7 @@
     <input n:name="$control" n:class="
         $control->getControlPrototype()->class,
         $useCustomControls ? custom-range : form-control-range,
-        $control->hasErrors() ? is-invalid
+        ($control|validationClass)
     ">
 {/define}
 
@@ -172,7 +172,7 @@
         <input n:name="$control" n:class="
             $control->getControlPrototype()->class,
             $useCustomControls ? custom-file-input : form-control-file,
-            $control->hasErrors() ? is-invalid
+            ($control|validationClass)
         ">
         <label n:if="$useCustomControls" n:name="$control" class="custom-file-label">...</label>
     </div>
@@ -182,12 +182,12 @@
     <div n:class="
         $control->getSeparatorPrototype()->class,
         $useCustomControls ? 'custom-control custom-checkbox' : form-check,
-        $control->hasErrors() ? is-invalid
+        ($control|validationClass)
     ">
         <input n:name="$control:" n:class="
             $control->getControlPrototype()->class,
             $useCustomControls ? custom-control-input : form-check-input,
-            $control->hasErrors() ? is-invalid
+            ($control|validationClass)
         ">
         <label n:name="$control:" n:class="
             $control->getLabelPrototype()->class,
@@ -200,12 +200,12 @@
     <div n:class="
         $control->getSeparatorPrototype()->class,
         $useCustomControls ? 'custom-control custom-switch' : form-check,
-        $control->hasErrors() ? is-invalid
+        ($control|validationClass)
     ">
         <input n:name="$control:" n:class="
             $control->getControlPrototype()->class,
             $useCustomControls ? custom-control-input : form-check-input,
-            $control->hasErrors() ? is-invalid
+            ($control|validationClass)
         ">
         <label n:name="$control:" n:class="
             $control->getLabelPrototype()->class,
@@ -224,7 +224,7 @@
         <input n:name="$control:$k" n:class="
             $control->getControlPrototype()->class,
             $useCustomControls ? custom-control-input : form-check-input,
-            $control->hasErrors() ? is-invalid
+            ($control|validationClass)
         ">
         <label n:name="$control:$k" n:class="
             $control->getItemLabelPrototype()->class,
@@ -243,7 +243,7 @@
         <input n:name="$control:$k" n:class="
             $control->getControlPrototype()->class,
             $useCustomControls ? custom-control-input : form-check-input,
-            $control->hasErrors() ? is-invalid
+            ($control|validationClass)
         ">
         <label n:name="$control:$k" n:class="
             $control->getItemLabelPrototype()->class,

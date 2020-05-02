@@ -71,6 +71,15 @@ class Bootstrap4Renderer implements Nette\Forms\IFormRenderer
 
         $templateRenderer = $this->getTemplateRenderer();
         $template = $templateRenderer->getTemplate();
+        $template->addFilter(
+            'validationClass',
+            function (Nette\Forms\IControl $control): ?string {
+                if (count($control->getErrors()) > 0) {
+                    return 'is-invalid';
+                }
+                return null;
+            },
+        );
         $template->useCustomControls = $this->useCustomControls;
         $template->mode = $this->mode;
         $template->gridOffsetClass = sprintf('offset-sm-%d', $this->labelCols);
