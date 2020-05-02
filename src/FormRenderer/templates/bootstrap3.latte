@@ -52,7 +52,7 @@
 {/define}
 
 {define #pair-type-default}
-    <div n:class="form-group, $control->getOption('class'), $control->isRequired() ? required, $control->hasErrors() ? has-error" n:attr="id => $control->getOption('id')">
+    <div n:class="form-group, $control->getOption('class'), $control->isRequired() ? required, ($control|validationClass)" n:attr="id => $control->getOption('id')">
         {include #label, control => $control}
         <div n:tag-if="$mode === horizontal" n:class="!$control->getLabel() ? $gridOffsetClass, $gridControlClass">
             {include #helpers-override-split, blockNamePrefix => control, control => $control}

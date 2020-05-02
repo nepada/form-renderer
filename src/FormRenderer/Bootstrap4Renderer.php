@@ -3,6 +3,7 @@ declare(strict_types = 1);
 
 namespace Nepada\FormRenderer;
 
+use Nepada\FormRenderer\Filters\ValidationClassFilter;
 use Nette;
 use Nette\Forms\Controls;
 use Nette\Forms\Form;
@@ -71,15 +72,7 @@ class Bootstrap4Renderer implements Nette\Forms\IFormRenderer
 
         $templateRenderer = $this->getTemplateRenderer();
         $template = $templateRenderer->getTemplate();
-        $template->addFilter(
-            'validationClass',
-            function (Nette\Forms\IControl $control): ?string {
-                if (count($control->getErrors()) > 0) {
-                    return 'is-invalid';
-                }
-                return null;
-            },
-        );
+        $template->addFilter('validationClass', new ValidationClassFilter('is-invalid', null));
         $template->useCustomControls = $this->useCustomControls;
         $template->mode = $this->mode;
         $template->gridOffsetClass = $this->mode === self::MODE_HORIZONTAL ? sprintf('offset-sm-%d', $this->labelCols) : null;
