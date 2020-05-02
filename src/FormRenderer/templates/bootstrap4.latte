@@ -117,7 +117,11 @@
 {/define}
 
 {define #control-errors}
-    <div n:foreach="$control->getErrors() as $error" n:class="d-block, $mode === inline ? invalid-tooltip : invalid-feedback">{$error}</div>
+    {if $mode === inline}
+        <div n:if="count($control->getErrors()) > 0" class="d-block invalid-tooltip" n:inner-foreach="$control->getErrors() as $error">{$error}{sep} {/sep}</div>
+    {else}
+        <div n:foreach="$control->getErrors() as $error" class="d-block invalid-feedback">{$error}</div>
+    {/if}
 {/define}
 
 {define #control-help}
