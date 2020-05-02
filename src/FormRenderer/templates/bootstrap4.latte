@@ -85,10 +85,9 @@
 {define #label}
     <label n:if="$control->getLabel()" n:name="$control" n:class="
         $control->getLabelPrototype()->class,
-        $mode === horizontal ? $gridLabelClass,
-        $mode === horizontal ? col-form-label,
+        $gridLabelClass,
         $mode === horizontal && in_array($control->getOption('type'), [radio, checkboxlist]) ? pt-sm-0,
-        $mode === inline ? $inlineSpacingClasses
+        $inlineSpacingClasses
     " />
 {/define}
 
@@ -127,7 +126,7 @@
     <small n:if="$control->getOption('description') !== null" n:class="
         form-text,
         text-muted,
-        $mode === inline ? $inlineSpacingClasses
+        $inlineSpacingClasses
     ">{$control->getOption('description')|safeTranslate}</small>
 {/define}
 
@@ -218,7 +217,7 @@
     <div n:foreach="$control->items as $k => $v" n:class="
         $control->getSeparatorPrototype()->class,
         $useCustomControls ? 'custom-control custom-checkbox' : form-check,
-        $mode === inline ? $inlineSpacingClasses,
+        $inlineSpacingClasses,
         $mode !== inline && !$control->separatorPrototype->getName() ? ($useCustomControls ? custom-control-inline : form-check-inline)
     ">
         <input n:name="$control:$k" n:class="
@@ -237,7 +236,7 @@
     <div n:foreach="$control->items as $k => $v" n:class="
         $control->getSeparatorPrototype()->class,
         $useCustomControls ? 'custom-control custom-radio' : form-check,
-        $mode === inline ? $inlineSpacingClasses,
+        $inlineSpacingClasses,
         $mode !== inline && !$control->separatorPrototype->getName() ? ($useCustomControls ? custom-control-inline : form-check-inline)
     ">
         <input n:name="$control:$k" n:class="

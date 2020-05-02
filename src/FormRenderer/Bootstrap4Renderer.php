@@ -82,10 +82,10 @@ class Bootstrap4Renderer implements Nette\Forms\IFormRenderer
         );
         $template->useCustomControls = $this->useCustomControls;
         $template->mode = $this->mode;
-        $template->gridOffsetClass = sprintf('offset-sm-%d', $this->labelCols);
-        $template->gridLabelClass = sprintf('col-sm-%d', $this->labelCols);
-        $template->gridControlClass = sprintf('col-sm-%d', $this->controlCols);
-        $template->inlineSpacingClasses = 'mb-2 mr-2';
+        $template->gridOffsetClass = $this->mode === self::MODE_HORIZONTAL ? sprintf('offset-sm-%d', $this->labelCols) : null;
+        $template->gridLabelClass = $this->mode === self::MODE_HORIZONTAL ? sprintf('col-sm-%d col-form-label', $this->labelCols) : null;
+        $template->gridControlClass = $this->mode === self::MODE_HORIZONTAL ? sprintf('col-sm-%d', $this->controlCols) : null;
+        $template->inlineSpacingClasses = $this->mode === self::MODE_INLINE ? 'mb-2 mr-2' : null;
 
         return $templateRenderer->render($form);
     }
