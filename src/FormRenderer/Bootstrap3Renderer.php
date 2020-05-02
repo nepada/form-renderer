@@ -26,6 +26,8 @@ class Bootstrap3Renderer implements Nette\Forms\IFormRenderer
 
     private ?TemplateRenderer $templateRenderer = null;
 
+    private bool $renderValidState = false;
+
     private string $mode = self::MODE_BASIC;
 
     private int $labelCols = self::DEFAULT_LABEL_COLS;
@@ -40,6 +42,11 @@ class Bootstrap3Renderer implements Nette\Forms\IFormRenderer
     public function importTemplate(string $templateFile): void
     {
         $this->getTemplateRenderer()->importTemplate($templateFile);
+    }
+
+    public function setRenderValidState(bool $renderValidState = true): void
+    {
+        $this->renderValidState = $renderValidState;
     }
 
     public function setBasicMode(): void
@@ -65,7 +72,7 @@ class Bootstrap3Renderer implements Nette\Forms\IFormRenderer
 
         $templateRenderer = $this->getTemplateRenderer();
         $template = $templateRenderer->getTemplate();
-        $template->addFilter('validationClass', new ValidationClassFilter('has-error', null));
+        $template->addFilter('validationClass', new ValidationClassFilter('has-error', $this->shouldRenderValidState($form) ? 'has-success' : null));
         $template->mode = $this->mode;
         $template->gridOffsetClass = sprintf('col-sm-offset-%d', $this->labelCols);
         $template->gridLabelClass = sprintf('col-sm-%d', $this->labelCols);
@@ -122,6 +129,11 @@ class Bootstrap3Renderer implements Nette\Forms\IFormRenderer
         }
 
         return null;
+    }
+
+    protected function shouldRenderValidState(Form $form): bool
+    {
+        return $this->renderValidState && (bool) $form->isSubmitted();
     }
 
 }

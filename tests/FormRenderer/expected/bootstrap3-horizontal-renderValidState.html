@@ -3,13 +3,13 @@
         <fieldset id="custom-group-id">
     <legend>Group 1</legend>
     <p>Group 1 description.</p>
-    <div id="custom-text" class="form-group">
+    <div class="form-group has-success">
     <label class="col-sm-3 control-label" for="frm-text">Text</label>
         <div class="col-sm-9">
-    <input type="text" name="text" id="frm-text" class="form-control">
+    <input type="text" name="text" id="frm-text" value="foo" class="form-control">
         </div>
     </div>
-    <div id="custom-textarea" class="form-group">
+    <div class="form-group has-success">
     <label class="col-sm-3 control-label" for="frm-textarea">TextArea</label>
         <div class="col-sm-9">
     <textarea class="form-control" name="textarea" id="frm-textarea">Lorem ipsum</textarea>
@@ -18,42 +18,42 @@
         <fieldset>
     <legend><span>Group 2 label</span></legend>
     <p><span>Group 2 description.</span></p>
-    <div id="custom-container-checkbox" class="form-group">
+    <div class="form-group has-success">
         <div class="col-sm-offset-3 col-sm-9">
     <div class="checkbox">
-        <label for="frm-container-checkbox"><input type="checkbox" name="container[checkbox]" id="frm-container-checkbox">Checkbox</label>
+        <label for="frm-container-checkbox"><input type="checkbox" name="container[checkbox]" id="frm-container-checkbox" checked>Checkbox</label>
     </div>
         </div>
     </div>
-    <div id="custom-container-checkboxlist" class="form-group">
+    <div class="form-group has-success">
     <label class="col-sm-3 control-label">CheckBoxList</label>
         <div class="col-sm-9">
         <div class="checkbox">
-            <label for="frm-container-checkboxlist-1"><input type="checkbox" name="container[checkboxlist][]" id="frm-container-checkboxlist-1" value="1">one</label>
+            <label for="frm-container-checkboxlist-1"><input type="checkbox" name="container[checkboxlist][]" id="frm-container-checkboxlist-1" checked value="1">one</label>
         </div>
         <div class="checkbox">
             <label for="frm-container-checkboxlist-2"><input type="checkbox" name="container[checkboxlist][]" id="frm-container-checkboxlist-2" value="2">two</label>
         </div>
         </div>
     </div>
-    <div id="custom-container-radiolist" class="form-group">
+    <div class="form-group has-success">
     <label class="col-sm-3 control-label">RadioList</label>
         <div class="col-sm-9">
         <div class="radio">
-            <label for="frm-container-radiolist-3"><input type="radio" name="container[radiolist]" id="frm-container-radiolist-3" value="3">three</label>
+            <label for="frm-container-radiolist-3"><input type="radio" name="container[radiolist]" id="frm-container-radiolist-3" checked value="3">three</label>
         </div>
         <div class="radio">
             <label for="frm-container-radiolist-4"><input type="radio" name="container[radiolist]" id="frm-container-radiolist-4" value="4">four</label>
         </div>
         </div>
     </div>
-    <div id="custom-container-innerContainer-selectbox" class="form-group">
+    <div class="form-group has-success">
     <label class="col-sm-3 control-label" for="frm-container-innerContainer-selectbox">Selectbox</label>
         <div class="col-sm-9">
-    <select class="form-control" name="container[innerContainer][selectbox]" id="frm-container-innerContainer-selectbox"><option value=""></option><option value="5">five</option><option value="6">six</option></select>
+    <select class="form-control" name="container[innerContainer][selectbox]" id="frm-container-innerContainer-selectbox"><option value=""></option><option value="5" selected>five</option><option value="6">six</option></select>
         </div>
     </div>
-    <div id="custom-container-innerContainer-upload" class="form-group">
+    <div class="form-group">
     <label class="col-sm-3 control-label" for="frm-container-innerContainer-upload">Upload</label>
         <div class="col-sm-9">
     <input type="file" name="container[innerContainer][upload]" id="frm-container-innerContainer-upload" data-nette-rules='[{"op":":fileSize","msg":"The size of the uploaded file can be up to 1048576 bytes.","arg":1048576}]'>
@@ -61,7 +61,7 @@
     </div>
         </fieldset>
         </fieldset>
-    <div id="custom-foo" class="form-group">
+    <div class="form-group">
     <label class="label-class1 label-class2 col-sm-3 control-label" for="frm-foo">Foo</label>
         <div class="col-sm-9">
     <div data-foo="foo" class="control-class1 control-class2"><input name="foo" id="frm-foo"><span>foo</span></div>
@@ -74,18 +74,18 @@
                 <input type="button" name="warning" class="btn btn-warning">
         </div>
     </div>
-    <div id="custom-inlinecheckboxlist" class="form-group">
+    <div class="form-group has-success">
     <label class="col-sm-3 control-label">InlineCheckboxList</label>
         <div class="col-sm-9">
             <label class="checkbox-inline" for="frm-inlinecheckboxlist-0"><input type="checkbox" name="inlinecheckboxlist[]" id="frm-inlinecheckboxlist-0" value="0">foo</label>
-            <label class="checkbox-inline" for="frm-inlinecheckboxlist-1"><input type="checkbox" name="inlinecheckboxlist[]" id="frm-inlinecheckboxlist-1" value="1">bar</label>
+            <label class="checkbox-inline" for="frm-inlinecheckboxlist-1"><input type="checkbox" name="inlinecheckboxlist[]" id="frm-inlinecheckboxlist-1" checked value="1">bar</label>
         </div>
     </div>
-    <div id="custom-inlineradiolist" class="form-group">
+    <div class="form-group has-success">
     <label class="col-sm-3 control-label">InlineRadioList</label>
         <div class="col-sm-9">
             <label class="radio-inline" for="frm-inlineradiolist-0"><input type="radio" name="inlineradiolist" id="frm-inlineradiolist-0" value="0">foo</label>
-            <label class="radio-inline" for="frm-inlineradiolist-1"><input type="radio" name="inlineradiolist" id="frm-inlineradiolist-1" value="1">bar</label>
+            <label class="radio-inline" for="frm-inlineradiolist-1"><input type="radio" name="inlineradiolist" id="frm-inlineradiolist-1" checked value="1">bar</label>
         </div>
     </div>
 <input type="hidden" name="hidden" value=""><!--[if IE]><input type=IEbug disabled style="display:none"><![endif]-->

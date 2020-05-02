@@ -7,11 +7,13 @@ formRenderer:
             - %fixturesDir%/form.latte
     bootstrap3:
         mode: horizontal
+        renderValidState: false
         imports:
             - %fixturesDir%/form.latte
     bootstrap4:
         mode: horizontal
         useCustomControls: false
+        renderValidState: false
         imports:
             - %fixturesDir%/form.latte
 

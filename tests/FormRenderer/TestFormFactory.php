@@ -38,7 +38,8 @@ final class TestFormFactory
         $container->addRadioList('radiolist', 'RadioList', [3 => 'three', 4 => 'four']);
 
         $innerContainer = $container->addContainer('innerContainer');
-        $innerContainer->addSelect('selectbox', 'Selectbox', [5 => 'five', 6 => 'six']);
+        $innerContainer->addSelect('selectbox', 'Selectbox', [5 => 'five', 6 => 'six'])
+            ->setPrompt('');
         $uploadInput = $innerContainer->addUpload('upload', 'Upload');
         if (iterator_count($uploadInput->getRules()->getIterator()) === 1) { // compatibility with nette/forms <3.0.3
             $uploadInput->addRule(Form::MAX_FILE_SIZE, null, 2 ** 20);

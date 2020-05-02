@@ -26,6 +26,8 @@ class Bootstrap4Renderer implements Nette\Forms\IFormRenderer
 
     private ?TemplateRenderer $templateRenderer = null;
 
+    private bool $renderValidState = false;
+
     private bool $useCustomControls = false;
 
     private string $mode = self::MODE_BASIC;
@@ -42,6 +44,11 @@ class Bootstrap4Renderer implements Nette\Forms\IFormRenderer
     public function importTemplate(string $templateFile): void
     {
         $this->getTemplateRenderer()->importTemplate($templateFile);
+    }
+
+    public function setRenderValidState(bool $renderValidState = true): void
+    {
+        $this->renderValidState = $renderValidState;
     }
 
     public function setUseCustomControls(bool $useCustomControls = true): void
@@ -72,7 +79,7 @@ class Bootstrap4Renderer implements Nette\Forms\IFormRenderer
 
         $templateRenderer = $this->getTemplateRenderer();
         $template = $templateRenderer->getTemplate();
-        $template->addFilter('validationClass', new ValidationClassFilter('is-invalid', null));
+        $template->addFilter('validationClass', new ValidationClassFilter('is-invalid', $this->shouldRenderValidState($form) ? 'is-valid' : null));
         $template->useCustomControls = $this->useCustomControls;
         $template->mode = $this->mode;
         $template->gridOffsetClass = $this->mode === self::MODE_HORIZONTAL ? sprintf('offset-sm-%d', $this->labelCols) : null;
@@ -131,6 +138,11 @@ class Bootstrap4Renderer implements Nette\Forms\IFormRenderer
         }
 
         return null;
+    }
+
+    protected function shouldRenderValidState(Form $form): bool
+    {
+        return $this->renderValidState && (bool) $form->isSubmitted();
     }
 
 }

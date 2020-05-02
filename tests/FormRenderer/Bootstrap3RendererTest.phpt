@@ -26,6 +26,8 @@ class Bootstrap3RendererTest extends TestCase
 
         $this->templateRendererFactory = new TestTemplateRendererFactory();
         $this->testFormFactory = new TestFormFactory();
+
+        $_SERVER['REQUEST_METHOD'] = 'GET';
     }
 
     /**
@@ -39,6 +41,41 @@ class Bootstrap3RendererTest extends TestCase
         $form->setRenderer($renderer);
 
         HtmlAssert::matchFile(__DIR__ . "/expected/bootstrap3-{$mode}.html", $form->__toString());
+    }
+
+    /**
+     * @dataProvider getRendererModes
+     * @param string $mode
+     */
+    public function testRenderValidState(string $mode): void
+    {
+        $renderer = $this->createRenderer($mode);
+        $renderer->setRenderValidState(true);
+
+        $form = $this->createTestForm();
+        $form->setRenderer($renderer);
+        HtmlAssert::matchFile(__DIR__ . "/expected/bootstrap3-{$mode}.html", $form->__toString(), 'enabled renderValidState, but not submitted form');
+
+        $renderer->setRenderValidState(false);
+        $_SERVER['REQUEST_METHOD'] = 'POST';
+
+        $form = $this->createTestForm();
+        $form->setRenderer($renderer);
+        HtmlAssert::matchFile(__DIR__ . "/expected/bootstrap3-{$mode}.html", $form->__toString(), 'submitted form, but disabled renderValidState');
+
+        $renderer->setRenderValidState(true);
+        $form->setValues([
+            'text' => 'foo',
+            'container' => [
+                'checkbox' => true,
+                'checkboxlist' => 1,
+                'radiolist' => 3,
+                'innerContainer' => ['selectbox' => 5],
+            ],
+            'inlinecheckboxlist' => '1',
+            'inlineradiolist' => '1',
+        ]);
+        HtmlAssert::matchFile(__DIR__ . "/expected/bootstrap3-{$mode}-renderValidState.html", $form->__toString(), 'render valid state');
     }
 
     /**
@@ -165,6 +202,8 @@ class Bootstrap3RendererTest extends TestCase
     protected function createTestForm(): Nette\Forms\Form
     {
         $form = $this->testFormFactory->create();
+
+        $form->getComponent('textarea')->setValue('Lorem ipsum');
 
         $warningButton = $form->addButton('warning');
         $warningButton->getControlPrototype()->addClass('btn btn-warning');

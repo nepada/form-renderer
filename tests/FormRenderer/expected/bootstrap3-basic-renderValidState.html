@@ -3,45 +3,45 @@
         <fieldset id="custom-group-id">
     <legend>Group 1</legend>
     <p>Group 1 description.</p>
-    <div class="form-group">
+    <div class="form-group has-success">
     <label for="frm-text">Text</label>
-    <input type="text" name="text" id="frm-text" class="form-control">
+    <input type="text" name="text" id="frm-text" value="foo" class="form-control">
     </div>
-    <div class="form-group">
+    <div class="form-group has-success">
     <label for="frm-textarea">TextArea</label>
     <textarea class="form-control" name="textarea" id="frm-textarea">Lorem ipsum</textarea>
     </div>
         <fieldset>
     <legend><span>Group 2 label</span></legend>
     <p><span>Group 2 description.</span></p>
-    <div class="form-group">
+    <div class="form-group has-success">
     <div class="checkbox">
-        <label for="frm-container-checkbox"><input type="checkbox" name="container[checkbox]" id="frm-container-checkbox">Checkbox</label>
+        <label for="frm-container-checkbox"><input type="checkbox" name="container[checkbox]" id="frm-container-checkbox" checked>Checkbox</label>
     </div>
     </div>
-    <div class="form-group">
+    <div class="form-group has-success">
     <label>CheckBoxList</label>
     <br>
         <div class="checkbox">
-            <label for="frm-container-checkboxlist-1"><input type="checkbox" name="container[checkboxlist][]" id="frm-container-checkboxlist-1" value="1">one</label>
+            <label for="frm-container-checkboxlist-1"><input type="checkbox" name="container[checkboxlist][]" id="frm-container-checkboxlist-1" checked value="1">one</label>
         </div>
         <div class="checkbox">
             <label for="frm-container-checkboxlist-2"><input type="checkbox" name="container[checkboxlist][]" id="frm-container-checkboxlist-2" value="2">two</label>
         </div>
     </div>
-    <div class="form-group">
+    <div class="form-group has-success">
     <label>RadioList</label>
     <br>
         <div class="radio">
-            <label for="frm-container-radiolist-3"><input type="radio" name="container[radiolist]" id="frm-container-radiolist-3" value="3">three</label>
+            <label for="frm-container-radiolist-3"><input type="radio" name="container[radiolist]" id="frm-container-radiolist-3" checked value="3">three</label>
         </div>
         <div class="radio">
             <label for="frm-container-radiolist-4"><input type="radio" name="container[radiolist]" id="frm-container-radiolist-4" value="4">four</label>
         </div>
     </div>
-    <div class="form-group">
+    <div class="form-group has-success">
     <label for="frm-container-innerContainer-selectbox">Selectbox</label>
-    <select class="form-control" name="container[innerContainer][selectbox]" id="frm-container-innerContainer-selectbox"><option value=""></option><option value="5">five</option><option value="6">six</option></select>
+    <select class="form-control" name="container[innerContainer][selectbox]" id="frm-container-innerContainer-selectbox"><option value=""></option><option value="5" selected>five</option><option value="6">six</option></select>
     </div>
     <div class="form-group">
     <label for="frm-container-innerContainer-upload">Upload</label>
@@ -58,17 +58,17 @@
                 <input type="button" name="button" class="btn btn-default" value="Button">
                 <input type="button" name="warning" class="btn btn-warning">
     </div>
-    <div class="form-group">
+    <div class="form-group has-success">
     <label>InlineCheckboxList</label>
     <br>
             <label class="checkbox-inline" for="frm-inlinecheckboxlist-0"><input type="checkbox" name="inlinecheckboxlist[]" id="frm-inlinecheckboxlist-0" value="0">foo</label>
-            <label class="checkbox-inline" for="frm-inlinecheckboxlist-1"><input type="checkbox" name="inlinecheckboxlist[]" id="frm-inlinecheckboxlist-1" value="1">bar</label>
+            <label class="checkbox-inline" for="frm-inlinecheckboxlist-1"><input type="checkbox" name="inlinecheckboxlist[]" id="frm-inlinecheckboxlist-1" checked value="1">bar</label>
     </div>
-    <div class="form-group">
+    <div class="form-group has-success">
     <label>InlineRadioList</label>
     <br>
             <label class="radio-inline" for="frm-inlineradiolist-0"><input type="radio" name="inlineradiolist" id="frm-inlineradiolist-0" value="0">foo</label>
-            <label class="radio-inline" for="frm-inlineradiolist-1"><input type="radio" name="inlineradiolist" id="frm-inlineradiolist-1" value="1">bar</label>
+            <label class="radio-inline" for="frm-inlineradiolist-1"><input type="radio" name="inlineradiolist" id="frm-inlineradiolist-1" checked value="1">bar</label>
     </div>
 <input type="hidden" name="hidden" value=""><!--[if IE]><input type=IEbug disabled style="display:none"><![endif]-->
     </form>
