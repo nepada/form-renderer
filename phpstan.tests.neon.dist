@@ -4,7 +4,7 @@ includes:
     - vendor/phpstan/phpstan-nette/rules.neon
     - vendor/nepada/phpstan-nette-tester/extension.neon
     - vendor/phpstan/phpstan-mockery/extension.neon
-    - tests/phpstan/disallowed-calls-rules.neon
+    - tests/PHPStan/disallowedCalls.neon
 
 parameters:
     level: max
