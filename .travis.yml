@@ -29,8 +29,8 @@ install:
 script:
     - vendor/bin/parallel-lint -e php,phpt --exclude tests/temp src tests
     - vendor/bin/tester -s -p php -c tests/php.ini tests
-    - vendor/bin/phpstan.phar analyse
-    - vendor/bin/phpstan.phar analyse -c phpstan.tests.neon.dist
+    - vendor/bin/phpstan analyse
+    - vendor/bin/phpstan analyse -c phpstan.tests.neon.dist
 
 after_failure:
     - for i in $(find tests -name \*.actual); do echo "--- $i"; cat $i; echo; echo; done
