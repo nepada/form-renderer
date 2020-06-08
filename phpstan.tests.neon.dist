@@ -15,11 +15,7 @@ parameters:
         - php
         - phpt
 
-    autoload_directories:
-        - tests
-
     excludes_analyse:
-        - tests/bootstrap.php
         - tests/temp/*
 
     reportUnmatchedIgnoredErrors: false # compatibility with nette/forms <3.0.5
@@ -28,6 +24,3 @@ parameters:
         - # false positive, fixed in nette/forms 3.0.5
             path: tests/FormRenderer/Bootstrap4RendererTest.phpt
             message: '~Parameter #1 \$value of method Nette\\Forms\\Controls\\MultiChoiceControl::setDisabled\(\) expects array<bool>\|bool, array<int, string> given~'
-        - # false positive
-            path: tests/FormRenderer/TestTemplateRendererFactory.php
-            message: '~Constant TEMP_DIR not found~'

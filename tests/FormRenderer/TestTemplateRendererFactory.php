@@ -6,6 +6,7 @@ namespace NepadaTests\FormRenderer;
 use Latte;
 use Nepada\FormRenderer\TemplateRenderer;
 use Nepada\FormRenderer\TemplateRendererFactory;
+use NepadaTests\Environment;
 use Nette;
 
 final class TestTemplateRendererFactory implements TemplateRendererFactory
@@ -31,7 +32,7 @@ final class TestTemplateRendererFactory implements TemplateRendererFactory
             public function create(): Latte\Engine
             {
                 $latte = new Latte\Engine();
-                $latte->setTempDirectory(TEMP_DIR);
+                $latte->setTempDirectory(Environment::getTempDir());
 
                 $latte->addFilter('translate', fn (Latte\Runtime\FilterInfo $fi, ...$args) => reset($args));
 
