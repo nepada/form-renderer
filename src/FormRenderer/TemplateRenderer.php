@@ -19,7 +19,9 @@ class TemplateRenderer implements Nette\Forms\IFormRenderer
 
     private SafeTranslateFilterFactory $safeTranslateFilterFactory;
 
-    /** @var string[] */
+    /**
+     * @var string[]
+     */
     private array $templateImports = [];
 
     private ?Nette\Bridges\ApplicationLatte\Template $template = null;

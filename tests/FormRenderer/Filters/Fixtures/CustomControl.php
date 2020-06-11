@@ -10,10 +10,14 @@ class CustomControl implements Nette\Forms\IControl
 
     use Nette\SmartObject;
 
-    /** @var mixed */
+    /**
+     * @var mixed
+     */
     private $value;
 
-    /** @var string[] */
+    /**
+     * @var string[]
+     */
     private array $errors;
 
     /**

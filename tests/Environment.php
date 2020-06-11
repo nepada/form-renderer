@@ -17,7 +17,9 @@ final class Environment
 
     private static ?string $tempDir = null;
 
-    /** @var resource */
+    /**
+     * @var resource
+     */
     private static $lock;
 
     public static function setup(): void
