@@ -35,6 +35,10 @@ final class ValidationClassFilter
 
     private function isFilled(Nette\Forms\IControl $control): bool
     {
+        if ($control instanceof Nette\Forms\Controls\TextInput && $control->getControlPrototype()->type === 'password') {
+            return false;
+        }
+
         if ($control instanceof Nette\Forms\Controls\BaseControl || method_exists($control, 'isFilled')) {
             return $control->isFilled();
         }

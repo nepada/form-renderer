@@ -7,6 +7,7 @@ use Nepada\FormRenderer\Filters\ValidationClassFilter;
 use NepadaTests\FormRenderer\Filters\Fixtures\CustomControl;
 use NepadaTests\FormRenderer\Filters\Fixtures\FillableCustomControl;
 use NepadaTests\TestCase;
+use Nette\Forms\Controls\TextInput;
 use Nette\Forms\IControl;
 use Tester\Assert;
 
@@ -95,7 +96,22 @@ class ValidationClassFilterTest extends TestCase
                 'control' => new CustomControl('foo'),
                 'expectedClass' => 'filled',
             ],
+            [
+                'description' => 'filled password input',
+                'invalidClass' => 'error',
+                'validClass' => 'filled',
+                'control' => $this->createFilledPasswordInput(),
+                'expectedClass' => null,
+            ],
         ];
+    }
+
+    private function createFilledPasswordInput(): TextInput
+    {
+        $input = new TextInput();
+        $input->setHtmlType('password');
+        $input->setValue('secret');
+        return $input;
     }
 
 }
