@@ -4,6 +4,8 @@ includes:
     - vendor/phpstan/phpstan-nette/rules.neon
     - vendor/nepada/phpstan-nette-tester/extension.neon
     - vendor/phpstan/phpstan-mockery/extension.neon
+    - vendor/spaze/phpstan-disallowed-calls/extension.neon
+    - vendor/spaze/phpstan-disallowed-calls/disallowed-dangerous-calls.neon
     - tests/PHPStan/disallowedCalls.neon
 
 parameters:
