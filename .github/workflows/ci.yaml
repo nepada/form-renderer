@@ -68,12 +68,12 @@ jobs:
       - uses: shivammathur/setup-php@v2
         with:
           php-version: 7.4
-          coverage: none
+          coverage: xdebuge
       - run: composer global require php-coveralls/php-coveralls
       - name: Build
         run: composer update --no-interaction --no-progress --prefer-dist --prefer-stable
       - name: Calculate coverage
-        run: vendor/bin/tester -c tests/php.ini -p phpdbg tests --coverage coverage.xml --coverage-src src
+        run: vendor/bin/tester -c tests/php-coverage.ini tests --coverage coverage.xml --coverage-src src
       - name: Upload Coverage Report
         env:
           COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
