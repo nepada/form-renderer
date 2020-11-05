@@ -1,7 +1,7 @@
 Form Renderer
 ====================
 
-[![Build Status](https://travis-ci.org/nepada/form-renderer.svg?branch=master)](https://travis-ci.org/nepada/form-renderer)
+[![Build Status](https://github.com/nepada/form-renderer/workflows/CI/badge.svg)](https://github.com/nepada/form-renderer/actions?query=workflow%3ACI+branch%3Amaster)
 [![Coverage Status](https://coveralls.io/repos/github/nepada/form-renderer/badge.svg?branch=master)](https://coveralls.io/github/nepada/form-renderer?branch=master)
 [![Downloads this Month](https://img.shields.io/packagist/dm/nepada/form-renderer.svg)](https://packagist.org/packages/nepada/form-renderer)
 [![Latest stable](https://img.shields.io/packagist/v/nepada/form-renderer.svg)](https://packagist.org/packages/nepada/form-renderer)
