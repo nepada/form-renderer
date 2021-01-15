@@ -15,4 +15,13 @@ abstract class TestCase extends Tester\TestCase
         Mockery::close();
     }
 
+    protected function resetHttpGlobalVariables(): void
+    {
+        $_SERVER['REQUEST_METHOD'] = 'GET';
+        $_FILES = [];
+        $_COOKIE['_nss'] = '1';
+        $_POST = [];
+        $_GET = [];
+    }
+
 }

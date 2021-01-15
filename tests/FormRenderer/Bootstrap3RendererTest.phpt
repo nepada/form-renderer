@@ -27,7 +27,7 @@ class Bootstrap3RendererTest extends TestCase
         $this->templateRendererFactory = new TestTemplateRendererFactory();
         $this->testFormFactory = new TestFormFactory();
 
-        $_SERVER['REQUEST_METHOD'] = 'GET';
+        $this->resetHttpGlobalVariables();
     }
 
     /**
