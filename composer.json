@@ -24,7 +24,7 @@
     "require-dev": {
         "nette/tester": "^2.3.5",
         "mockery/mockery": "^1.4.2",
-        "phpstan/phpstan": "^0.12.55",
+        "phpstan/phpstan": "^0.12.78",
         "phpstan/phpstan-strict-rules": "^0.12.9",
         "pepakriz/phpstan-exception-rules": "^0.11.6",
         "phpstan/phpstan-nette": "^0.12.14",
