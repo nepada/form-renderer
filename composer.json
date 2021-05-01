@@ -27,7 +27,7 @@
         "phpstan/phpstan": "0.12.82",
         "phpstan/phpstan-strict-rules": "0.12.9",
         "pepakriz/phpstan-exception-rules": "0.11.6",
-        "phpstan/phpstan-nette": "0.12.16",
+        "phpstan/phpstan-nette": "0.12.17",
         "nepada/phpstan-nette-tester": "0.3.1",
         "spaze/phpstan-disallowed-calls": "1.4.0",
         "phpstan/phpstan-mockery": "0.12.13",
