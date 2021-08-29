@@ -17,3 +17,4 @@ updates:
       - dependency-name: "nette/di"
       - dependency-name: "nette/http"
       - dependency-name: "nette/caching"
+      - dependency-name: "composer-runtime-api"

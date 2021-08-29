@@ -36,7 +36,9 @@
         "nette/bootstrap": "^3.0@dev",
         "nette/di": "^3.0.5@dev",
         "nette/http": "^3.0@dev",
-        "nette/caching": "^3.0@dev"
+        "nette/caching": "^3.0@dev",
+        "composer-runtime-api": "^2.0",
+        "composer/semver": "3.2.5"
     },
     "suggest": {
         "nette/di": "for integration with Nette DI container"
