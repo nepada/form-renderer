@@ -22,7 +22,7 @@
         "latte/latte": "^2.6.0@dev"
     },
     "require-dev": {
-        "nette/tester": "2.4.0",
+        "nette/tester": "2.4.1",
         "mockery/mockery": "1.4.3",
         "phpstan/phpstan": "0.12.94",
         "phpstan/phpstan-strict-rules": "0.12.10",
