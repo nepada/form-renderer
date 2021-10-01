@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     name: "Auto merge"
     steps:
-      - uses: actions/github-script@v4.1
+      - uses: actions/github-script@v5
         with:
           github-token: ${{secrets.PERSONAL_REPO_TOKEN}}
           script: |
