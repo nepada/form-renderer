@@ -28,7 +28,7 @@
         "phpstan/phpstan-strict-rules": "0.12.11",
         "pepakriz/phpstan-exception-rules": "0.11.7",
         "phpstan/phpstan-nette": "0.12.21",
-        "nepada/phpstan-nette-tester": "0.3.1",
+        "nepada/phpstan-nette-tester": "0.3.2",
         "spaze/phpstan-disallowed-calls": "1.9.0",
         "phpstan/phpstan-mockery": "0.12.14",
         "php-parallel-lint/php-parallel-lint": "1.3.1",
