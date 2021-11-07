@@ -94,8 +94,8 @@ class Bootstrap3Renderer implements Nette\Forms\IFormRenderer
     protected function prepareForm(Form $form): void
     {
         $primaryButton = $this->findPrimaryButton($form);
-        /** @var Controls\Button $control */
         foreach ($form->getComponents(true, Controls\Button::class) as $control) {
+            /** @var Controls\Button $control */
             $controlPrototype = $control->getControlPrototype();
             $classes = Helpers::parseClassList($controlPrototype->getClass());
             if (in_array('btn', $classes, true)) {
