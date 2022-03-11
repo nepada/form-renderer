@@ -62,6 +62,7 @@ class TemplateRendererTest extends TestCase
         $form = $this->testFormFactory->create();
         $form->addError('Form error 1.');
         $form->addError('Form error 2.');
+        /** @var Nette\Forms\Controls\BaseControl $control */
         foreach ($form->getControls() as $control) {
             if ($control instanceof Nette\Forms\Controls\Button) {
                 continue;
@@ -79,6 +80,7 @@ class TemplateRendererTest extends TestCase
     public function testRequiredControl(): void
     {
         $form = $this->testFormFactory->create();
+        /** @var Nette\Forms\Controls\BaseControl $control */
         foreach ($form->getControls() as $control) {
             $control->setRequired('REQUIRED');
         }
@@ -92,6 +94,7 @@ class TemplateRendererTest extends TestCase
     public function testControlDescription(): void
     {
         $form = $this->testFormFactory->create();
+        /** @var Nette\Forms\Controls\BaseControl $control */
         foreach ($form->getControls() as $control) {
             $control->setOption('description', "Control {$control->getName()} description.");
         }
@@ -105,6 +108,7 @@ class TemplateRendererTest extends TestCase
     public function testCustomControlId(): void
     {
         $form = $this->testFormFactory->create();
+        /** @var Nette\Forms\Controls\BaseControl $control */
         foreach ($form->getControls() as $control) {
             $control->setOption('id', sprintf('custom-%s', $control->lookupPath()));
         }
@@ -118,6 +122,7 @@ class TemplateRendererTest extends TestCase
     public function testCustomControlClass(): void
     {
         $form = $this->testFormFactory->create();
+        /** @var Nette\Forms\Controls\BaseControl $control */
         foreach ($form->getControls() as $control) {
             $control->setOption('class', sprintf('custom-%s', $control->lookupPath()));
         }
