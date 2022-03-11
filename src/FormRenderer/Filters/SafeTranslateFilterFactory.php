@@ -8,6 +8,6 @@ use Nette;
 interface SafeTranslateFilterFactory
 {
 
-    public function create(?Nette\Localization\ITranslator $translator): SafeTranslateFilter;
+    public function create(?Nette\Localization\Translator $translator): SafeTranslateFilter;
 
 }

@@ -24,9 +24,9 @@ final class TestTemplateRendererFactory implements TemplateRendererFactory
         return new Nette\Bridges\ApplicationLatte\TemplateFactory($this->createLatteFactory());
     }
 
-    private function createLatteFactory(): Nette\Bridges\ApplicationLatte\ILatteFactory
+    private function createLatteFactory(): Nette\Bridges\ApplicationLatte\LatteFactory
     {
-        return new class () implements Nette\Bridges\ApplicationLatte\ILatteFactory
+        return new class () implements Nette\Bridges\ApplicationLatte\LatteFactory
         {
 
             public function create(): Latte\Engine

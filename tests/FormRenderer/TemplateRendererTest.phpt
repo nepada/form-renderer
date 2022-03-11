@@ -32,9 +32,9 @@ class TemplateRendererTest extends TestCase
 
     public function testUnsupportedTemplateType(): void
     {
-        $template = Mockery::mock(Nette\Application\UI\ITemplate::class);
+        $template = Mockery::mock(Nette\Application\UI\Template::class);
 
-        $templateFactory = Mockery::mock(Nette\Application\UI\ITemplateFactory::class);
+        $templateFactory = Mockery::mock(Nette\Application\UI\TemplateFactory::class);
         $templateFactory->shouldReceive('createTemplate')->andReturn($template);
 
         $renderer = new FormRenderer\TemplateRenderer($templateFactory, new TestSafeTranslateFilterFactory());

@@ -12,7 +12,7 @@ final class TestSafeTranslateFilterFactory implements SafeTranslateFilterFactory
 
     use Nette\SmartObject;
 
-    public function create(?Nette\Localization\ITranslator $translator): SafeTranslateFilter
+    public function create(?Nette\Localization\Translator $translator): SafeTranslateFilter
     {
         return new SafeTranslateFilter($translator);
     }
