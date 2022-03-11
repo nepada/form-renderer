@@ -5,7 +5,7 @@ namespace NepadaTests\FormRenderer\Filters\Fixtures;
 
 use Nette;
 
-class CustomControl implements Nette\Forms\IControl
+class CustomControl implements Nette\Forms\Control
 {
 
     use Nette\SmartObject;

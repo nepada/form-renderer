@@ -7,7 +7,7 @@ use Latte;
 use Nepada\FormRenderer\Filters\SafeTranslateFilterFactory;
 use Nette;
 
-class TemplateRenderer implements Nette\Forms\IFormRenderer
+class TemplateRenderer implements Nette\Forms\FormRenderer
 {
 
     use Nette\SmartObject;
@@ -15,7 +15,7 @@ class TemplateRenderer implements Nette\Forms\IFormRenderer
     public const DEFAULT_FORM_BLOCKS_TEMPLATE_FILE = __DIR__ . '/templates/default.latte';
     private const TEMPLATE_FILE = __DIR__ . '/templates/form.latte';
 
-    private Nette\Application\UI\ITemplateFactory $templateFactory;
+    private Nette\Application\UI\TemplateFactory $templateFactory;
 
     private SafeTranslateFilterFactory $safeTranslateFilterFactory;
 
@@ -26,7 +26,7 @@ class TemplateRenderer implements Nette\Forms\IFormRenderer
 
     private ?Nette\Bridges\ApplicationLatte\Template $template = null;
 
-    public function __construct(Nette\Application\UI\ITemplateFactory $templateFactory, SafeTranslateFilterFactory $safeTranslateFilterFactory)
+    public function __construct(Nette\Application\UI\TemplateFactory $templateFactory, SafeTranslateFilterFactory $safeTranslateFilterFactory)
     {
         $this->templateFactory = $templateFactory;
         $this->safeTranslateFilterFactory = $safeTranslateFilterFactory;

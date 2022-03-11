@@ -7,8 +7,8 @@ use Nepada\FormRenderer\Filters\ValidationClassFilter;
 use NepadaTests\FormRenderer\Filters\Fixtures\CustomControl;
 use NepadaTests\FormRenderer\Filters\Fixtures\FillableCustomControl;
 use NepadaTests\TestCase;
+use Nette\Forms\Control;
 use Nette\Forms\Controls\TextInput;
-use Nette\Forms\IControl;
 use Tester\Assert;
 
 require_once __DIR__ . '/../../bootstrap.php';
@@ -25,10 +25,10 @@ class ValidationClassFilterTest extends TestCase
      * @param string $description
      * @param string|null $invalidClass
      * @param string|null $validClass
-     * @param IControl $control
+     * @param Control $control
      * @param string|null $expectedClass
      */
-    public function testFilter(string $description, ?string $invalidClass, ?string $validClass, IControl $control, ?string $expectedClass): void
+    public function testFilter(string $description, ?string $invalidClass, ?string $validClass, Control $control, ?string $expectedClass): void
     {
         $filter = new ValidationClassFilter($invalidClass, $validClass);
         Assert::same($expectedClass, $filter->__invoke($control), $description);

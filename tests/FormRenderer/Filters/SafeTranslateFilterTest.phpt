@@ -102,11 +102,11 @@ class SafeTranslateFilterTest extends Tester\TestCase
     }
 
     /**
-     * @return Nette\Localization\ITranslator|MockInterface
+     * @return Nette\Localization\Translator|MockInterface
      */
-    private function mockTranslator(): Nette\Localization\ITranslator
+    private function mockTranslator(): Nette\Localization\Translator
     {
-        $mock = \Mockery::mock(Nette\Localization\ITranslator::class);
+        $mock = \Mockery::mock(Nette\Localization\Translator::class);
         $mock->shouldReceive('translate')->andReturnUsing(fn (...$args): string => 'translated: ' . Nette\Utils\Json::encode($args));
 
         return $mock;

@@ -11,9 +11,9 @@ final class SafeTranslateFilter
 
     use Nette\SmartObject;
 
-    private ?Nette\Localization\ITranslator $translator;
+    private ?Nette\Localization\Translator $translator;
 
-    public function __construct(?Nette\Localization\ITranslator $translator)
+    public function __construct(?Nette\Localization\Translator $translator)
     {
         $this->translator = $translator;
     }
@@ -42,12 +42,12 @@ final class SafeTranslateFilter
      */
     private function isHtmlString($value): bool
     {
-        if ($value instanceof Nette\Utils\IHtmlString) {
+        if ($value instanceof Nette\HtmlStringable) {
             // nette/utils interface
             return true;
         }
 
-        if ($value instanceof Latte\Runtime\IHtmlString) {
+        if ($value instanceof Latte\Runtime\HtmlStringable) {
             // latte/latte interface
             return true;
         }

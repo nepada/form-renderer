@@ -8,7 +8,7 @@ use Nette;
 use Nette\Forms\Controls;
 use Nette\Forms\Form;
 
-class Bootstrap3Renderer implements Nette\Forms\IFormRenderer
+class Bootstrap3Renderer implements Nette\Forms\FormRenderer
 {
 
     use Nette\SmartObject;
