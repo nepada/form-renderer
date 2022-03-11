@@ -100,7 +100,7 @@
 {/define}
 
 {define #control-type-radio}
-    <br n:tag-if="$mode === basic">
+    <br n:if="$mode === basic">
     {var $isInlineMode = $mode === inline || !$control->getSeparatorPrototype()->getName()}
     {var $disabled = $control->isDisabled()}
     {foreach $control->getItems() as $k => $v}
@@ -113,7 +113,7 @@
 {/define}
 
 {define #control-type-checkboxlist}
-    <br n:tag-if="$mode === basic">
+    <br n:if="$mode === basic">
     {var $isInlineMode = $mode === inline || !$control->getSeparatorPrototype()->getName()}
     {var $disabled = $control->isDisabled()}
     {foreach $control->getItems() as $k => $v}
