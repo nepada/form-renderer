@@ -21,9 +21,6 @@ parameters:
             - Nette\InvalidStateException
 
     ignoreErrors:
-        - # false positive
-            message: "#Cannot access property \\$attrs on Latte\\\\HtmlNode\\|null#"
-            path: src/FormRenderer/Macros/FormRendererMacros.php
         -
             message: '#If condition is always false#'
             path: src/compatibility.php
