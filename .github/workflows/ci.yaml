@@ -70,7 +70,7 @@ jobs:
       - uses: shivammathur/setup-php@v2
         with:
           php-version: 8.1
-          coverage: xdebuge
+          coverage: xdebug
       - run: composer global require php-coveralls/php-coveralls
       - name: Build
         run: composer update --no-interaction --no-progress --prefer-dist --prefer-stable
