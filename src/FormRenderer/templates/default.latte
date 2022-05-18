@@ -39,12 +39,15 @@
 {/define}
 
 {define #controls}
-    {if}
-        <table n:inner-foreach="$group->getControls() as $control">
+    {try}
+    <table>
+        {foreach $group->getControls() as $control}
             {continueIf $control->getOption('rendered') || $control->getOption('type') === 'hidden'}
             {include #helpers-override-split, blockNamePrefix => pair, control => $control, parameters => [controlsIterator => $iterator]}
-        </table>
-    {/if $iterations}
+            {else}{rollback}
+        {/foreach}
+    </table>
+    {/try}
 {/define}
 
 {define #pair-type-default}
