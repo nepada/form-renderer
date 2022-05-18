@@ -55,4 +55,5 @@
     <rule ref="PSR1.Classes.ClassDeclaration.MultipleClasses">
         <exclude-pattern>src/compatibility.php</exclude-pattern>
     </rule>
+    <exclude-pattern>tests/PHPStan/latte-compatibility.php</exclude-pattern>
 </ruleset>

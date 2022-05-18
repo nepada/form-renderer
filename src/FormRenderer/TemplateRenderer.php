@@ -5,6 +5,7 @@ namespace Nepada\FormRenderer;
 
 use Latte;
 use Nepada\FormRenderer\Filters\SafeTranslateFilterFactory;
+use Nepada\FormRenderer\LatteExtensions\FormRendererLatteExtension;
 use Nette;
 
 class TemplateRenderer implements Nette\Forms\FormRenderer
@@ -71,9 +72,13 @@ class TemplateRenderer implements Nette\Forms\FormRenderer
         }
 
         $latte = $template->getLatte();
-        $latte->onCompile[] = function (Latte\Engine $latte): void {
-            Macros\FormRendererMacros::install($latte->getCompiler());
-        };
+        if (version_compare(Latte\Engine::VERSION, '3', '<')) {
+            $latte->onCompile[] = function (Latte\Engine $latte): void {
+                Macros\FormRendererMacros::install($latte->getCompiler());
+            };
+        } else {
+            $latte->addExtension(new FormRendererLatteExtension());
+        }
 
         return $template;
     }
