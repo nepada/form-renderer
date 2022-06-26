@@ -6,6 +6,7 @@ namespace NepadaTests\FormRenderer;
 use Nepada\FormRenderer;
 use NepadaTests\TestCase;
 use Nette;
+use Nette\Forms\Controls\BaseControl;
 
 require_once __DIR__ . '/../bootstrap.php';
 
@@ -208,7 +209,8 @@ class Bootstrap3RendererTest extends TestCase
     {
         $form = $this->testFormFactory->create();
 
-        $form->getComponent('textarea')->setValue('Lorem ipsum');
+        assert($form['textarea'] instanceof BaseControl);
+        $form['textarea']->setValue('Lorem ipsum');
 
         $warningButton = $form->addButton('warning');
         $warningButton->getControlPrototype()->addClass('btn btn-warning');
