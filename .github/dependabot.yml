@@ -18,3 +18,4 @@ updates:
       - dependency-name: "nette/bootstrap"
       - dependency-name: "nette/component-model"
       - dependency-name: "composer-runtime-api"
+      - dependency-name: "nette/http"
