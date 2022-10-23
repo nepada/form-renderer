@@ -1,14 +1,23 @@
 rules:
+    - ShipMonk\PHPStan\Rule\BackedEnumGenericsRule
+    - ShipMonk\PHPStan\Rule\ForbidAssignmentNotMatchingVarDocRule
+    - ShipMonk\PHPStan\Rule\ForbidEnumInFunctionArgumentsRule
     - ShipMonk\PHPStan\Rule\ForbidFetchOnMixedRule
     - ShipMonk\PHPStan\Rule\ForbidMatchDefaultArmForEnumsRule
     - ShipMonk\PHPStan\Rule\ForbidMethodCallOnMixedRule
     - ShipMonk\PHPStan\Rule\ForbidReturnInConstructorRule
     - ShipMonk\PHPStan\Rule\ForbidUnsetClassFieldRule
     - ShipMonk\PHPStan\Rule\ForbidUnusedExceptionRule
+    - ShipMonk\PHPStan\Rule\ForbidUnusedMatchResultRule
+    - ShipMonk\PHPStan\Rule\ForbidVariableTypeOverwritingRule
     - ShipMonk\PHPStan\Rule\RequirePreviousExceptionPassRule
 
 services:
     -
         type: ShipMonk\PHPStan\Visitor\UnusedExceptionVisitor
+        tags:
+            - phpstan.parser.richParserNodeVisitor
+    -
+        class: ShipMonk\PHPStan\Visitor\UnusedMatchVisitor
         tags:
             - phpstan.parser.richParserNodeVisitor
