@@ -61,7 +61,7 @@ final class Environment
 
     private static function shouldCollectGarbage(): bool
     {
-        return rand(0, self::GC_DIVISOR) === 0;
+        return random_int(0, self::GC_DIVISOR) === 0;
     }
 
 }
