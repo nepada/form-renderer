@@ -18,6 +18,8 @@ parameters:
                 '>', '>=', '<', '<=', '<=>', # allow comparisons
                 '===', '!==', '??' # valid
             ]
+        forbidNullInInterpolatedString:
+            enabled: false
         forbidUselessNullableReturn:
             enabled: false
         requirePreviousExceptionPass:
