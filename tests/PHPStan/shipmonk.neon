@@ -7,47 +7,18 @@ parameters:
             enabled: false
         allowNamedArgumentOnlyInAttributes:
             enabled: false
-        backedEnumGenerics:
-            enabled: true
         enforceReadonlyPublicProperty:
             enabled: false
-        forbidAssignmentNotMatchingVarDoc:
-            enabled: true
         forbidCustomFunctions:
             enabled: false
             list: []
-        forbidEnumInFunctionArguments:
-            enabled: true
-        forbidFetchOnMixed:
-            enabled: true
-        forbidMatchDefaultArmForEnums:
-            enabled: true
-        forbidMethodCallOnMixed:
-            enabled: true
-        forbidNullInAssignOperations:
-            enabled: true
-            blacklist: ['??=']
         forbidNullInBinaryOperations:
-            enabled: true
             blacklist: [
                 '**', '!=', '==', '+', 'and', 'or', '&&', '||', '%', '-', '/', '*', # checked by phpstan-strict-rules
                 '>', '>=', '<', '<=', '<=>', # allow comparisons
                 '===', '!==', '??' # valid
             ]
-        forbidVariableTypeOverwriting:
-            enabled: true
-        forbidUnsetClassField:
-            enabled: true
         forbidUselessNullableReturn:
             enabled: false
-        forbidUnusedException:
-            enabled: true
-        forbidUnusedMatchResult:
-            enabled: true
         requirePreviousExceptionPass:
-            enabled: true
             reportEvenIfExceptionIsNotAcceptableByRethrownOne: false
-        uselessPrivatePropertyDefaultValue:
-            enabled: true
-        uselessPrivatePropertyNullability:
-            enabled: true
