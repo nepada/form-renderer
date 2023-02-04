@@ -87,8 +87,8 @@ class SafeTranslateFilterTest extends Tester\TestCase
                 'expectedTranslation' => 'translated: ["message"]',
             ],
             [
-                'inputArguments' => [1, 2, 3],
-                'expectedTranslation' => 'translated: [1,2,3]',
+                'inputArguments' => ['1', 2, 3],
+                'expectedTranslation' => 'translated: ["1",2,3]',
             ],
             [
                 'inputArguments' => [$netteHtml],
