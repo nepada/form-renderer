@@ -4,6 +4,7 @@ declare(strict_types = 1);
 namespace Nepada\FormRenderer;
 
 use Nette;
+use function is_array;
 
 final class Helpers
 {
@@ -16,10 +17,15 @@ final class Helpers
      */
     public static function parseClassList($value): array
     {
+        if ($value === null) {
+            return [];
+        }
+
         $classes = [];
-        foreach ((array) $value as $k => $v) {
+        $values = is_array($value) ? $value : [$value];
+        foreach ($values as $k => $v) {
             if ($v === true) {
-                $classes = array_merge($classes, explode(' ', $k));
+                $classes = array_merge($classes, explode(' ', (string) $k));
             } elseif (is_string($v) && $v !== '') {
                 $classes = array_merge($classes, explode(' ', $v));
             }
