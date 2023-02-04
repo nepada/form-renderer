@@ -35,4 +35,12 @@ if (version_compare(Latte\Engine::VERSION, '3.0', '<')) {
     ];
 }
 
+if (PHP_VERSION_ID >= 8_00_00) {
+    $config['parameters']['ignoreErrors'][] = [
+        'message' => '~^Missing native return typehint mixed$~',
+        'path' => '../../src/FormRenderer/Filters/SafeTranslateFilter.php',
+        'count' => 1,
+    ];
+}
+
 return $config;
