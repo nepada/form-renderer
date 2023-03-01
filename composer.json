@@ -28,7 +28,7 @@
         "phpstan/phpstan-strict-rules": "1.4.5",
         "phpstan/phpstan-nette": "1.2.3",
         "nepada/phpstan-nette-tester": "1.0.0",
-        "spaze/phpstan-disallowed-calls": "2.11.5",
+        "spaze/phpstan-disallowed-calls": "2.11.6",
         "shipmonk/phpstan-rules": "2.3.1",
         "phpstan/phpstan-mockery": "1.1.0",
         "php-parallel-lint/php-parallel-lint": "1.3.2",
