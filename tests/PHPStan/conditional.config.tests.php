@@ -9,7 +9,7 @@ $config = [];
 if (InstalledVersions::satisfies(new VersionParser(), 'nette/forms', '>=3.1.2')) {
     // method available since nette/forms 3.1.2
     $config['parameters']['ignoreErrors'][] = [
-        'message' => '~Call to function method_exists\\(\\) with Nette\\\\Forms\\\\Form and \'initialize\' will always evaluate to true~',
+        'message' => '~Call to function method_exists\\(\\) with \'Nette\\\\\\\\Forms\\\\\\\\Form\' and \'initialize\' will always evaluate to true~',
         'path' => '../../tests/FormRenderer/TestFormFactory.php',
         'count' => 1,
     ];
