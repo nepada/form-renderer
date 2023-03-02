@@ -15,8 +15,8 @@ final class TestFormFactory
     public function create(): Form
     {
         $form = new Form();
-        if (method_exists($form, 'initialize')) { // BC with nette/forms <3.1.2
-            $form::initialize(true);
+        if (method_exists(Form::class, 'initialize')) { // BC with nette/forms <3.1.2
+            Form::initialize(true);
         }
         $form->setAction('#');
         $form->getElementPrototype()->addClass('form-class1');
