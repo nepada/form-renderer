@@ -30,7 +30,7 @@ final class NClassNode extends StatementNode
         }
 
         $tag->expectArguments();
-        $node = new NClassNode();
+        $node = new self();
         $node->args = $tag->parser->parseArguments();
         return $node;
     }
