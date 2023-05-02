@@ -56,4 +56,8 @@
         <exclude-pattern>src/compatibility.php</exclude-pattern>
     </rule>
     <exclude-pattern>tests/PHPStan/latte-compatibility.php</exclude-pattern>
+
+    <rule ref="SlevomatCodingStandard.Arrays.DisallowPartiallyKeyed.DisallowedPartiallyKeyed">
+        <exclude-pattern>/tests/FormRenderer/HelpersTest.phpt</exclude-pattern>
+    </rule>
 </ruleset>
