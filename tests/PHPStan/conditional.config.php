@@ -1,11 +1,12 @@
 <?php
 declare(strict_types = 1);
 
+use Latte\Engine;
 use Nette\Localization\Translator;
 
 $config = [];
 
-if (version_compare(Latte\Engine::VERSION, '3.0', '<')) {
+if (version_compare(Engine::VERSION, '3.0', '<')) {
     $config['parameters']['excludePaths']['analyse'][] = __DIR__ . '/../../src/FormRenderer/LatteExtensions/FormRendererLatteExtension.php';
     $config['parameters']['excludePaths']['analyse'][] = __DIR__ . '/../../src/FormRenderer/LatteExtensions/Nodes/NClassNode.php';
     $config['parameters']['ignoreErrors'][] = [
