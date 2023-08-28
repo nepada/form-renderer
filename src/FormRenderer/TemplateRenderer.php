@@ -57,6 +57,7 @@ class TemplateRenderer implements Nette\Forms\FormRenderer
         $latte->addFilter('safeTranslate', $this->safeTranslateFilterFactory->create($form->getTranslator()));
 
         $template->form = $form;
+        $template->templateImports = $this->templateImports;
 
         return (string) $template;
     }

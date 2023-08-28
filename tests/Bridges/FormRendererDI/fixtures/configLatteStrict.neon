@@ -1,0 +1,12 @@
+extensions:
+    formRenderer: Nepada\Bridges\FormRendererDI\FormRendererExtension
+
+application:
+    scanDirs: false
+
+di:
+    debugger: false
+
+latte:
+    strictTypes: true
+    strictParsing: true

@@ -26,3 +26,10 @@ parameters:
         - tests/temp/*
         - tests/PHPStan/conditional.config.php
         - tests/PHPStan/latte-compatibility.php
+
+    ignoreErrors:
+        # Latte <3.0.8 compatibility
+        -
+            message: "#^Comparison operation \"\\<\" between [0-9]+ and 30008 is always (true|false)\\.$#"
+            count: 1
+            path: tests/Bridges/FormRendererDI/FormRendererLatteStrictExtensionTest.phpt
