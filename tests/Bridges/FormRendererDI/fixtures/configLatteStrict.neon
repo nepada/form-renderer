@@ -1,0 +1,29 @@
+extensions:
+    formRenderer: Nepada\Bridges\FormRendererDI\FormRendererExtension
+
+formRenderer:
+    default:
+        imports:
+            - %fixturesDir%/formLatteStrict.latte
+    bootstrap3:
+        mode: horizontal
+        renderValidState: false
+        imports:
+            - %fixturesDir%/formLatteStrict.latte
+    bootstrap4:
+        mode: horizontal
+        useCustomControls: false
+        useErrorTooltips: false
+        renderValidState: false
+        imports:
+            - %fixturesDir%/formLatteStrict.latte
+
+application:
+    scanDirs: false
+
+di:
+    debugger: false
+
+latte:
+    strictTypes: true
+    strictParsing: true

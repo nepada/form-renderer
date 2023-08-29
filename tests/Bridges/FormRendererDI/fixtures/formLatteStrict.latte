@@ -1,0 +1,5 @@
+{block #form}
+FORM
+{ifset $mode}{$mode}{/ifset}
+{foreach $templateImports as $templateFile}{=basename($templateFile)}{sep},{/sep}{/foreach}
+{/block}
