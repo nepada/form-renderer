@@ -7,6 +7,11 @@ parameters:
             enabled: false
         allowNamedArgumentOnlyInAttributes:
             enabled: false
+        classSuffixNaming:
+            superclassToSuffixMapping:
+                \Throwable: Exception
+                \Nette\DI\CompilerExtension: Extension
+                \Nette\Forms\FormRenderer: Renderer
         enforceReadonlyPublicProperty:
             enabled: false
         forbidCustomFunctions:
