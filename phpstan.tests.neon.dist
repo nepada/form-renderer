@@ -25,7 +25,6 @@ parameters:
     excludePaths:
         - tests/temp/*
         - tests/PHPStan/conditional.config.php
-        - tests/PHPStan/latte-compatibility.php
 
     ignoreErrors:
         # Latte <3.0.8 compatibility

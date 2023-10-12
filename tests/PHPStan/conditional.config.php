@@ -1,42 +1,9 @@
 <?php
 declare(strict_types = 1);
 
-use Latte\Engine;
 use Nette\Localization\Translator;
 
 $config = [];
-
-if (version_compare(Engine::VERSION, '3.0', '<')) {
-    $config['parameters']['excludePaths']['analyse'][] = __DIR__ . '/../../src/FormRenderer/LatteExtensions/FormRendererLatteExtension.php';
-    $config['parameters']['excludePaths']['analyse'][] = __DIR__ . '/../../src/FormRenderer/LatteExtensions/Nodes/NClassNode.php';
-    $config['parameters']['ignoreErrors'][] = [
-        'message' => '~If condition is always true\\.~',
-        'path' => '../../src/FormRenderer/TemplateRenderer.php',
-        'count' => 1,
-    ];
-    $config['parameters']['ignoreErrors'][] = [
-        'message' => '~Call to an undefined method Latte\\\\Engine::addExtension\\(\\)\\.~',
-        'path' => '../../src/FormRenderer/TemplateRenderer.php',
-        'count' => 1,
-    ];
-} else {
-    $config['parameters']['excludePaths']['analyse'][] = __DIR__ . '/../../src/FormRenderer/Macros/FormRendererMacros.php';
-    $config['parameters']['ignoreErrors'][] = [
-        'message' => '~If condition is always false\\.~',
-        'path' => '../../src/FormRenderer/TemplateRenderer.php',
-        'count' => 1,
-    ];
-    $config['parameters']['ignoreErrors'][] = [
-        'message' => '~Access to an undefined property Latte\\\\Engine::\\$onCompile\\.~',
-        'path' => '../../src/FormRenderer/TemplateRenderer.php',
-        'count' => 1,
-    ];
-    $config['parameters']['ignoreErrors'][] = [
-        'message' => '~Call to an undefined method Latte\\\\Engine::getCompiler\\(\\)\\.~',
-        'path' => '../../src/FormRenderer/TemplateRenderer.php',
-        'count' => 1,
-    ];
-}
 
 if (PHP_VERSION_ID >= 8_00_00) {
     $config['parameters']['ignoreErrors'][] = [

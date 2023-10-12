@@ -25,9 +25,6 @@ parameters:
             - LogicException
             - Nette\InvalidStateException
 
-    bootstrapFiles:
-        - tests/PHPStan/latte-compatibility.php
-
     ignoreErrors:
         -
             message: '#If condition is always false#'
