@@ -14,7 +14,6 @@ updates:
       - dependency-type: "development"
     ignore:
       - dependency-name: "nette/di"
-      - dependency-name: "nette/schema"
       - dependency-name: "nette/bootstrap"
       - dependency-name: "nette/component-model"
       - dependency-name: "composer-runtime-api"
