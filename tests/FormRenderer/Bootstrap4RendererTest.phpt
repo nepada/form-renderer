@@ -33,7 +33,6 @@ class Bootstrap4RendererTest extends TestCase
 
     /**
      * @dataProvider getRendererModes
-     * @param string $mode
      */
     public function testSimple(string $mode): void
     {
@@ -46,7 +45,6 @@ class Bootstrap4RendererTest extends TestCase
 
     /**
      * @dataProvider getRendererModes
-     * @param string $mode
      */
     public function testRenderValidState(string $mode): void
     {
@@ -83,7 +81,6 @@ class Bootstrap4RendererTest extends TestCase
 
     /**
      * @dataProvider getRendererModes
-     * @param string $mode
      */
     public function testUseCustomControls(string $mode): void
     {
@@ -97,7 +94,6 @@ class Bootstrap4RendererTest extends TestCase
 
     /**
      * @dataProvider getRendererModes
-     * @param string $mode
      */
     public function testErrors(string $mode): void
     {
@@ -126,7 +122,6 @@ class Bootstrap4RendererTest extends TestCase
 
     /**
      * @dataProvider getRendererModes
-     * @param string $mode
      */
     public function testRequiredControl(string $mode): void
     {
@@ -144,7 +139,6 @@ class Bootstrap4RendererTest extends TestCase
 
     /**
      * @dataProvider getRendererModes
-     * @param string $mode
      */
     public function testControlDescription(string $mode): void
     {
@@ -162,7 +156,6 @@ class Bootstrap4RendererTest extends TestCase
 
     /**
      * @dataProvider getRendererModes
-     * @param string $mode
      */
     public function testCustomControlId(string $mode): void
     {
@@ -180,7 +173,6 @@ class Bootstrap4RendererTest extends TestCase
 
     /**
      * @dataProvider getRendererModes
-     * @param string $mode
      */
     public function testCustomControlClass(string $mode): void
     {
@@ -198,7 +190,6 @@ class Bootstrap4RendererTest extends TestCase
 
     /**
      * @dataProvider getRendererModes
-     * @param string $mode
      */
     public function testTemplateImports(string $mode): void
     {

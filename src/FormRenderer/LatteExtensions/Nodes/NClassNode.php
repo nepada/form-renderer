@@ -20,7 +20,6 @@ final class NClassNode extends StatementNode
     public ArrayNode $args;
 
     /**
-     * @param Tag $tag
      * @throws CompileException
      */
     public static function create(Tag $tag): self

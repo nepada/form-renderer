@@ -22,11 +22,6 @@ class ValidationClassFilterTest extends TestCase
 
     /**
      * @dataProvider getFilterData
-     * @param string $description
-     * @param string|null $invalidClass
-     * @param string|null $validClass
-     * @param Control $control
-     * @param string|null $expectedClass
      */
     public function testFilter(string $description, ?string $invalidClass, ?string $validClass, Control $control, ?string $expectedClass): void
     {

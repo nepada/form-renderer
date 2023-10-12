@@ -22,7 +22,6 @@ class SafeTranslateFilterTest extends Tester\TestCase
     /**
      * @dataProvider getNoTranslatorData
      * @param mixed[] $inputArguments
-     * @param mixed $expectedTranslation
      */
     public function testWithNoTranslator(array $inputArguments, mixed $expectedTranslation): void
     {
@@ -65,7 +64,6 @@ class SafeTranslateFilterTest extends Tester\TestCase
     /**
      * @dataProvider getTranslatorData
      * @param mixed[] $inputArguments
-     * @param mixed $expectedTranslation
      */
     public function testWithTranslator(array $inputArguments, mixed $expectedTranslation): void
     {

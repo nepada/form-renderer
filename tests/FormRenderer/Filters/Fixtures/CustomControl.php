@@ -18,7 +18,6 @@ class CustomControl implements Nette\Forms\Control
     private array $errors;
 
     /**
-     * @param mixed $value
      * @param string[] $errors
      */
     public function __construct(mixed $value = null, array $errors = [])
@@ -28,7 +27,6 @@ class CustomControl implements Nette\Forms\Control
     }
 
     /**
-     * @param mixed $value
      * @return static
      */
     public function setValue(mixed $value): self
