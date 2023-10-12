@@ -21,7 +21,7 @@ class FooControl extends Nette\Forms\Controls\BaseControl
      *
      * @return Html<mixed>|string
      */
-    public function getControl()
+    public function getControl(): Html|string
     {
         $control = parent::getControl();
 

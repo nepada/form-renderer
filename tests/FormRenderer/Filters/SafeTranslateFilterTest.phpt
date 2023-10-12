@@ -24,7 +24,7 @@ class SafeTranslateFilterTest extends Tester\TestCase
      * @param mixed[] $inputArguments
      * @param mixed $expectedTranslation
      */
-    public function testWithNoTranslator(array $inputArguments, $expectedTranslation): void
+    public function testWithNoTranslator(array $inputArguments, mixed $expectedTranslation): void
     {
         $filter = new Nepada\FormRenderer\Filters\SafeTranslateFilter(null);
         $filterInfo = new Latte\Runtime\FilterInfo();
@@ -67,7 +67,7 @@ class SafeTranslateFilterTest extends Tester\TestCase
      * @param mixed[] $inputArguments
      * @param mixed $expectedTranslation
      */
-    public function testWithTranslator(array $inputArguments, $expectedTranslation): void
+    public function testWithTranslator(array $inputArguments, mixed $expectedTranslation): void
     {
         $filter = new Nepada\FormRenderer\Filters\SafeTranslateFilter($this->mockTranslator());
         $filterInfo = new Latte\Runtime\FilterInfo();

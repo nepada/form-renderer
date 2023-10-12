@@ -10,10 +10,7 @@ class CustomControl implements Nette\Forms\Control
 
     use Nette\SmartObject;
 
-    /**
-     * @var mixed
-     */
-    private $value;
+    private mixed $value;
 
     /**
      * @var string[]
@@ -24,7 +21,7 @@ class CustomControl implements Nette\Forms\Control
      * @param mixed $value
      * @param string[] $errors
      */
-    public function __construct($value = null, array $errors = [])
+    public function __construct(mixed $value = null, array $errors = [])
     {
         $this->value = $value;
         $this->errors = $errors;
@@ -34,16 +31,13 @@ class CustomControl implements Nette\Forms\Control
      * @param mixed $value
      * @return static
      */
-    public function setValue($value): self
+    public function setValue(mixed $value): self
     {
         $this->value = $value;
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getValue()
+    public function getValue(): mixed
     {
         return $this->value;
     }

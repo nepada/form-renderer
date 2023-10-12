@@ -15,7 +15,7 @@ final class Helpers
      * @param string|mixed[]|null $value
      * @return string[]
      */
-    public static function parseClassList($value): array
+    public static function parseClassList(string|array|null $value): array
     {
         if ($value === null) {
             return [];

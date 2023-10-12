@@ -18,12 +18,7 @@ final class SafeTranslateFilter
         $this->translator = $translator;
     }
 
-    /**
-     * @param Latte\Runtime\FilterInfo $filterInfo
-     * @param mixed ...$args
-     * @return mixed
-     */
-    public function __invoke(Latte\Runtime\FilterInfo $filterInfo, ...$args)
+    public function __invoke(Latte\Runtime\FilterInfo $filterInfo, mixed ...$args): mixed
     {
         if ($this->translator === null) {
             return count($args) > 0 ? reset($args) : null;
@@ -36,11 +31,7 @@ final class SafeTranslateFilter
         return $this->translator->translate(...$args);
     }
 
-    /**
-     * @param mixed $value
-     * @return bool
-     */
-    private function isHtmlString($value): bool
+    private function isHtmlString(mixed $value): bool
     {
         if ($value instanceof Nette\HtmlStringable) {
             // nette/utils interface

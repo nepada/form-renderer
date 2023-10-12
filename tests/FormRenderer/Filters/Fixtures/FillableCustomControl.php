@@ -13,7 +13,7 @@ class FillableCustomControl extends CustomControl
      * @param mixed $value
      * @param string[] $errors
      */
-    public function __construct(bool $isFilled, $value = null, array $errors = [])
+    public function __construct(bool $isFilled, mixed $value = null, array $errors = [])
     {
         parent::__construct($value, $errors);
         $this->isFilled = $isFilled;

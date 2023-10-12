@@ -25,7 +25,7 @@ final class NClassNode extends StatementNode
      */
     public static function create(Tag $tag): self
     {
-        if ($tag->htmlElement !== null && $tag->htmlElement->getAttribute('class') !== null) {
+        if ($tag->htmlElement?->getAttribute('class') !== null) {
             throw new CompileException('It is not possible to combine class with n:class.', $tag->position);
         }
 
