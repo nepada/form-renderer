@@ -18,6 +18,10 @@ parameters:
     paths:
         - tests
 
+    exceptions:
+        uncheckedExceptionClasses:
+            - Throwable
+
     fileExtensions:
         - php
         - phpt
