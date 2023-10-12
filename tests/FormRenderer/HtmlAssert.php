@@ -12,6 +12,8 @@ final class HtmlAssert
 
     use Nette\StaticClass;
 
+    private const IE_BUG_FIX = '<!--[if IE]><input type=IEbug disabled style="display:none"><![endif]-->';
+
     public static function matchFile(string $file, string $actual, ?string $description = null): void
     {
         $expected = Nette\Utils\FileSystem::read($file);
@@ -20,6 +22,7 @@ final class HtmlAssert
 
     private static function normalize(string $content): string
     {
+        $content = self::removeIeBugFix($content);
         $content = self::normalizeWhiteSpace($content);
         $content = self::normalizeHtmlAttributes($content);
         $content = self::normalizeFormEnd($content);
@@ -50,6 +53,11 @@ final class HtmlAssert
             },
         );
         return $content;
+    }
+
+    private static function removeIeBugFix(string $content): string
+    {
+        return str_replace(self::IE_BUG_FIX, '', $content);
     }
 
     private static function normalizeFormEnd(string $content): string
