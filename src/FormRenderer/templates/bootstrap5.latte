@@ -1,0 +1,245 @@
+{import helpers/override-split.latte}
+
+{block #form}
+    <form n:name="$form" n:class="$form->getElementPrototype()->class">
+        {include #form-errors}
+        {include #form-body}
+    </form>
+{/block}
+
+{define #form-errors}
+    <div n:foreach="$form->getOwnErrors() as $error" class="alert alert-danger">
+        {$error}
+    </div>
+{/define}
+
+{define #form-body}
+    {foreach $form->getGroups() as $group}
+        {include #group, group => $group, groupsIterator => $iterator}
+    {/foreach}
+    {include #controls, group => $form}
+{/define}
+
+{define #group}
+    {if $group->getOption('visual') && $group->getControls()}
+        <fieldset n:attr="id => $group->getOption('id')">
+            {include #group-caption, group => $group}
+            {include #controls, group => $group}
+            {if $group->getOption('embedNext') && !$groupsIterator->isLast()}
+                {php $groupsIterator->next()}
+                {include #group, group => $groupsIterator->current(), groupsIterator => $groupsIterator}
+            {/if}
+        </fieldset>
+    {/if}
+{/define}
+
+{define #group-caption}
+    <legend n:if="$group->getOption('label') !== null">{$group->getOption('label')|safeTranslate}</legend>
+    <p n:if="$group->getOption('description') !== null">{$group->getOption('description')|safeTranslate}</p>
+{/define}
+
+{define #controls}
+    <div n:tag-if="$mode === inline" class="form-inline">
+        {foreach $group->getControls() as $control}
+            {continueIf $control->getOption('rendered') || $control->getOption('type') === 'hidden'}
+            {include #helpers-override-split, blockNamePrefix => pair, control => $control, parameters => [controlsIterator => $iterator]}
+        {/foreach}
+    </div>
+{/define}
+
+{define #pair-type-default}
+    <div n:attr="id => $control->getOption('id')" n:class="
+        $control->getOption('class'),
+        form-group,
+        $mode === horizontal ? row,
+        $control->isRequired() ? required
+    ">
+        {include #label, control => $control}
+        <div n:tag-if="$mode === horizontal" n:class="$gridControlClass, !$control->getLabel() ? $gridOffsetClass">
+            {include #helpers-override-split, blockNamePrefix => control, control => $control}
+        </div>
+    </div>
+{/define}
+
+{define #pair-type-button}
+    <div n:class="form-group, $mode === horizontal ? row">
+        <div n:tag-if="$mode === horizontal" n:class="$gridControlClass, $gridOffsetClass" n:inner-block="#control-type-button">
+            {if !$control->getOption('rendered')}
+                <div n:tag-if="$mode === inline" n:class="$inlineSpacingClasses">
+                    {input $control}
+                </div>
+                {include #control-help, control => $control}
+            {/if}
+            {if !$controlsIterator->isLast() && $controlsIterator->getNextValue()->getOption('type') === 'button'}
+                {php $controlsIterator->next()}
+                {include #control-type-button, control => $controlsIterator->current(), controlsIterator => $controlsIterator}
+            {/if}
+        </div>
+    </div>
+{/define}
+
+{define #label}
+    <label n:if="$control->getLabel()" n:name="$control" n:class="
+        $control->getLabelPrototype()->class,
+        $gridLabelClass,
+        $mode === horizontal && in_array($control->getOption('type'), [radio, checkboxlist]) ? pt-sm-0,
+        $inlineSpacingClasses
+    " />
+{/define}
+
+{define #control-type-default}
+    <div n:tag-if="$useErrorTooltips" n:class="position-relative, $mode === inline ? $inlineSpacingClasses">
+        {include #helpers-override-split, blockNamePrefix => input, control => $control}
+        {if $useErrorTooltips}{include #control-errors, control => $control}{/if}
+    </div>
+    {include #control-help, control => $control}
+    {if !$useErrorTooltips}{include #control-errors, control => $control}{/if}
+{/define}
+
+{define #control-type-checkboxlist}
+    <div n:class="$useErrorTooltips ? position-relative, $mode === inline ? form-inline">
+        {include #helpers-override-split, blockNamePrefix => input, control => $control}
+        {if $useErrorTooltips}{include #control-errors, control => $control}{/if}
+    </div>
+    {include #control-help, control => $control}
+    {if !$useErrorTooltips}{include #control-errors, control => $control}{/if}
+{/define}
+
+{define #control-type-radio}
+    {include #control-type-checkboxlist, control => $control}
+{/define}
+
+{define #control-errors}
+    {if $useErrorTooltips}
+        <div n:if="count($control->getErrors()) > 0" class="d-block invalid-tooltip" n:inner-foreach="$control->getErrors() as $error">{$error}{sep} {/sep}</div>
+    {else}
+        <div n:foreach="$control->getErrors() as $error" class="d-block invalid-feedback">{$error}</div>
+    {/if}
+{/define}
+
+{define #control-help}
+    <small n:if="$control->getOption('description') !== null" n:class="
+        form-text,
+        text-muted,
+        $inlineSpacingClasses
+    ">{$control->getOption('description')|safeTranslate}</small>
+{/define}
+
+{define #input-type-default}
+    {input $control}
+{/define}
+
+{define #input-type-text}
+    <input n:name="$control" n:class="
+        $control->getControlPrototype()->class,
+        form-control,
+        ($control|validationClass)
+    ">
+{/define}
+
+{define #input-type-textarea}
+    <textarea n:name="$control" n:class="
+        $control->getControlPrototype()->class,
+        form-control,
+        ($control|validationClass)
+    " />
+{/define}
+
+{define #input-type-select}
+    <select n:name="$control" n:class="
+        $control->getControlPrototype()->class,
+        $useCustomControls ? custom-select : form-control,
+        ($control|validationClass)
+    " />
+{/define}
+
+{define #input-type-range}
+    <input n:name="$control" n:class="
+        $control->getControlPrototype()->class,
+        $useCustomControls ? custom-range : form-control-range,
+        ($control|validationClass)
+    ">
+{/define}
+
+{define #input-type-file}
+    <div n:tag-if="$useCustomControls" class="custom-file">
+        <input n:name="$control" n:class="
+            $control->getControlPrototype()->class,
+            $useCustomControls ? custom-file-input : form-control-file,
+            ($control|validationClass)
+        ">
+        <label n:if="$useCustomControls" n:name="$control" class="custom-file-label">...</label>
+    </div>
+{/define}
+
+{define #input-type-checkbox}
+    <div n:class="
+        $control->getSeparatorPrototype()->class,
+        $useCustomControls ? 'custom-control custom-checkbox' : form-check
+    ">
+        <input n:name="$control:" n:class="
+            $control->getControlPrototype()->class,
+            $useCustomControls ? custom-control-input : form-check-input,
+            ($control|validationClass)
+        ">
+        <label n:name="$control:" n:class="
+            $control->getLabelPrototype()->class,
+            $useCustomControls ? custom-control-label : form-check-label
+        " />
+    </div>
+{/define}
+
+{define #input-type-switch}
+    <div n:class="
+        $control->getSeparatorPrototype()->class,
+        $useCustomControls ? 'custom-control custom-switch' : form-check
+    ">
+        <input n:name="$control:" n:class="
+            $control->getControlPrototype()->class,
+            $useCustomControls ? custom-control-input : form-check-input,
+            ($control|validationClass)
+        ">
+        <label n:name="$control:" n:class="
+            $control->getLabelPrototype()->class,
+            $useCustomControls ? custom-control-label : form-check-label
+        " />
+    </div>
+{/define}
+
+{define #input-type-checkboxlist}
+    <div n:foreach="$control->items as $k => $v" n:class="
+        $control->getSeparatorPrototype()->class,
+        $useCustomControls ? 'custom-control custom-checkbox' : form-check,
+        $inlineSpacingClasses,
+        $mode !== inline && !$control->separatorPrototype->getName() ? ($useCustomControls ? custom-control-inline : form-check-inline)
+    ">
+        <input n:name="$control:$k" n:class="
+            $control->getControlPrototype()->class,
+            $useCustomControls ? custom-control-input : form-check-input,
+            ($control|validationClass)
+        ">
+        <label n:name="$control:$k" n:class="
+            $control->getItemLabelPrototype()->class,
+            $useCustomControls ? custom-control-label : form-check-label
+        ">{=$control->translate($v)}</label>
+    </div>
+{/define}
+
+{define #input-type-radio}
+    <div n:foreach="$control->items as $k => $v" n:class="
+        $control->getSeparatorPrototype()->class,
+        $useCustomControls ? 'custom-control custom-radio' : form-check,
+        $inlineSpacingClasses,
+        $mode !== inline && !$control->separatorPrototype->getName() ? ($useCustomControls ? custom-control-inline : form-check-inline)
+    ">
+        <input n:name="$control:$k" n:class="
+            $control->getControlPrototype()->class,
+            $useCustomControls ? custom-control-input : form-check-input,
+            ($control|validationClass)
+        ">
+        <label n:name="$control:$k" n:class="
+            $control->getItemLabelPrototype()->class,
+            $useCustomControls ? custom-control-label : form-check-label
+        ">{=$control->translate($v)}</label>
+    </div>
+{/define}
