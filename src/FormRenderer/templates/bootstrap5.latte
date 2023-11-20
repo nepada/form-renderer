@@ -39,7 +39,7 @@
 {/define}
 
 {define #controls}
-    <div n:tag-if="$mode === inline" class="form-inline">
+    <div n:tag-if="$mode === inline" class="d-flex flex-row align-items-center flex-wrap">
         {foreach $group->getControls() as $control}
             {continueIf $control->getOption('rendered') || $control->getOption('type') === 'hidden'}
             {include #helpers-override-split, blockNamePrefix => pair, control => $control, parameters => [controlsIterator => $iterator]}
@@ -50,10 +50,10 @@
 {define #pair-type-default}
     <div n:attr="id => $control->getOption('id')" n:class="
         $control->getOption('class'),
-        form-group,
+        mb-3,
         $mode === horizontal ? row,
         $control->isRequired() ? required
-    ">
+    " n:tag-if="$mode !== inline">
         {include #label, control => $control}
         <div n:tag-if="$mode === horizontal" n:class="$gridControlClass, !$control->getLabel() ? $gridOffsetClass">
             {include #helpers-override-split, blockNamePrefix => control, control => $control}
@@ -62,7 +62,7 @@
 {/define}
 
 {define #pair-type-button}
-    <div n:class="form-group, $mode === horizontal ? row">
+    <div n:class="mb-3, $mode === horizontal ? row" n:tag-if="$mode !== inline">
         <div n:tag-if="$mode === horizontal" n:class="$gridControlClass, $gridOffsetClass" n:inner-block="#control-type-button">
             {if !$control->getOption('rendered')}
                 <div n:tag-if="$mode === inline" n:class="$inlineSpacingClasses">
@@ -81,6 +81,7 @@
 {define #label}
     <label n:if="$control->getLabel()" n:name="$control" n:class="
         $control->getLabelPrototype()->class,
+        $mode === basic ? form-label,
         $gridLabelClass,
         $mode === horizontal && in_array($control->getOption('type'), [radio, checkboxlist]) ? pt-sm-0,
         $inlineSpacingClasses
@@ -97,7 +98,7 @@
 {/define}
 
 {define #control-type-checkboxlist}
-    <div n:class="$useErrorTooltips ? position-relative, $mode === inline ? form-inline">
+    <div n:tag-if="$useErrorTooltips" n:class="position-relative, $mode === inline ? $inlineSpacingClasses">
         {include #helpers-override-split, blockNamePrefix => input, control => $control}
         {if $useErrorTooltips}{include #control-errors, control => $control}{/if}
     </div>
@@ -118,11 +119,10 @@
 {/define}
 
 {define #control-help}
-    <small n:if="$control->getOption('description') !== null" n:class="
+    <div n:if="$control->getOption('description') !== null" n:class="
         form-text,
-        text-muted,
         $inlineSpacingClasses
-    ">{$control->getOption('description')|safeTranslate}</small>
+    ">{$control->getOption('description')|safeTranslate}</div>
 {/define}
 
 {define #input-type-default}
@@ -148,7 +148,7 @@
 {define #input-type-select}
     <select n:name="$control" n:class="
         $control->getControlPrototype()->class,
-        $useCustomControls ? custom-select : form-control,
+        form-select,
         ($control|validationClass)
     " />
 {/define}
@@ -156,35 +156,32 @@
 {define #input-type-range}
     <input n:name="$control" n:class="
         $control->getControlPrototype()->class,
-        $useCustomControls ? custom-range : form-control-range,
+        form-range,
         ($control|validationClass)
     ">
 {/define}
 
 {define #input-type-file}
-    <div n:tag-if="$useCustomControls" class="custom-file">
-        <input n:name="$control" n:class="
-            $control->getControlPrototype()->class,
-            $useCustomControls ? custom-file-input : form-control-file,
-            ($control|validationClass)
-        ">
-        <label n:if="$useCustomControls" n:name="$control" class="custom-file-label">...</label>
-    </div>
+    <input n:name="$control" n:class="
+        $control->getControlPrototype()->class,
+        form-control,
+        ($control|validationClass)
+    ">
 {/define}
 
 {define #input-type-checkbox}
     <div n:class="
         $control->getSeparatorPrototype()->class,
-        $useCustomControls ? 'custom-control custom-checkbox' : form-check
+        form-check
     ">
         <input n:name="$control:" n:class="
             $control->getControlPrototype()->class,
-            $useCustomControls ? custom-control-input : form-check-input,
+            form-check-input,
             ($control|validationClass)
         ">
         <label n:name="$control:" n:class="
             $control->getLabelPrototype()->class,
-            $useCustomControls ? custom-control-label : form-check-label
+            form-check-label
         " />
     </div>
 {/define}
@@ -192,16 +189,17 @@
 {define #input-type-switch}
     <div n:class="
         $control->getSeparatorPrototype()->class,
-        $useCustomControls ? 'custom-control custom-switch' : form-check
+        form-check,
+        form-switch
     ">
         <input n:name="$control:" n:class="
             $control->getControlPrototype()->class,
-            $useCustomControls ? custom-control-input : form-check-input,
+            form-check-input,
             ($control|validationClass)
         ">
         <label n:name="$control:" n:class="
             $control->getLabelPrototype()->class,
-            $useCustomControls ? custom-control-label : form-check-label
+            form-check-label
         " />
     </div>
 {/define}
@@ -209,18 +207,18 @@
 {define #input-type-checkboxlist}
     <div n:foreach="$control->items as $k => $v" n:class="
         $control->getSeparatorPrototype()->class,
-        $useCustomControls ? 'custom-control custom-checkbox' : form-check,
+        form-check,
         $inlineSpacingClasses,
-        $mode !== inline && !$control->separatorPrototype->getName() ? ($useCustomControls ? custom-control-inline : form-check-inline)
+        $mode !== inline && !$control->separatorPrototype->getName() ? form-check-inline
     ">
         <input n:name="$control:$k" n:class="
             $control->getControlPrototype()->class,
-            $useCustomControls ? custom-control-input : form-check-input,
+            form-check-input,
             ($control|validationClass)
         ">
         <label n:name="$control:$k" n:class="
             $control->getItemLabelPrototype()->class,
-            $useCustomControls ? custom-control-label : form-check-label
+            form-check-label
         ">{=$control->translate($v)}</label>
     </div>
 {/define}
@@ -228,18 +226,18 @@
 {define #input-type-radio}
     <div n:foreach="$control->items as $k => $v" n:class="
         $control->getSeparatorPrototype()->class,
-        $useCustomControls ? 'custom-control custom-radio' : form-check,
+        form-check,
         $inlineSpacingClasses,
-        $mode !== inline && !$control->separatorPrototype->getName() ? ($useCustomControls ? custom-control-inline : form-check-inline)
+        $mode !== inline && !$control->separatorPrototype->getName() ? form-check-inline
     ">
         <input n:name="$control:$k" n:class="
             $control->getControlPrototype()->class,
-            $useCustomControls ? custom-control-input : form-check-input,
+            form-check-input,
             ($control|validationClass)
         ">
         <label n:name="$control:$k" n:class="
             $control->getItemLabelPrototype()->class,
-            $useCustomControls ? custom-control-label : form-check-label
+            form-check-label
         ">{=$control->translate($v)}</label>
     </div>
 {/define}

@@ -3,14 +3,14 @@
         <fieldset id="custom-group-id">
     <legend>Group 1</legend>
     <p>Group 1 description.</p>
-    <div class="form-group required">
-    <label for="frm-text">Text</label>
+    <div class="mb-3 required">
+    <label class="form-label" for="frm-text">Text</label>
     <input type="text" name="text" id="frm-text" required data-nette-rules='[{"op":":filled","msg":"REQUIRED"}]' class="form-control">
 
 
     </div>
-    <div class="form-group required">
-    <label for="frm-textarea">TextArea</label>
+    <div class="mb-3 required">
+    <label class="form-label" for="frm-textarea">TextArea</label>
     <textarea class="form-control" name="textarea" id="frm-textarea" required data-nette-rules='[{"op":":filled","msg":"REQUIRED"}]'>Lorem ipsum</textarea>
 
 
@@ -18,7 +18,7 @@
         <fieldset>
     <legend><span>Group 2 label</span></legend>
     <p><span>Group 2 description.</span></p>
-    <div class="form-group required">
+    <div class="mb-3 required">
     <div class="form-check">
         <input type="checkbox" name="container[checkbox]" id="frm-container-checkbox" required data-nette-rules='[{"op":":filled","msg":"REQUIRED"}]' class="form-check-input">
         <label class="form-check-label" for="frm-container-checkbox">Checkbox</label>
@@ -26,9 +26,8 @@
 
 
     </div>
-    <div class="form-group required">
-    <label>CheckBoxList</label>
-        <div>
+    <div class="mb-3 required">
+    <label class="form-label">CheckBoxList</label>
     <div class="form-check">
         <input type="checkbox" name="container[checkboxlist][]" id="frm-container-checkboxlist-1" data-nette-rules='[{"op":":filled","msg":"REQUIRED"}]' value="1" class="form-check-input">
         <label class="form-check-label" for="frm-container-checkboxlist-1">one</label>
@@ -37,13 +36,11 @@
         <input type="checkbox" name="container[checkboxlist][]" id="frm-container-checkboxlist-2" data-nette-rules='[{"op":":filled","msg":"REQUIRED"}]' value="2" class="form-check-input">
         <label class="form-check-label" for="frm-container-checkboxlist-2">two</label>
     </div>
-        </div>
 
 
     </div>
-    <div class="form-group required">
-    <label>RadioList</label>
-        <div>
+    <div class="mb-3 required">
+    <label class="form-label">RadioList</label>
     <div class="form-check">
         <input type="radio" name="container[radiolist]" id="frm-container-radiolist-3" required data-nette-rules='[{"op":":filled","msg":"REQUIRED"}]' value="3" class="form-check-input">
         <label class="form-check-label" for="frm-container-radiolist-3">three</label>
@@ -52,31 +49,30 @@
         <input type="radio" name="container[radiolist]" id="frm-container-radiolist-4" required data-nette-rules='[{"op":":filled","msg":"REQUIRED"}]' value="4" class="form-check-input">
         <label class="form-check-label" for="frm-container-radiolist-4">four</label>
     </div>
-        </div>
 
 
     </div>
-    <div class="form-group required">
-    <label for="frm-container-innerContainer-selectbox">Selectbox</label>
-    <select class="form-control" name="container[innerContainer][selectbox]" id="frm-container-innerContainer-selectbox" required data-nette-rules='[{"op":":filled","msg":"REQUIRED"}]'><option value=""></option><option value="5">five</option><option value="6">six</option></select>
+    <div class="mb-3 required">
+    <label class="form-label" for="frm-container-innerContainer-selectbox">Selectbox</label>
+    <select class="form-select" name="container[innerContainer][selectbox]" id="frm-container-innerContainer-selectbox" required data-nette-rules='[{"op":":filled","msg":"REQUIRED"}]'><option value=""></option><option value="5">five</option><option value="6">six</option></select>
 
 
     </div>
-    <div class="form-group required">
-    <label for="frm-container-innerContainer-upload">Upload</label>
-        <input type="file" name="container[innerContainer][upload]" id="frm-container-innerContainer-upload" required data-nette-rules='[{"op":":filled","msg":"REQUIRED"},{"op":":fileSize","msg":"The size of the uploaded file can be up to 1048576 bytes.","arg":1048576}]' class="form-control-file">
+    <div class="mb-3 required">
+    <label class="form-label" for="frm-container-innerContainer-upload">Upload</label>
+        <input type="file" name="container[innerContainer][upload]" id="frm-container-innerContainer-upload" required data-nette-rules='[{"op":":filled","msg":"REQUIRED"},{"op":":fileSize","msg":"The size of the uploaded file can be up to 1048576 bytes.","arg":1048576}]' class="form-control">
 
 
     </div>
         </fieldset>
         </fieldset>
-    <div class="form-group required">
-    <label class="label-class1 label-class2" for="frm-foo">Foo</label>
+    <div class="mb-3 required">
+    <label class="label-class1 label-class2 form-label" for="frm-foo">Foo</label>
     <div data-foo="foo" class="control-class1 control-class2"><input name="foo" id="frm-foo" required data-nette-rules='[{"op":":filled","msg":"REQUIRED"}]'><span>foo</span></div>
 
 
     </div>
-    <div class="form-group">
+    <div class="mb-3">
                     <input type="submit" name="send" class="btn btn-primary" value="SubmitButton">
 
 
@@ -87,9 +83,8 @@
 
 
     </div>
-    <div class="form-group required">
-    <label>InlineCheckboxList</label>
-        <div>
+    <div class="mb-3 required">
+    <label class="form-label">InlineCheckboxList</label>
     <div class="form-check form-check-inline">
         <input type="checkbox" name="inlinecheckboxlist[]" id="frm-inlinecheckboxlist-0" disabled data-nette-rules='[{"op":":filled","msg":"REQUIRED"}]' value="0" class="form-check-input">
         <label class="form-check-label" for="frm-inlinecheckboxlist-0">foo</label>
@@ -98,13 +93,11 @@
         <input type="checkbox" name="inlinecheckboxlist[]" id="frm-inlinecheckboxlist-1" data-nette-rules='[{"op":":filled","msg":"REQUIRED"}]' value="1" class="form-check-input">
         <label class="form-check-label" for="frm-inlinecheckboxlist-1">bar</label>
     </div>
-        </div>
 
 
     </div>
-    <div class="form-group required">
-    <label>InlineRadioList</label>
-        <div>
+    <div class="mb-3 required">
+    <label class="form-label">InlineRadioList</label>
     <div class="form-check form-check-inline">
         <input type="radio" name="inlineradiolist" id="frm-inlineradiolist-0" required disabled data-nette-rules='[{"op":":filled","msg":"REQUIRED"}]' value="0" class="form-check-input">
         <label class="form-check-label" for="frm-inlineradiolist-0">foo</label>
@@ -113,23 +106,22 @@
         <input type="radio" name="inlineradiolist" id="frm-inlineradiolist-1" required data-nette-rules='[{"op":":filled","msg":"REQUIRED"}]' value="1" class="form-check-input">
         <label class="form-check-label" for="frm-inlineradiolist-1">bar</label>
     </div>
-        </div>
 
 
     </div>
-    <div class="form-group required">
-    <label for="frm-range">Range</label>
-    <input type="range" name="range" id="frm-range" required data-nette-rules='[{"op":":filled","msg":"REQUIRED"}]' class="form-control-range">
+    <div class="mb-3 required">
+    <label class="form-label" for="frm-range">Range</label>
+    <input type="range" name="range" id="frm-range" required data-nette-rules='[{"op":":filled","msg":"REQUIRED"}]' class="form-range">
 
 
     </div>
-    <div class="form-group required">
-    <div class="form-check">
+    <div class="mb-3 required">
+    <div class="form-check form-switch">
         <input type="checkbox" name="switch" id="frm-switch" required data-nette-rules='[{"op":":filled","msg":"REQUIRED"}]' class="form-check-input">
         <label class="form-check-label" for="frm-switch">Switch</label>
     </div>
 
-    <small class="form-text text-muted">Switch description</small>
+    <div class="form-text">Switch description</div>
 
     </div>
 <input type="hidden" name="hidden" value="">    </form>

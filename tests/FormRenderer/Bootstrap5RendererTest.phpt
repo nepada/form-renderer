@@ -82,19 +82,6 @@ class Bootstrap5RendererTest extends TestCase
     /**
      * @dataProvider getRendererModes
      */
-    public function testUseCustomControls(string $mode): void
-    {
-        $form = $this->createTestForm();
-        $renderer = $this->createRenderer($mode);
-        $renderer->setUseCustomControls(true);
-        $form->setRenderer($renderer);
-
-        HtmlAssert::matchFile(__DIR__ . "/expected/bootstrap5-{$mode}-customControls.html", $form->__toString());
-    }
-
-    /**
-     * @dataProvider getRendererModes
-     */
     public function testErrors(string $mode): void
     {
         $form = $this->createTestForm();

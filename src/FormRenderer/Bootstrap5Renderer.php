@@ -30,8 +30,6 @@ class Bootstrap5Renderer implements Nette\Forms\FormRenderer
 
     private bool $useErrorTooltips = false;
 
-    private bool $useCustomControls = false;
-
     private string $mode = self::MODE_BASIC;
 
     private int $labelCols = self::DEFAULT_LABEL_COLS;
@@ -56,11 +54,6 @@ class Bootstrap5Renderer implements Nette\Forms\FormRenderer
     public function setUseErrorTooltips(bool $useErrorTooltips = true): void
     {
         $this->useErrorTooltips = $useErrorTooltips;
-    }
-
-    public function setUseCustomControls(bool $useCustomControls = true): void
-    {
-        $this->useCustomControls = $useCustomControls;
     }
 
     public function setBasicMode(): void
@@ -88,12 +81,11 @@ class Bootstrap5Renderer implements Nette\Forms\FormRenderer
         $template = $templateRenderer->getTemplate();
         $template->addFilter('validationClass', new ValidationClassFilter('is-invalid', $this->shouldRenderValidState($form) ? 'is-valid' : null));
         $template->useErrorTooltips = $this->shouldUseErrorTooltips();
-        $template->useCustomControls = $this->useCustomControls;
         $template->mode = $this->mode;
         $template->gridOffsetClass = $this->mode === self::MODE_HORIZONTAL ? sprintf('offset-sm-%d', $this->labelCols) : null;
         $template->gridLabelClass = $this->mode === self::MODE_HORIZONTAL ? sprintf('col-sm-%d col-form-label', $this->labelCols) : null;
         $template->gridControlClass = $this->mode === self::MODE_HORIZONTAL ? sprintf('col-sm-%d', $this->controlCols) : null;
-        $template->inlineSpacingClasses = $this->mode === self::MODE_INLINE ? 'mb-2 mr-2' : null;
+        $template->inlineSpacingClasses = $this->mode === self::MODE_INLINE ? 'my-1 me-2' : null;
 
         return $templateRenderer->render($form);
     }
