@@ -1,0 +1,112 @@
+    <form class="form-class1 form-class2" action="#" method="post" enctype="multipart/form-data">
+
+        <fieldset id="custom-group-id">
+    <legend>Group 1</legend>
+    <p>Group 1 description.</p>
+    <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label" for="frm-text">Text</label>
+        <div class="col-sm-9">
+    <input type="text" name="text" id="frm-text" class="form-control">
+
+
+        </div>
+    </div>
+    CUSTOM TEXTAREA PAIR TYPE RENDERING
+        <fieldset>
+    <legend><span>Group 2 label</span></legend>
+    <p><span>Group 2 description.</span></p>
+    <div class="mb-3 row">
+        <div class="col-sm-9 offset-sm-3">
+    <div class="form-check">
+        <input type="checkbox" name="container[checkbox]" id="frm-container-checkbox" class="form-check-input">
+        <label class="form-check-label" for="frm-container-checkbox">Checkbox</label>
+    </div>
+
+
+        </div>
+    </div>
+    <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label pt-sm-0">CheckBoxList</label>
+        <div class="col-sm-9">
+    CUSTOM CHECKBOXLIST CONTROL RENDERING
+        </div>
+    </div>
+    <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label pt-sm-0">RadioList</label>
+        <div class="col-sm-9">
+    CUSTOM RADIO CONTROL TYPE RENDERING
+        </div>
+    </div>
+    <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label" for="frm-container-innerContainer-selectbox">Selectbox</label>
+        <div class="col-sm-9">
+    <select class="form-select" name="container[innerContainer][selectbox]" id="frm-container-innerContainer-selectbox"><option value=""></option><option value="5">five</option><option value="6">six</option></select>
+
+
+        </div>
+    </div>
+    <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label" for="frm-container-innerContainer-upload">Upload</label>
+        <div class="col-sm-9">
+        <input type="file" name="container[innerContainer][upload]" id="frm-container-innerContainer-upload" data-nette-rules='[{"op":":fileSize","msg":"The size of the uploaded file can be up to 1048576 bytes.","arg":1048576}]' class="form-control">
+
+
+        </div>
+    </div>
+        </fieldset>
+        </fieldset>
+    CUSTOM FOO PAIR RENDERING
+    <div class="mb-3 row">
+        <div class="col-sm-9 offset-sm-3">
+                    <input type="submit" name="send" class="btn btn-primary" value="SubmitButton">
+
+
+                    <input type="button" name="button" class="btn btn-secondary" value="Button">
+
+
+                    <input type="button" name="warning" class="btn btn-warning">
+
+
+        </div>
+    </div>
+    <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label pt-sm-0">InlineCheckboxList</label>
+        <div class="col-sm-9">
+    <div class="form-check form-check-inline">
+        <input type="checkbox" name="inlinecheckboxlist[]" id="frm-inlinecheckboxlist-0" disabled value="0" class="form-check-input">
+        <label class="form-check-label" for="frm-inlinecheckboxlist-0">foo</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input type="checkbox" name="inlinecheckboxlist[]" id="frm-inlinecheckboxlist-1" value="1" class="form-check-input">
+        <label class="form-check-label" for="frm-inlinecheckboxlist-1">bar</label>
+    </div>
+
+
+        </div>
+    </div>
+    <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label pt-sm-0">InlineRadioList</label>
+        <div class="col-sm-9">
+    CUSTOM RADIO CONTROL TYPE RENDERING
+        </div>
+    </div>
+    <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label" for="frm-range">Range</label>
+        <div class="col-sm-9">
+    <input type="range" name="range" id="frm-range" class="form-range">
+
+
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <div class="col-sm-9 offset-sm-3">
+    <div class="form-check form-switch">
+        <input type="checkbox" name="switch" id="frm-switch" class="form-check-input">
+        <label class="form-check-label" for="frm-switch">Switch</label>
+    </div>
+
+    <div class="form-text">Switch description</div>
+
+        </div>
+    </div>
+<input type="hidden" name="hidden" value="">    </form>

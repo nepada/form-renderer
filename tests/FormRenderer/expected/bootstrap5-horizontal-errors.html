@@ -1,0 +1,189 @@
+    <form class="form-class1 form-class2" action="#" method="post" enctype="multipart/form-data">
+            <div class="alert alert-danger">
+        Form error 1.
+    </div>
+    <div class="alert alert-danger">
+        Form error 2.
+    </div>
+    <div class="alert alert-danger">
+        Control hidden error 1.
+    </div>
+    <div class="alert alert-danger">
+        Control hidden error 2.
+    </div>
+
+        <fieldset id="custom-group-id">
+    <legend>Group 1</legend>
+    <p>Group 1 description.</p>
+    <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label" for="frm-text">Text</label>
+        <div class="col-sm-9">
+    <input type="text" name="text" id="frm-text" class="form-control is-invalid">
+
+            <div class="d-block invalid-feedback">Control text error 1.</div>
+        <div class="d-block invalid-feedback">Control text error 2.</div>
+
+        </div>
+    </div>
+    <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label" for="frm-textarea">TextArea</label>
+        <div class="col-sm-9">
+    <textarea class="form-control is-invalid" name="textarea" id="frm-textarea">Lorem ipsum</textarea>
+
+            <div class="d-block invalid-feedback">Control textarea error 1.</div>
+        <div class="d-block invalid-feedback">Control textarea error 2.</div>
+
+        </div>
+    </div>
+        <fieldset>
+    <legend><span>Group 2 label</span></legend>
+    <p><span>Group 2 description.</span></p>
+    <div class="mb-3 row">
+        <div class="col-sm-9 offset-sm-3">
+    <div class="form-check">
+        <input type="checkbox" name="container[checkbox]" id="frm-container-checkbox" class="form-check-input is-invalid">
+        <label class="form-check-label" for="frm-container-checkbox">Checkbox</label>
+    </div>
+
+            <div class="d-block invalid-feedback">Control checkbox error 1.</div>
+        <div class="d-block invalid-feedback">Control checkbox error 2.</div>
+
+        </div>
+    </div>
+    <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label pt-sm-0">CheckBoxList</label>
+        <div class="col-sm-9">
+    <div class="form-check">
+        <input type="checkbox" name="container[checkboxlist][]" id="frm-container-checkboxlist-1" value="1" class="form-check-input is-invalid">
+        <label class="form-check-label" for="frm-container-checkboxlist-1">one</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" name="container[checkboxlist][]" id="frm-container-checkboxlist-2" value="2" class="form-check-input is-invalid">
+        <label class="form-check-label" for="frm-container-checkboxlist-2">two</label>
+    </div>
+
+            <div class="d-block invalid-feedback">Control checkboxlist error 1.</div>
+        <div class="d-block invalid-feedback">Control checkboxlist error 2.</div>
+
+        </div>
+    </div>
+    <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label pt-sm-0">RadioList</label>
+        <div class="col-sm-9">
+    <div class="form-check">
+        <input type="radio" name="container[radiolist]" id="frm-container-radiolist-3" value="3" class="form-check-input is-invalid">
+        <label class="form-check-label" for="frm-container-radiolist-3">three</label>
+    </div>
+    <div class="form-check">
+        <input type="radio" name="container[radiolist]" id="frm-container-radiolist-4" value="4" class="form-check-input is-invalid">
+        <label class="form-check-label" for="frm-container-radiolist-4">four</label>
+    </div>
+
+            <div class="d-block invalid-feedback">Control radiolist error 1.</div>
+        <div class="d-block invalid-feedback">Control radiolist error 2.</div>
+
+        </div>
+    </div>
+    <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label" for="frm-container-innerContainer-selectbox">Selectbox</label>
+        <div class="col-sm-9">
+    <select class="form-select is-invalid" name="container[innerContainer][selectbox]" id="frm-container-innerContainer-selectbox"><option value=""></option><option value="5">five</option><option value="6">six</option></select>
+
+            <div class="d-block invalid-feedback">Control selectbox error 1.</div>
+        <div class="d-block invalid-feedback">Control selectbox error 2.</div>
+
+        </div>
+    </div>
+    <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label" for="frm-container-innerContainer-upload">Upload</label>
+        <div class="col-sm-9">
+        <input type="file" name="container[innerContainer][upload]" id="frm-container-innerContainer-upload" data-nette-rules='[{"op":":fileSize","msg":"The size of the uploaded file can be up to 1048576 bytes.","arg":1048576}]' class="form-control is-invalid">
+
+            <div class="d-block invalid-feedback">Control upload error 1.</div>
+        <div class="d-block invalid-feedback">Control upload error 2.</div>
+
+        </div>
+    </div>
+        </fieldset>
+        </fieldset>
+    <div class="mb-3 row">
+    <label class="label-class1 label-class2 col-sm-3 col-form-label" for="frm-foo">Foo</label>
+        <div class="col-sm-9">
+    <div data-foo="foo" class="control-class1 control-class2"><input name="foo" id="frm-foo"><span>foo</span></div>
+
+            <div class="d-block invalid-feedback">Control foo error 1.</div>
+        <div class="d-block invalid-feedback">Control foo error 2.</div>
+
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <div class="col-sm-9 offset-sm-3">
+                    <input type="submit" name="send" class="btn btn-primary" value="SubmitButton">
+
+
+                    <input type="button" name="button" class="btn btn-secondary" value="Button">
+
+
+                    <input type="button" name="warning" class="btn btn-warning">
+
+
+        </div>
+    </div>
+    <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label pt-sm-0">InlineCheckboxList</label>
+        <div class="col-sm-9">
+    <div class="form-check form-check-inline">
+        <input type="checkbox" name="inlinecheckboxlist[]" id="frm-inlinecheckboxlist-0" disabled value="0" class="form-check-input is-invalid">
+        <label class="form-check-label" for="frm-inlinecheckboxlist-0">foo</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input type="checkbox" name="inlinecheckboxlist[]" id="frm-inlinecheckboxlist-1" value="1" class="form-check-input is-invalid">
+        <label class="form-check-label" for="frm-inlinecheckboxlist-1">bar</label>
+    </div>
+
+            <div class="d-block invalid-feedback">Control inlinecheckboxlist error 1.</div>
+        <div class="d-block invalid-feedback">Control inlinecheckboxlist error 2.</div>
+
+        </div>
+    </div>
+    <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label pt-sm-0">InlineRadioList</label>
+        <div class="col-sm-9">
+    <div class="form-check form-check-inline">
+        <input type="radio" name="inlineradiolist" id="frm-inlineradiolist-0" disabled value="0" class="form-check-input is-invalid">
+        <label class="form-check-label" for="frm-inlineradiolist-0">foo</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input type="radio" name="inlineradiolist" id="frm-inlineradiolist-1" value="1" class="form-check-input is-invalid">
+        <label class="form-check-label" for="frm-inlineradiolist-1">bar</label>
+    </div>
+
+            <div class="d-block invalid-feedback">Control inlineradiolist error 1.</div>
+        <div class="d-block invalid-feedback">Control inlineradiolist error 2.</div>
+
+        </div>
+    </div>
+    <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label" for="frm-range">Range</label>
+        <div class="col-sm-9">
+    <input type="range" name="range" id="frm-range" class="form-range is-invalid">
+
+            <div class="d-block invalid-feedback">Control range error 1.</div>
+        <div class="d-block invalid-feedback">Control range error 2.</div>
+
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <div class="col-sm-9 offset-sm-3">
+    <div class="form-check form-switch">
+        <input type="checkbox" name="switch" id="frm-switch" class="form-check-input is-invalid">
+        <label class="form-check-label" for="frm-switch">Switch</label>
+    </div>
+
+    <div class="form-text">Switch description</div>
+            <div class="d-block invalid-feedback">Control switch error 1.</div>
+        <div class="d-block invalid-feedback">Control switch error 2.</div>
+
+        </div>
+    </div>
+<input type="hidden" name="hidden" value="">    </form>
