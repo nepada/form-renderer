@@ -1,7 +1,7 @@
 {define #helpers-override-split}
     {default $parameters = []}
     {var $controlName = $control->lookupPath(\Nette\Forms\Form::class)}
-    {var $controlType = $control->getOption('type', 'default')}
+    {var $controlType = $control->getOption('type') ?? 'default'}
     {ifset #"{$blockNamePrefix}-name-{$controlName}"}
         {include #"{$blockNamePrefix}-name-{$controlName}", control => $control, (expand) $parameters}
     {elseifset #"{$blockNamePrefix}-type-{$controlType}"}
