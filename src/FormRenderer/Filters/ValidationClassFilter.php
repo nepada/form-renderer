@@ -20,6 +20,10 @@ final class ValidationClassFilter
         $this->validClass = $validClass;
     }
 
+    /**
+     * @template T
+     * @param Nette\Forms\Control<T> $control
+     */
     public function __invoke(Nette\Forms\Control $control): ?string
     {
         if (count($control->getErrors()) > 0) {
@@ -33,6 +37,10 @@ final class ValidationClassFilter
         return null;
     }
 
+    /**
+     * @template T
+     * @param Nette\Forms\Control<T> $control
+     */
     private function isFilled(Nette\Forms\Control $control): bool
     {
         if ($control instanceof Nette\Forms\Controls\TextInput && $control->getControlPrototype()->type === 'password') {

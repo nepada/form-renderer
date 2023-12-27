@@ -4,8 +4,12 @@ declare(strict_types = 1);
 namespace NepadaTests\FormRenderer\Fixtures;
 
 use Nette;
+use Nette\Forms\Controls\BaseControl;
 use Nette\Utils\Html;
 
+/**
+ * @extends BaseControl<mixed>
+ */
 class FooControl extends Nette\Forms\Controls\BaseControl
 {
 

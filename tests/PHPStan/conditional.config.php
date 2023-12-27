@@ -1,6 +1,8 @@
 <?php
 declare(strict_types = 1);
 
+use Composer\InstalledVersions;
+use Composer\Semver\VersionParser;
 use Nette\Localization\Translator;
 
 $config = [];
@@ -12,6 +14,12 @@ if ($isNetteUtils4) {
         'message' => '~^Parameter \\#1 \\$message of method Nette\\\\Localization\\\\Translator\\:\\:translate\\(\\) expects string\\|Stringable, mixed given\\.$~',
         'path' => '../../src/FormRenderer/Filters/SafeTranslateFilter.php',
         'count' => 1,
+    ];
+}
+
+if (InstalledVersions::satisfies(new VersionParser(), 'nette/forms', '<3.1.15')) {
+    $config['parameters']['ignoreErrors'][] = [
+        'message' => '~contains generic type Nette\\\\Forms\\\\Control<mixed> but interface Nette\\\\Forms\\\\Control is not generic~',
     ];
 }
 
