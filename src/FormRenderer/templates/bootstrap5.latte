@@ -173,6 +173,15 @@
     ">
 {/define}
 
+{define #input-type-color}
+    <input n:name="$control" n:class="
+        $control->getControlPrototype()->class,
+        form-control,
+        form-control-color,
+        ($control|validationClass)
+    ">
+{/define}
+
 {define #input-type-checkbox}
     <div n:class="
         $control->getSeparatorPrototype()->class,

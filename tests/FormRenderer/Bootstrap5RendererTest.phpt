@@ -75,6 +75,7 @@ class Bootstrap5RendererTest extends TestCase
             'inlineradiolist' => '1',
             'range' => 10,
             'switch' => true,
+            'color' => '#ff0000',
         ]);
         HtmlAssert::matchFile(__DIR__ . "/expected/bootstrap5-{$mode}-renderValidState.html", $form->__toString(), 'render valid state');
     }
@@ -224,6 +225,9 @@ class Bootstrap5RendererTest extends TestCase
 
         $range = $form->addText('range', 'Range');
         $range->setHtmlType('range')->setOption('type', 'range');
+
+        $color = $form->addText('color', 'Color');
+        $color->setHtmlType('color')->setOption('type', 'color');
 
         $switch = $form->addCheckbox('switch', 'Switch');
         $switch->setOption('type', 'switch');

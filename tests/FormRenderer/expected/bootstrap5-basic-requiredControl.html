@@ -116,9 +116,13 @@
     <div class="mb-3 required">
     <label class="form-label" for="frm-range">Range</label>
     <input type="range" name="range" id="frm-range" required data-nette-rules='[{"op":":filled","msg":"REQUIRED"}]' class="form-range align-top">
-
-
     </div>
+
+    <div class="mb-3 required">
+    <label class="form-label" for="frm-color">Color</label>
+    <input class="form-control form-control-color" data-nette-rules='[{"op":":filled","msg":"REQUIRED"}]' id="frm-color" name="color" required type="color">
+    </div>
+
     <div class="mb-3 required">
     <div class="form-check form-switch">
         <input type="checkbox" name="switch" id="frm-switch" required data-nette-rules='[{"op":":filled","msg":"REQUIRED"}]' class="form-check-input">

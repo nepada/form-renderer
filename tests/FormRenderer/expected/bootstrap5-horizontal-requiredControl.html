@@ -139,10 +139,16 @@
     <label class="col-sm-3 col-form-label pt-sm-0" for="frm-range">Range</label>
         <div class="col-sm-9">
     <input type="range" name="range" id="frm-range" required data-nette-rules='[{"op":":filled","msg":"REQUIRED"}]' class="form-range align-top">
-
-
         </div>
     </div>
+
+    <div class="mb-3 row required">
+    <label class="col-sm-3 col-form-label" for="frm-color">Color</label>
+    <div class="col-sm-9">
+    <input type="color" name="color" id="frm-color" required data-nette-rules='[{"op":":filled","msg":"REQUIRED"}]' class="form-control form-control-color">
+    </div>
+    </div>
+
     <div class="mb-3 row required">
         <div class="col-sm-9 offset-sm-3">
     <div class="form-check form-switch">
