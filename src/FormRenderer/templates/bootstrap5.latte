@@ -83,7 +83,7 @@
         $control->getLabelPrototype()->class,
         $mode === basic ? form-label,
         $gridLabelClass,
-        $mode === horizontal && in_array($control->getOption('type'), [radio, checkboxlist]) ? pt-sm-0,
+        $mode === horizontal && in_array($control->getOption('type'), [radio, checkboxlist, range]) ? pt-sm-0,
         $inlineSpacingClasses
     " />
 {/define}
@@ -157,6 +157,7 @@
     <input n:name="$control" n:class="
         $control->getControlPrototype()->class,
         form-range,
+        align-top,
         ($control|validationClass)
     ">
 {/define}
