@@ -39,7 +39,7 @@
 {/define}
 
 {define #controls}
-    <div n:tag-if="$mode === inline" class="row row-cols-sm-auto g-2 align-items-baseline">
+    <div n:tag-if="$mode === inline" n:class="$verticalSpacingClasses, row, row-cols-sm-auto, g-2, align-items-baseline">
         {foreach $group->getControls() as $control}
             {continueIf $control->getOption('rendered') || $control->getOption('type') === 'hidden'}
             {include #helpers-override-split, blockNamePrefix => pair, control => $control, parameters => [controlsIterator => $iterator]}
@@ -51,7 +51,7 @@
     <div n:tag-if="$mode === inline" class="col-12">
     <div n:attr="id => $control->getOption('id')" n:class="
         $control->getOption('class'),
-        $verticalSpacingClasses,
+        $mode !== inline ? $verticalSpacingClasses,
         $mode === horizontal ? row,
         $mode === inline ? 'row row-cols-sm-auto g-2 align-items-baseline',
         $control->isRequired() ? required
