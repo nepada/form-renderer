@@ -2,7 +2,7 @@
     "name": "nepada/form-renderer",
     "type": "library",
     "license": "BSD-3-Clause",
-    "description": "Latte template based form renderer for Nette forms with full support for Bootstrap 3 & 4.",
+    "description": "Latte template based form renderer for Nette forms with full support for Bootstrap 3, 4 & 5.",
     "keywords": ["forms", "renderer", "bootstrap", "nette", "latte"],
     "support": {
         "email": "petr@pada.cz",

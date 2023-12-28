@@ -89,6 +89,42 @@ For translations the templates may use custom `safeTranslate` filter. The key di
 In all form templates there is also available an improved version of `n:class` macro that supports merging of classes from `Nette\Utils\Html` instances. You can do stuff like `<input n:name="$control" n:class="$control->controlPrototype->class, form-control">` and don't need to worry if the class attribute is really represented as a string or array, it all just works. 
 
 
+### Bootstrap5Renderer
+
+Form renderer compatible with Bootstrap 5, it internally uses `TemplateRenderer` with [custom template](src/FormRenderer/templates/boostrap5.latte).
+
+The template supports three rendering modes:
+```php
+/** @var Nepada\FormRenderer\Bootstrap4RendererFactory $factory */
+$renderer = $factory->create();
+$renderer->setBasicMode(); // Basic form
+$renderer->setInlineMode(); // Inline form
+$renderer->setHorizontalMode(4, 8); // Horizontal form (you can optionally set the size of label and control columns)
+```
+
+Use `$renderer->setRenderValidState(true)` to enable/disable rendering of "valid" form control state for filled inputs after form submission.
+
+In inline mode the error messages are always rendered as tooltips. In the other modes you can switch between standard and tooltip rendering by calling `$renderer->setUseErrorTooltips(true)`.
+
+To render a checkbox as a switch, you need to set type option: `$checkboxInput->setOption('type', 'switch')`.
+
+`Bootstrap5Renderer` makes a couple of adjustments to the form before it is passed over to `TemplateRenderer`:
+1) It adds `btn btn-primary` classes to the control prototype of first `SubmitButton` in the form, unless there already is such a control in the form.
+2) It adds `btn btn-secondary` classes to the control prototype of every `Button` control, unless it already has `btn` class set.
+3) Changes `type` option on all `CheckboxList` controls from `checkbox` to `checkboxlist`.
+
+You can change the default renderer configuration from your `config.neon`:
+```yaml
+formRenderer:
+  bootstrap5:
+    mode: horizontal
+    renderValidState: true
+    useErrorTooltips: true
+    imports:
+      - %appDir%/templates/@form-extras.latte
+```
+
+
 ### Bootstrap4Renderer
 
 Form renderer compatible with Bootstrap 4, it internally uses `TemplateRenderer` with [custom template](src/FormRenderer/templates/boostrap4.latte).
@@ -108,7 +144,7 @@ In inline mode the error messages are always rendered as tooltips. In the other 
 
 You can enable the use of [custom form controls](https://getbootstrap.com/docs/4.4/components/forms/#custom-forms) by `$renderer->setUseCustomControls(true)`.
 
-To render a checkbox as a switch, you need to set type option: `$checkboxInput->setOption('type', 'switch')`. 
+To render a checkbox as a switch, you need to set type option: `$checkboxInput->setOption('type', 'switch')`.
 
 `Bootstrap4Renderer` makes a couple of adjustments to the form before it is passed over to `TemplateRenderer`:
 1) It adds `btn btn-primary` classes to the control prototype of first `SubmitButton` in the form, unless there already is such a control in the form.
