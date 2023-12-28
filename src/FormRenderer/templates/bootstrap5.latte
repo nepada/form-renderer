@@ -98,7 +98,7 @@
 {/define}
 
 {define #control-type-checkboxlist}
-    <div n:tag-if="$useErrorTooltips" n:class="position-relative, $mode === inline ? $inlineSpacingClasses">
+    <div n:class="$useErrorTooltips ? position-relative, $mode === inline ? $inlineSpacingClasses">
         {include #helpers-override-split, blockNamePrefix => input, control => $control}
         {if $useErrorTooltips}{include #control-errors, control => $control}{/if}
     </div>
