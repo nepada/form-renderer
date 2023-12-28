@@ -18,6 +18,13 @@ formRenderer:
         imports:
             - %fixturesDir%/form.latte
 
+    bootstrap5:
+        mode: horizontal
+        useErrorTooltips: false
+        renderValidState: false
+        imports:
+            - %fixturesDir%/form.latte
+
 application:
     scanDirs: false
 

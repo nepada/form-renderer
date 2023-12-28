@@ -7,6 +7,8 @@ use Nepada\FormRenderer\Bootstrap3Renderer;
 use Nepada\FormRenderer\Bootstrap3RendererFactory;
 use Nepada\FormRenderer\Bootstrap4Renderer;
 use Nepada\FormRenderer\Bootstrap4RendererFactory;
+use Nepada\FormRenderer\Bootstrap5Renderer;
+use Nepada\FormRenderer\Bootstrap5RendererFactory;
 use Nepada\FormRenderer\Filters\SafeTranslateFilterFactory;
 use Nepada\FormRenderer\TemplateRenderer;
 use Nepada\FormRenderer\TemplateRendererFactory;
@@ -48,10 +50,22 @@ class FormRendererExtension extends CompilerExtension
             'useErrorTooltips' => Nette\Schema\Expect::bool(false),
         ]);
 
+        $bootstrap5 = Nette\Schema\Expect::structure([
+            'imports' => clone $imports,
+            'mode' => Nette\Schema\Expect::anyOf(
+                Bootstrap5Renderer::MODE_BASIC,
+                Bootstrap5Renderer::MODE_INLINE,
+                Bootstrap5Renderer::MODE_HORIZONTAL,
+            )->default(Bootstrap5Renderer::MODE_BASIC),
+            'renderValidState' => Nette\Schema\Expect::bool(false),
+            'useErrorTooltips' => Nette\Schema\Expect::bool(false),
+        ]);
+
         return Nette\Schema\Expect::structure([
             'default' => $default,
             'bootstrap3' => $bootstrap3,
             'bootstrap4' => $bootstrap4,
+            'bootstrap5' => $bootstrap5,
         ]);
     }
 
@@ -71,6 +85,7 @@ class FormRendererExtension extends CompilerExtension
         $this->setupDefaultRenderer($config->default);
         $this->setupBootstrap3Renderer($config->bootstrap3);
         $this->setupBootstrap4Renderer($config->bootstrap4);
+        $this->setupBootstrap5Renderer($config->bootstrap5);
     }
 
     private function setupDefaultRenderer(\stdClass $config): void
@@ -133,6 +148,31 @@ class FormRendererExtension extends CompilerExtension
             $resultDefinition->addSetup('setBasicMode');
         } else {
             throw new \InvalidArgumentException("Unsupported bootstrap 4 renderer mode '{$config->mode}'.");
+        }
+    }
+
+    private function setupBootstrap5Renderer(\stdClass $config): void
+    {
+        $container = $this->getContainerBuilder();
+
+        $factory = $container->addFactoryDefinition($this->prefix('bootstrap5RendererFactory'))
+            ->setImplement(Bootstrap5RendererFactory::class);
+
+        $resultDefinition = $factory->getResultDefinition();
+        $resultDefinition->setArguments(['templateRendererFactory' => $this->prefix('@templateRendererFactory')]);
+        $resultDefinition->addSetup('setRenderValidState', [$config->renderValidState]);
+        $resultDefinition->addSetup('setUseErrorTooltips', [$config->useErrorTooltips]);
+        foreach ($config->imports as $templateFile) {
+            $resultDefinition->addSetup('importTemplate', [$templateFile]);
+        }
+        if ($config->mode === Bootstrap5Renderer::MODE_HORIZONTAL) {
+            $resultDefinition->addSetup('setHorizontalMode');
+        } elseif ($config->mode === Bootstrap5Renderer::MODE_INLINE) {
+            $resultDefinition->addSetup('setInlineMode');
+        } elseif ($config->mode === Bootstrap5Renderer::MODE_BASIC) {
+            $resultDefinition->addSetup('setBasicMode');
+        } else {
+            throw new \InvalidArgumentException("Unsupported bootstrap 5 renderer mode '{$config->mode}'.");
         }
     }
 

@@ -27,6 +27,7 @@ class FormRendererExtensionTest extends TestCase
         Assert::type(FormRenderer\TemplateRendererFactory::class, $this->container->getService('formRenderer.defaultRendererFactory'));
         Assert::type(FormRenderer\Bootstrap3RendererFactory::class, $this->container->getService('formRenderer.bootstrap3RendererFactory'));
         Assert::type(FormRenderer\Bootstrap4RendererFactory::class, $this->container->getService('formRenderer.bootstrap4RendererFactory'));
+        Assert::type(FormRenderer\Bootstrap5RendererFactory::class, $this->container->getService('formRenderer.bootstrap5RendererFactory'));
     }
 
     public function testRendering(): void
@@ -41,6 +42,9 @@ class FormRendererExtensionTest extends TestCase
 
         $bootstrap4Renderer = $this->container->getByType(FormRenderer\Bootstrap4RendererFactory::class)->create();
         Assert::same("FORM\nhorizontal\nform.latte,bootstrap4.latte\n", $bootstrap4Renderer->render($form));
+
+        $bootstrap5Renderer = $this->container->getByType(FormRenderer\Bootstrap5RendererFactory::class)->create();
+        Assert::same("FORM\nhorizontal\nform.latte,bootstrap5.latte\n", $bootstrap5Renderer->render($form));
     }
 
     protected function setUp(): void
