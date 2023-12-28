@@ -39,7 +39,7 @@
 {/define}
 
 {define #controls}
-    <div n:tag-if="$mode === inline" class="d-flex flex-row align-items-center flex-wrap">
+    <div n:tag-if="$mode === inline" class="row row-cols-sm-auto g-2 align-items-baseline">
         {foreach $group->getControls() as $control}
             {continueIf $control->getOption('rendered') || $control->getOption('type') === 'hidden'}
             {include #helpers-override-split, blockNamePrefix => pair, control => $control, parameters => [controlsIterator => $iterator]}
@@ -48,24 +48,27 @@
 {/define}
 
 {define #pair-type-default}
+    <div n:tag-if="$mode === inline" class="col-12">
     <div n:attr="id => $control->getOption('id')" n:class="
         $control->getOption('class'),
-        mb-3,
+        $verticalSpacingClasses,
         $mode === horizontal ? row,
+        $mode === inline ? 'row row-cols-sm-auto g-2 align-items-baseline',
         $control->isRequired() ? required
-    " n:tag-if="$mode !== inline">
+    ">
         {include #label, control => $control}
         <div n:tag-if="$mode === horizontal" n:class="$gridControlClass, !$control->getLabel() ? $gridOffsetClass">
             {include #helpers-override-split, blockNamePrefix => control, control => $control}
         </div>
     </div>
+    </div>
 {/define}
 
 {define #pair-type-button}
-    <div n:class="mb-3, $mode === horizontal ? row" n:tag-if="$mode !== inline">
+    <div n:tag-if="$mode !== inline" n:class="$verticalSpacingClasses, $mode === horizontal ? row">
         <div n:tag-if="$mode === horizontal" n:class="$gridControlClass, $gridOffsetClass" n:inner-block="#control-type-button">
             {if !$control->getOption('rendered')}
-                <div n:tag-if="$mode === inline" n:class="$inlineSpacingClasses">
+                <div n:tag-if="$mode === inline" class="col-auto">
                     {input $control}
                 </div>
                 {include #control-help, control => $control}
@@ -84,12 +87,12 @@
         $mode === basic ? form-label,
         $gridLabelClass,
         $mode === horizontal && in_array($control->getOption('type'), [radio, checkboxlist, range]) ? pt-sm-0,
-        $inlineSpacingClasses
+        $mode === inline ? col-12
     " />
 {/define}
 
 {define #control-type-default}
-    <div n:tag-if="$useErrorTooltips" n:class="position-relative, $mode === inline ? $inlineSpacingClasses">
+    <div n:tag-if="$useErrorTooltips" n:class="position-relative, $mode === inline ? col-12">
         {include #helpers-override-split, blockNamePrefix => input, control => $control}
         {if $useErrorTooltips}{include #control-errors, control => $control}{/if}
     </div>
@@ -98,7 +101,7 @@
 {/define}
 
 {define #control-type-checkboxlist}
-    <div n:class="$useErrorTooltips ? position-relative, $mode === inline ? $inlineSpacingClasses">
+    <div n:class="$useErrorTooltips ? position-relative, $mode === inline ? col-12">
         {include #helpers-override-split, blockNamePrefix => input, control => $control}
         {if $useErrorTooltips}{include #control-errors, control => $control}{/if}
     </div>
@@ -121,7 +124,7 @@
 {define #control-help}
     <div n:if="$control->getOption('description') !== null" n:class="
         form-text,
-        $inlineSpacingClasses
+        $mode === inline ? col-auto,
     ">{$control->getOption('description')|safeTranslate}</div>
 {/define}
 
@@ -209,8 +212,8 @@
     <div n:foreach="$control->items as $k => $v" n:class="
         $control->getSeparatorPrototype()->class,
         form-check,
-        $inlineSpacingClasses,
-        $mode !== inline && !$control->separatorPrototype->getName() ? form-check-inline
+        $mode === inline || !$control->separatorPrototype->getName() ? form-check-inline,
+        $mode === inline ? ($iterator->isLast() ? me-0 : me-1)
     ">
         <input n:name="$control:$k" n:class="
             $control->getControlPrototype()->class,
@@ -228,8 +231,8 @@
     <div n:foreach="$control->items as $k => $v" n:class="
         $control->getSeparatorPrototype()->class,
         form-check,
-        $inlineSpacingClasses,
-        $mode !== inline && !$control->separatorPrototype->getName() ? form-check-inline
+        $mode === inline || !$control->separatorPrototype->getName() ? form-check-inline,
+        $mode === inline ? ($iterator->isLast() ? me-0 : me-1)
     ">
         <input n:name="$control:$k" n:class="
             $control->getControlPrototype()->class,

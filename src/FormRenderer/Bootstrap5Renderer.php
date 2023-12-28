@@ -85,7 +85,7 @@ class Bootstrap5Renderer implements Nette\Forms\FormRenderer
         $template->gridOffsetClass = $this->mode === self::MODE_HORIZONTAL ? sprintf('offset-sm-%d', $this->labelCols) : null;
         $template->gridLabelClass = $this->mode === self::MODE_HORIZONTAL ? sprintf('col-sm-%d col-form-label', $this->labelCols) : null;
         $template->gridControlClass = $this->mode === self::MODE_HORIZONTAL ? sprintf('col-sm-%d', $this->controlCols) : null;
-        $template->inlineSpacingClasses = $this->mode === self::MODE_INLINE ? 'my-1 me-2' : null;
+        $template->verticalSpacingClasses = $this->mode === self::MODE_INLINE ? '' : 'mb-3';
 
         return $templateRenderer->render($form);
     }
