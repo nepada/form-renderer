@@ -95,7 +95,7 @@ Form renderer compatible with Bootstrap 5, it internally uses `TemplateRenderer`
 
 The template supports three rendering modes:
 ```php
-/** @var Nepada\FormRenderer\Bootstrap4RendererFactory $factory */
+/** @var Nepada\FormRenderer\Bootstrap5RendererFactory $factory */
 $renderer = $factory->create();
 $renderer->setBasicMode(); // Basic form
 $renderer->setInlineMode(); // Inline form
