@@ -7,6 +7,7 @@ use Nepada\FormRenderer\Filters\ValidationClassFilter;
 use Nette;
 use Nette\Forms\Controls;
 use Nette\Forms\Form;
+use function in_array;
 
 class Bootstrap5Renderer implements Nette\Forms\FormRenderer
 {
@@ -119,10 +120,33 @@ class Bootstrap5Renderer implements Nette\Forms\FormRenderer
             }
         }
 
+        /** @var Controls\Checkbox $control */
+        foreach ($form->getComponents(true, Controls\Checkbox::class) as $control) {
+            if ($control->getOption('type') !== 'checkbox') {
+                continue;
+            }
+            if (in_array('btn', Helpers::parseClassList($control->getLabelPrototype()->getClass()), true)) {
+                $control->setOption('type', 'togglebutton');
+            }
+        }
         /** @var Controls\CheckboxList $control */
         foreach ($form->getComponents(true, Controls\CheckboxList::class) as $control) {
-            if ($control->getOption('type') === 'checkbox') {
+            if ($control->getOption('type') !== 'checkbox') {
+                continue;
+            }
+            if (in_array('btn', Helpers::parseClassList($control->getItemLabelPrototype()->getClass()), true)) {
+                $control->setOption('type', 'togglebuttonlist');
+            } else {
                 $control->setOption('type', 'checkboxlist');
+            }
+        }
+        /** @var Controls\RadioList $control */
+        foreach ($form->getComponents(true, Controls\RadioList::class) as $control) {
+            if ($control->getOption('type') !== 'radio') {
+                continue;
+            }
+            if (in_array('btn', Helpers::parseClassList($control->getItemLabelPrototype()->getClass()), true)) {
+                $control->setOption('type', 'togglebuttonlist');
             }
         }
     }

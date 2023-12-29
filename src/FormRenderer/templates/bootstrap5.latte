@@ -113,6 +113,10 @@
     {include #control-type-checkboxlist, control => $control}
 {/define}
 
+{define #control-type-togglebuttonlist}
+    {include #control-type-checkboxlist, control => $control}
+{/define}
+
 {define #control-errors}
     {if $useErrorTooltips}
         <div n:if="count($control->getErrors()) > 0" class="d-block invalid-tooltip" n:inner-foreach="$control->getErrors() as $error">{$error}{sep} {/sep}</div>
@@ -217,6 +221,15 @@
     </div>
 {/define}
 
+{define #input-type-togglebutton}
+    <input n:name="$control:" n:class="
+        $control->getControlPrototype()->class,
+        btn-check,
+        ($control|validationClass)
+    ">
+    <label n:name="$control:" />
+{/define}
+
 {define #input-type-checkboxlist}
     <div n:foreach="$control->items as $k => $v" n:class="
         $control->getSeparatorPrototype()->class,
@@ -238,4 +251,15 @@
 
 {define #input-type-radio}
     {include #input-type-checkboxlist, control => $control}
+{/define}
+
+{define #input-type-togglebuttonlist}
+    {foreach $control->items as $k => $v}
+    <input n:name="$control:$k" n:class="
+        $control->getControlPrototype()->class,
+        btn-check,
+        ($control|validationClass)
+    ">
+    <label n:name="$control:$k">{=$control->translate($v)}</label>
+    {/foreach}
 {/define}

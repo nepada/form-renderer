@@ -152,4 +152,34 @@
 
         </div>
     </div>
+
+<div class="mb-3 row required">
+<div class="col-sm-9 offset-sm-3">
+<input class="btn-check" id="frm-toggle" name="toggle" type="checkbox" data-nette-rules='[{"op":":filled","msg":"REQUIRED"}]' required>
+<label class="btn" for="frm-toggle">Toggle</label>
+</div>
+</div>
+<div class="mb-3 row required">
+<label class="col-sm-3 col-form-label">Checkbox toggle list</label>
+<div class="col-sm-9">
+<input class="btn-check" id="frm-checkboxtogglelist-0" name="checkboxtogglelist[]" type="checkbox" value="0" data-nette-rules='[{"op":":filled","msg":"REQUIRED"}]'>
+<label class="btn btn-secondary" for="frm-checkboxtogglelist-0">foo</label>
+<input class="btn-check" disabled id="frm-checkboxtogglelist-1" name="checkboxtogglelist[]" type="checkbox" value="1" data-nette-rules='[{"op":":filled","msg":"REQUIRED"}]'>
+<label class="btn btn-secondary" for="frm-checkboxtogglelist-1">bar</label>
+<input class="btn-check" id="frm-checkboxtogglelist-2" name="checkboxtogglelist[]" type="checkbox" value="2" data-nette-rules='[{"op":":filled","msg":"REQUIRED"}]'>
+<label class="btn btn-secondary" for="frm-checkboxtogglelist-2">baz</label>
+</div>
+</div>
+<div class="mb-3 row required">
+<label class="col-sm-3 col-form-label">Radio toggle list</label>
+<div class="col-sm-9">
+<input class="btn-check" id="frm-radiotogglelist-0" name="radiotogglelist" type="radio" value="0" data-nette-rules='[{"op":":filled","msg":"REQUIRED"}]' required>
+<label class="btn btn-outline-primary" for="frm-radiotogglelist-0">foo</label>
+<input class="btn-check" disabled id="frm-radiotogglelist-1" name="radiotogglelist" type="radio" value="1" data-nette-rules='[{"op":":filled","msg":"REQUIRED"}]' required>
+<label class="btn btn-outline-primary" for="frm-radiotogglelist-1">bar</label>
+<input class="btn-check" id="frm-radiotogglelist-2" name="radiotogglelist" type="radio" value="2" data-nette-rules='[{"op":":filled","msg":"REQUIRED"}]' required>
+<label class="btn btn-outline-primary" for="frm-radiotogglelist-2">baz</label>
+</div>
+</div>
+
 <input type="hidden" name="hidden" value="">    </form>

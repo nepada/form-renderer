@@ -233,6 +233,18 @@ class Bootstrap5RendererTest extends TestCase
         $switch->setOption('type', 'switch');
         $switch->setOption('description', 'Switch description');
 
+        $toggle = $form->addCheckbox('toggle', 'Toggle');
+        $toggle->getLabelPrototype()->addClass('btn');
+
+        $checkboxToggles = $form->addCheckboxList('checkboxtogglelist', 'Checkbox toggle list', ['foo', 'bar', 'baz']);
+        $checkboxToggles->getItemLabelPrototype()->addClass('btn btn-secondary');
+        $checkboxToggles->setDisabled(['1']);
+        $checkboxToggles->getSeparatorPrototype()->setName('');
+
+        $radioToggles = $form->addRadioList('radiotogglelist', 'Radio toggle list', ['foo', 'bar', 'baz']);
+        $radioToggles->getItemLabelPrototype()->addClass('btn btn-outline-primary');
+        $radioToggles->setDisabled(['1']);
+
         return $form;
     }
 
