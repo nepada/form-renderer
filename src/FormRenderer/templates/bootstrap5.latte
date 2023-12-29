@@ -92,7 +92,7 @@
 {/define}
 
 {define #control-type-default}
-    <div n:tag-if="$useErrorTooltips || in_array($mode, [inline])" n:class="position-relative, $mode === inline ? col-12">
+    <div n:tag-if="$useErrorTooltips || in_array($mode, [inline])" n:class="$useErrorTooltips ? position-relative, $mode === inline ? col-12">
         {include #helpers-override-split, blockNamePrefix => input, control => $control}
         {if $useErrorTooltips}{include #control-errors, control => $control}{/if}
     </div>
