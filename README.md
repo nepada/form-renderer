@@ -106,6 +106,8 @@ Use `$renderer->setRenderValidState(true)` to enable/disable rendering of "valid
 
 In inline mode the error messages are always rendered as tooltips. In the other modes you can switch between standard and tooltip rendering by calling `$renderer->setUseErrorTooltips(true)`.
 
+You can enable [floating labels](https://getbootstrap.com/docs/5.3/forms/floating-labels/) for supported controls by `$renderer->setUseFloatingLabels(true)` (available for in basic mode only).
+
 To render a checkbox as a switch, you need to set type option: `$checkboxInput->setOption('type', 'switch')`.
 
 To render radio or checkbox as a [toggle button](https://getbootstrap.com/docs/5.3/forms/checks-radios/#toggle-buttons), add `btn` class (and any desired button styling class) to label prototype: `$radio->getItemLabelPrototype()->addClass('btn btn-outline-primary')`.

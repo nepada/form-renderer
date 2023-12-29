@@ -59,6 +59,7 @@ class FormRendererExtension extends CompilerExtension
             )->default(Bootstrap5Renderer::MODE_BASIC),
             'renderValidState' => Nette\Schema\Expect::bool(false),
             'useErrorTooltips' => Nette\Schema\Expect::bool(false),
+            'useFloatingLabels' => Nette\Schema\Expect::bool(false),
         ]);
 
         return Nette\Schema\Expect::structure([
@@ -162,6 +163,7 @@ class FormRendererExtension extends CompilerExtension
         $resultDefinition->setArguments(['templateRendererFactory' => $this->prefix('@templateRendererFactory')]);
         $resultDefinition->addSetup('setRenderValidState', [$config->renderValidState]);
         $resultDefinition->addSetup('setUseErrorTooltips', [$config->useErrorTooltips]);
+        $resultDefinition->addSetup('setUseFloatingLabels', [$config->useFloatingLabels]);
         foreach ($config->imports as $templateFile) {
             $resultDefinition->addSetup('importTemplate', [$templateFile]);
         }

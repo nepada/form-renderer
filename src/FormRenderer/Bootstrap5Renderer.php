@@ -31,6 +31,8 @@ class Bootstrap5Renderer implements Nette\Forms\FormRenderer
 
     private bool $useErrorTooltips = false;
 
+    private bool $useFloatingLabels = false;
+
     private string $mode = self::MODE_BASIC;
 
     private int $labelCols = self::DEFAULT_LABEL_COLS;
@@ -57,6 +59,11 @@ class Bootstrap5Renderer implements Nette\Forms\FormRenderer
         $this->useErrorTooltips = $useErrorTooltips;
     }
 
+    public function setUseFloatingLabels(bool $useFloatingLabels = true): void
+    {
+        $this->useFloatingLabels = $useFloatingLabels;
+    }
+
     public function setBasicMode(): void
     {
         $this->mode = self::MODE_BASIC;
@@ -81,7 +88,9 @@ class Bootstrap5Renderer implements Nette\Forms\FormRenderer
         $templateRenderer = $this->getTemplateRenderer();
         $template = $templateRenderer->getTemplate();
         $template->addFilter('validationClass', new ValidationClassFilter('is-invalid', $this->shouldRenderValidState($form) ? 'is-valid' : null));
+        $template->addFunction('areFloatingLabelsSupportedByControl', fn (Nette\Forms\Control $control): bool => $this->areFloatingLabelsSupportedByControl($control));
         $template->useErrorTooltips = $this->shouldUseErrorTooltips();
+        $template->useFloatingLabels = $this->shouldUseFloatingLabels();
         $template->mode = $this->mode;
         $template->gridOffsetClass = $this->mode === self::MODE_HORIZONTAL ? sprintf('offset-sm-%d', $this->labelCols) : null;
         $template->gridLabelClass = $this->mode === self::MODE_HORIZONTAL ? sprintf('col-sm-%d col-form-label', $this->labelCols) : null;
@@ -172,6 +181,32 @@ class Bootstrap5Renderer implements Nette\Forms\FormRenderer
     protected function shouldUseErrorTooltips(): bool
     {
         return $this->mode === self::MODE_INLINE || $this->useErrorTooltips;
+    }
+
+    protected function shouldUseFloatingLabels(): bool
+    {
+        return $this->mode === self::MODE_BASIC && $this->useFloatingLabels;
+    }
+
+    /**
+     * @param Nette\Forms\Control<mixed> $control
+     */
+    protected function areFloatingLabelsSupportedByControl(Nette\Forms\Control $control): bool
+    {
+        if (! $control instanceof Controls\BaseControl) {
+            return false;
+        }
+
+        return in_array(
+            $control->getOption('type'),
+            [
+                'text',
+                'textarea',
+                'datetime',
+                'select',
+            ],
+            true,
+        );
     }
 
 }

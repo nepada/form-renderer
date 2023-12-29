@@ -56,7 +56,8 @@
         $mode === inline ? 'row row-cols-sm-auto g-2 align-items-baseline',
         $control->isRequired() ? required
     ">
-        {include #label, control => $control}
+        {var $renderFloatingLabel = $useFloatingLabels && areFloatingLabelsSupportedByControl($control)}
+        {if !$renderFloatingLabel}{include #label, control => $control}{/if}
         <div n:tag-if="$mode === horizontal" n:class="$gridControlClass, !$control->getLabel() ? $gridOffsetClass">
             {include #helpers-override-split, blockNamePrefix => control, control => $control}
         </div>
@@ -137,11 +138,15 @@
 {/define}
 
 {define #input-type-text}
-    <input n:name="$control" n:class="
+    {var $renderFloatingLabel = $useFloatingLabels && areFloatingLabelsSupportedByControl($control)}
+    <div n:tag-if="$renderFloatingLabel" class="form-floating">
+    <input n:name="$control" n:attr="placeholder: $renderFloatingLabel ? ($control->getControl()->placeholder ?? '')" n:class="
         $control->getControlPrototype()->class,
         form-control,
         ($control|validationClass)
     ">
+    {if $renderFloatingLabel}{include #label, control => $control}{/if}
+    </div>
 {/define}
 
 {define #input-type-datetime}
@@ -149,19 +154,27 @@
 {/define}
 
 {define #input-type-textarea}
-    <textarea n:name="$control" n:class="
+    {var $renderFloatingLabel = $useFloatingLabels && areFloatingLabelsSupportedByControl($control)}
+    <div n:tag-if="$renderFloatingLabel" class="form-floating">
+    <textarea n:name="$control" n:attr="placeholder: $renderFloatingLabel ? ($control->getControl()->placeholder ?? '')" n:class="
         $control->getControlPrototype()->class,
         form-control,
         ($control|validationClass)
     " />
+    {if $renderFloatingLabel}{include #label, control => $control}{/if}
+    </div>
 {/define}
 
 {define #input-type-select}
-    <select n:name="$control" n:class="
+    {var $renderFloatingLabel = $useFloatingLabels && areFloatingLabelsSupportedByControl($control)}
+    <div n:tag-if="$renderFloatingLabel" class="form-floating">
+    <select n:name="$control" n:attr="placeholder: $renderFloatingLabel ? ($control->getControl()->placeholder ?? '')" n:class="
         $control->getControlPrototype()->class,
         form-select,
         ($control|validationClass)
     " />
+    {if $renderFloatingLabel}{include #label, control => $control}{/if}
+    </div>
 {/define}
 
 {define #input-type-range}

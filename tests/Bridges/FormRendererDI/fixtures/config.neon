@@ -22,6 +22,7 @@ formRenderer:
         mode: horizontal
         useErrorTooltips: false
         renderValidState: false
+        useFloatingLabels: false
         imports:
             - %fixturesDir%/form.latte
 

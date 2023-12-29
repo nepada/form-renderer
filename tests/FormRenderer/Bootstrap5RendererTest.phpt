@@ -43,6 +43,17 @@ class Bootstrap5RendererTest extends TestCase
         HtmlAssert::matchFile(__DIR__ . "/expected/bootstrap5-{$mode}.html", $form->__toString());
     }
 
+    public function testUseFloatingLabels(): void
+    {
+        $mode = FormRenderer\Bootstrap5Renderer::MODE_BASIC;
+        $form = $this->createTestForm();
+        $renderer = $this->createRenderer($mode);
+        $renderer->setUseFloatingLabels(true);
+        $form->setRenderer($renderer);
+
+        HtmlAssert::matchFile(__DIR__ . "/expected/bootstrap5-{$mode}-floatingLabels.html", $form->__toString());
+    }
+
     /**
      * @dataProvider getRendererModes
      */
