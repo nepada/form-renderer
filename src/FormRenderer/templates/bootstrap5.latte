@@ -144,6 +144,10 @@
     ">
 {/define}
 
+{define #input-type-datetime}
+    {include #input-type-text, control => $control}
+{/define}
+
 {define #input-type-textarea}
     <textarea n:name="$control" n:class="
         $control->getControlPrototype()->class,
