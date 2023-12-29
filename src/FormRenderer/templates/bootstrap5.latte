@@ -237,20 +237,5 @@
 {/define}
 
 {define #input-type-radio}
-    <div n:foreach="$control->items as $k => $v" n:class="
-        $control->getSeparatorPrototype()->class,
-        form-check,
-        $mode === inline || !$control->separatorPrototype->getName() ? form-check-inline,
-        $mode === inline ? ($iterator->isLast() ? me-0 : me-1)
-    ">
-        <input n:name="$control:$k" n:class="
-            $control->getControlPrototype()->class,
-            form-check-input,
-            ($control|validationClass)
-        ">
-        <label n:name="$control:$k" n:class="
-            $control->getItemLabelPrototype()->class,
-            form-check-label
-        ">{=$control->translate($v)}</label>
-    </div>
+    {include #input-type-checkboxlist, control => $control}
 {/define}
