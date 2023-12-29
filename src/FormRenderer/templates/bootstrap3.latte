@@ -89,6 +89,14 @@
     {include #control-help, control => $control}
 {/define}
 
+{define #input-type-datetime}
+    {include #input-type-text, control => $control}
+{/define}
+
+{define #input-type-color}
+    {include #input-type-text, control => $control}
+{/define}
+
 {define #control-type-textarea}
     <textarea n:name="$control" n:class="$control->getControlPrototype()->class, form-control" />
     {include #control-help, control => $control}
