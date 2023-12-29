@@ -92,7 +92,7 @@
 {/define}
 
 {define #control-type-default}
-    <div n:tag-if="$useErrorTooltips" n:class="position-relative, $mode === inline ? col-12">
+    <div n:tag-if="$useErrorTooltips || in_array($mode, [inline])" n:class="position-relative, $mode === inline ? col-12">
         {include #helpers-override-split, blockNamePrefix => input, control => $control}
         {if $useErrorTooltips}{include #control-errors, control => $control}{/if}
     </div>
@@ -101,7 +101,7 @@
 {/define}
 
 {define #control-type-checkboxlist}
-    <div n:class="$useErrorTooltips ? position-relative, $mode === inline ? col-12">
+    <div n:tag-if="$useErrorTooltips || in_array($mode, [inline, basic])" n:class="$useErrorTooltips ? position-relative, $mode === inline ? col-12">{* render in basic mode to get line break between label and inputs *}
         {include #helpers-override-split, blockNamePrefix => input, control => $control}
         {if $useErrorTooltips}{include #control-errors, control => $control}{/if}
     </div>
