@@ -169,7 +169,7 @@
 {define #input-type-select}
     {var $renderFloatingLabel = $useFloatingLabels && $control->getOption('floatingLabel')}
     <div n:tag-if="$renderFloatingLabel" class="form-floating">
-    <select n:name="$control" n:attr="placeholder: $renderFloatingLabel ? ($control->getControl()->placeholder ?? '')" n:class="
+    <select n:name="$control" n:class="
         $control->getControlPrototype()->class,
         form-select,
         ($control|validationClass)
