@@ -47,6 +47,10 @@ class Bootstrap5RendererTest extends TestCase
     {
         $mode = FormRenderer\Bootstrap5Renderer::MODE_BASIC;
         $form = $this->createTestForm();
+
+        $form->addText('disabled', 'Disabled floating label')
+            ->setOption(FormRenderer\Bootstrap5Renderer::OPTION_FLOATING_LABEL, false);
+
         $renderer = $this->createRenderer($mode);
         $renderer->setUseFloatingLabels(true);
         $form->setRenderer($renderer);

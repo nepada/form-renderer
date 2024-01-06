@@ -106,7 +106,7 @@ Use `$renderer->setRenderValidState(true)` to enable/disable rendering of "valid
 
 In inline mode the error messages are always rendered as tooltips. In the other modes you can switch between standard and tooltip rendering by calling `$renderer->setUseErrorTooltips(true)`.
 
-You can enable [floating labels](https://getbootstrap.com/docs/5.3/forms/floating-labels/) for supported controls by `$renderer->setUseFloatingLabels(true)` (available for in basic mode only).
+You can enable [floating labels](https://getbootstrap.com/docs/5.3/forms/floating-labels/) by `$renderer->setUseFloatingLabels(true)` (available for in basic mode only). By default, all controls of  `text`, `datetime`, `textarea` and `select` type are rendered with floating label, but you can manually override this on a specific control by setting `$input->setOption('floatingLabel', false)`.
 
 To render a checkbox as a switch, you need to set type option: `$checkboxInput->setOption('type', 'switch')`.
 
@@ -117,6 +117,7 @@ To render radio or checkbox as a [toggle button](https://getbootstrap.com/docs/5
 2) It adds `btn btn-secondary` classes to the control prototype of every `Button` control, unless it already has `btn` class set.
 3) Changes `type` option on all `Checkbox`, `CheckboxList`, `RadioList` controls setup to be rendered as toggle buttons from `checkbox`/`radio` to `togglebutton`/`togglebuttonlist`.
 4) Changes `type` option on all `CheckboxList` controls from `checkbox` to `checkboxlist`.
+5) When floating labels are enabled, it sets boolean `floatingLabel` option (unless already set) on all controls to indicate whether the floating label should be rendered.
 
 You can change the default renderer configuration from your `config.neon`:
 ```yaml
