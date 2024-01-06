@@ -207,7 +207,8 @@
 {define #input-type-checkbox}
     <div n:class="
         $control->getSeparatorPrototype()->class,
-        form-check
+        form-check,
+        $mode === inline ? mb-0
     ">
         <input n:name="$control:" n:class="
             $control->getControlPrototype()->class,
@@ -225,7 +226,8 @@
     <div n:class="
         $control->getSeparatorPrototype()->class,
         form-check,
-        form-switch
+        form-switch,
+        $mode === inline ? mb-0
     ">
         <input n:name="$control:" n:class="
             $control->getControlPrototype()->class,
@@ -253,7 +255,8 @@
         $control->getSeparatorPrototype()->class,
         form-check,
         $mode === inline || !$control->separatorPrototype->getName() ? form-check-inline,
-        $mode === inline ? ($iterator->isLast() ? me-0 : me-1)
+        $mode === inline ? ($iterator->isLast() ? me-0 : me-1),
+        $mode === inline ? mb-0
     ">
         <input n:name="$control:$k" n:class="
             $control->getControlPrototype()->class,
