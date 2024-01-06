@@ -83,12 +83,13 @@
 {/define}
 
 {define #label}
+    {var $renderFloatingLabel = $useFloatingLabels && $control->getOption('floatingLabel')}
     <label n:if="$control->getLabel()" n:name="$control" n:class="
         $control->getLabelPrototype()->class,
         $mode === basic ? form-label,
         $gridLabelClass,
         $mode === horizontal && in_array($control->getOption('type'), [radio, checkboxlist, range]) ? pt-sm-0,
-        $mode === inline ? col-12
+        $mode === inline && !$renderFloatingLabel ? col-12
     " />
 {/define}
 

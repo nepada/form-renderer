@@ -43,17 +43,19 @@ class Bootstrap5RendererTest extends TestCase
         HtmlAssert::matchFile(__DIR__ . "/expected/bootstrap5-{$mode}.html", $form->__toString());
     }
 
-    public function testUseFloatingLabels(): void
+    /**
+     * @dataProvider getRendererModes
+     */
+    public function testUseFloatingLabels(string $mode): void
     {
-        $mode = FormRenderer\Bootstrap5Renderer::MODE_BASIC;
+        $renderer = $this->createRenderer($mode);
+        $renderer->setUseFloatingLabels(true);
+
         $form = $this->createTestForm();
+        $form->setRenderer($renderer);
 
         $form->addText('disabled', 'Disabled floating label')
             ->setOption(FormRenderer\Bootstrap5Renderer::OPTION_FLOATING_LABEL, false);
-
-        $renderer = $this->createRenderer($mode);
-        $renderer->setUseFloatingLabels(true);
-        $form->setRenderer($renderer);
 
         HtmlAssert::matchFile(__DIR__ . "/expected/bootstrap5-{$mode}-floatingLabels.html", $form->__toString());
     }

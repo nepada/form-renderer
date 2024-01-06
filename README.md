@@ -106,7 +106,7 @@ Use `$renderer->setRenderValidState(true)` to enable/disable rendering of "valid
 
 In inline mode the error messages are always rendered as tooltips. In the other modes you can switch between standard and tooltip rendering by calling `$renderer->setUseErrorTooltips(true)`.
 
-You can enable [floating labels](https://getbootstrap.com/docs/5.3/forms/floating-labels/) by `$renderer->setUseFloatingLabels(true)` (available for in basic mode only). By default, all controls of  `text`, `datetime`, `textarea` and `select` type are rendered with floating label, but you can manually override this on a specific control by setting `$input->setOption('floatingLabel', false)`.
+You can enable [floating labels](https://getbootstrap.com/docs/5.3/forms/floating-labels/) by `$renderer->setUseFloatingLabels(true)` (ignored in horizontal mode only). By default, all controls of  `text`, `datetime`, `textarea` and `select` type are rendered with floating label, but you can manually override this on a specific control by setting `$input->setOption('floatingLabel', false)`.
 
 To render a checkbox as a switch, you need to set type option: `$checkboxInput->setOption('type', 'switch')`.
 

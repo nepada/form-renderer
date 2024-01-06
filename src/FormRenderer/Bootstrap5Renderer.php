@@ -196,7 +196,7 @@ class Bootstrap5Renderer implements Nette\Forms\FormRenderer
 
     protected function shouldUseFloatingLabels(): bool
     {
-        return $this->mode === self::MODE_BASIC && $this->useFloatingLabels;
+        return $this->mode !== self::MODE_HORIZONTAL && $this->useFloatingLabels;
     }
 
 }
