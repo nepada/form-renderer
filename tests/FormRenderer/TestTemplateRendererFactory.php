@@ -34,7 +34,7 @@ final class TestTemplateRendererFactory implements TemplateRendererFactory
                 $latte = new Latte\Engine();
                 $latte->setTempDirectory(Environment::getTempDir());
 
-                $latte->addFilter('translate', fn (Latte\Runtime\FilterInfo $fi, ...$args) => reset($args));
+                $latte->addFilter('translate', fn (Latte\Runtime\FilterInfo $fi, mixed ...$args) => reset($args));
 
                 return $latte;
             }
