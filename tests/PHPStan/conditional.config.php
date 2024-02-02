@@ -17,7 +17,7 @@ if ($isNetteUtils4) {
     ];
 }
 
-if (InstalledVersions::satisfies(new VersionParser(), 'nette/forms', '<3.1.15')) {
+if (InstalledVersions::satisfies(new VersionParser(), 'nette/forms', '<3.2')) {
     $config['parameters']['ignoreErrors'][] = [
         'message' => '~contains generic type Nette\\\\Forms\\\\Control<mixed> but interface Nette\\\\Forms\\\\Control is not generic~',
     ];
