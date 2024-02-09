@@ -5,9 +5,6 @@ namespace NepadaTests\FormRenderer\Filters\Fixtures;
 
 use Nette;
 
-/**
- * @implements  Nette\Forms\Control<mixed>
- */
 class CustomControl implements Nette\Forms\Control
 {
 

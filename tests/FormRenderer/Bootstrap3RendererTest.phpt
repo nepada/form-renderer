@@ -85,7 +85,7 @@ class Bootstrap3RendererTest extends TestCase
         $form = $this->createTestForm();
         $form->addError('Form error 1.');
         $form->addError('Form error 2.');
-        /** @var Nette\Forms\Controls\BaseControl<mixed> $control */
+        /** @var Nette\Forms\Controls\BaseControl $control */
         foreach ($form->getControls() as $control) {
             if ($control instanceof Nette\Forms\Controls\Button) {
                 continue;
@@ -106,7 +106,7 @@ class Bootstrap3RendererTest extends TestCase
     public function testRequiredControl(string $mode): void
     {
         $form = $this->createTestForm();
-        /** @var Nette\Forms\Controls\BaseControl<mixed> $control */
+        /** @var Nette\Forms\Controls\BaseControl $control */
         foreach ($form->getControls() as $control) {
             $control->setRequired('REQUIRED');
         }
@@ -123,7 +123,7 @@ class Bootstrap3RendererTest extends TestCase
     public function testControlDescription(string $mode): void
     {
         $form = $this->createTestForm();
-        /** @var Nette\Forms\Controls\BaseControl<mixed> $control */
+        /** @var Nette\Forms\Controls\BaseControl $control */
         foreach ($form->getControls() as $control) {
             $control->setOption('description', "Control {$control->getName()} description.");
         }
@@ -140,7 +140,7 @@ class Bootstrap3RendererTest extends TestCase
     public function testCustomControlId(string $mode): void
     {
         $form = $this->createTestForm();
-        /** @var Nette\Forms\Controls\BaseControl<mixed> $control */
+        /** @var Nette\Forms\Controls\BaseControl $control */
         foreach ($form->getControls() as $control) {
             $control->setOption('id', sprintf('custom-%s', $control->lookupPath()));
         }
@@ -157,7 +157,7 @@ class Bootstrap3RendererTest extends TestCase
     public function testCustomControlClass(string $mode): void
     {
         $form = $this->createTestForm();
-        /** @var Nette\Forms\Controls\BaseControl<mixed> $control */
+        /** @var Nette\Forms\Controls\BaseControl $control */
         foreach ($form->getControls() as $control) {
             $control->setOption('class', sprintf('custom-%s', $control->lookupPath()));
         }
