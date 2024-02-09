@@ -161,6 +161,7 @@ class Bootstrap5Renderer implements Nette\Forms\FormRenderer
         }
 
         if ($this->shouldUseFloatingLabels()) {
+            /** @var Controls\BaseControl $control */
             foreach ($form->getComponents(true, Controls\BaseControl::class) as $control) {
                 if ($control->getOption(self::OPTION_FLOATING_LABEL) !== null) {
                     continue;
