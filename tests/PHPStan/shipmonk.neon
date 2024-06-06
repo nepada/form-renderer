@@ -5,8 +5,6 @@ parameters:
     shipmonkRules:
         allowComparingOnlyComparableTypes:
             enabled: false
-        allowNamedArgumentOnlyInAttributes:
-            enabled: false
         classSuffixNaming:
             superclassToSuffixMapping:
                 \Throwable: Exception
