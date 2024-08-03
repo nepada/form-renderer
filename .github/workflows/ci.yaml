@@ -37,8 +37,8 @@ jobs:
         run: vendor/bin/tester -c tests/php.ini -s tests
       - name: PHPStan
         run: |
-          vendor/bin/phpstan analyse
-          vendor/bin/phpstan analyse -c phpstan.tests.neon.dist
+          vendor/bin/phpstan analyse -v
+          vendor/bin/phpstan analyse -v -c phpstan.tests.neon.dist
       - if: failure()
         uses: actions/upload-artifact@v4
         with:
