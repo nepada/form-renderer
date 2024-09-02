@@ -43,7 +43,7 @@ final class HtmlAssert
             $content,
             '~(<[^>\s]+)\s*([^>]*?)\s*(/?>)~m',
             function (array $matches): string {
-                $attributes = Strings::matchAll($matches[2], '~[^=\s]+(?:=(?:\'[^\']*\'|"[^"]*"))?~', PREG_PATTERN_ORDER)[0] ?? [];
+                $attributes = Strings::matchAll($matches[2], '~[^=\s]+(?:=(?:\'[^\']*\'|"[^"]*"))?~', PREG_PATTERN_ORDER)[0];
                 $serializedAttributes = '';
                 if ($attributes !== []) {
                     sort($attributes);
