@@ -20,6 +20,9 @@ jobs:
           - ''
           - '--prefer-stable'
           - '--prefer-stable --prefer-lowest'
+        include:
+          - php: 8.4
+            composer_args: '--ignore-platform-req=php+'
     name: PHP ${{ matrix.php }} ${{ matrix.composer_args }}
     steps:
       - uses: actions/checkout@v4
