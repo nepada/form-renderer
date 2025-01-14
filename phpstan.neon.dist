@@ -29,3 +29,48 @@ parameters:
         -
             message: '#If condition is always false#'
             path: src/compatibility.php
+        - # pre-validated config structure
+            message: '#^Argument of an invalid type mixed supplied for foreach, only iterables are supported\.$#'
+            identifier: foreach.nonIterable
+            count: 4
+            path: src/Bridges/FormRendererDI/FormRendererExtension.php
+        - # pre-validated config structure
+            message: '#^Parameter \#1 \$config of method Nepada\\Bridges\\FormRendererDI\\FormRendererExtension\:\:setupBootstrap3Renderer\(\) expects stdClass, mixed given\.$#'
+            identifier: argument.type
+            count: 1
+            path: src/Bridges/FormRendererDI/FormRendererExtension.php
+        - # pre-validated config structure
+            message: '#^Parameter \#1 \$config of method Nepada\\Bridges\\FormRendererDI\\FormRendererExtension\:\:setupBootstrap4Renderer\(\) expects stdClass, mixed given\.$#'
+            identifier: argument.type
+            count: 1
+            path: src/Bridges/FormRendererDI/FormRendererExtension.php
+        - # pre-validated config structure
+            message: '#^Parameter \#1 \$config of method Nepada\\Bridges\\FormRendererDI\\FormRendererExtension\:\:setupBootstrap5Renderer\(\) expects stdClass, mixed given\.$#'
+            identifier: argument.type
+            count: 1
+            path: src/Bridges/FormRendererDI/FormRendererExtension.php
+        - # pre-validated config structure
+            message: '#^Parameter \#1 \$config of method Nepada\\Bridges\\FormRendererDI\\FormRendererExtension\:\:setupDefaultRenderer\(\) expects stdClass, mixed given\.$#'
+            identifier: argument.type
+            count: 1
+            path: src/Bridges/FormRendererDI/FormRendererExtension.php
+        - # pre-validated config structure
+            message: '#^Part \$config\-\>mode \(mixed\) of encapsed string cannot be cast to string\.$#'
+            identifier: encapsedStringPart.nonString
+            count: 3
+            path: src/Bridges/FormRendererDI/FormRendererExtension.php
+        - # false positive
+            message: '#^Parameter \#1 \$value of static method Nepada\\FormRenderer\\Helpers\:\:parseClassList\(\) expects array\<mixed\>\|string\|null, mixed given\.$#'
+            identifier: argument.type
+            count: 2
+            path: src/FormRenderer/Bootstrap3Renderer.php
+        - # false positive
+            message: '#^Parameter \#1 \$value of static method Nepada\\FormRenderer\\Helpers\:\:parseClassList\(\) expects array\<mixed\>\|string\|null, mixed given\.$#'
+            identifier: argument.type
+            count: 2
+            path: src/FormRenderer/Bootstrap4Renderer.php
+        - # false positive
+            message: '#^Parameter \#1 \$value of static method Nepada\\FormRenderer\\Helpers\:\:parseClassList\(\) expects array\<mixed\>\|string\|null, mixed given\.$#'
+            identifier: argument.type
+            count: 5
+            path: src/FormRenderer/Bootstrap5Renderer.php

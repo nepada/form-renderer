@@ -13,7 +13,7 @@ final class Helpers
 
     /**
      * @param string|mixed[]|null $value
-     * @return string[]
+     * @return list<string>
      */
     public static function parseClassList(string|array|null $value): array
     {

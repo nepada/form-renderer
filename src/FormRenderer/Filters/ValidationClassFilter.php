@@ -40,7 +40,7 @@ final class ValidationClassFilter
         }
 
         if ($control instanceof Nette\Forms\Controls\BaseControl || method_exists($control, 'isFilled')) {
-            return $control->isFilled();
+            return (bool) $control->isFilled();
         }
 
         $value = $control->getValue();

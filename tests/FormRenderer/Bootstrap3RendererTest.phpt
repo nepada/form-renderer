@@ -186,7 +186,7 @@ class Bootstrap3RendererTest extends TestCase
     }
 
     /**
-     * @return mixed[]
+     * @return list<mixed[]>
      */
     public function getRendererModes(): array
     {

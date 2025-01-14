@@ -36,3 +36,13 @@ parameters:
             message: "#^Comparison operation \"\\<\" between [0-9]+ and 30008 is always (true|false)\\.$#"
             count: 1
             path: tests/Bridges/FormRendererDI/FormRendererLatteStrictExtensionTest.phpt
+        - # false positive
+            message: '#^Cannot access an offset on mixed\.$#'
+            identifier: offsetAccess.nonOffsetAccessible
+            count: 2
+            path: tests/FormRenderer/HelpersTest.phpt
+        - # false positive
+            message: '#^Parameter \#1 \$value of static method Nepada\\FormRenderer\\Helpers\:\:parseClassList\(\) expects array\<mixed\>\|string\|null, mixed given\.$#'
+            identifier: argument.type
+            count: 2
+            path: tests/FormRenderer/HelpersTest.phpt

@@ -31,7 +31,7 @@ class SafeTranslateFilterTest extends Tester\TestCase
     }
 
     /**
-     * @return mixed[]
+     * @return list<mixed[]>
      */
     protected function getNoTranslatorData(): array
     {
@@ -73,7 +73,7 @@ class SafeTranslateFilterTest extends Tester\TestCase
     }
 
     /**
-     * @return mixed[]
+     * @return list<mixed[]>
      */
     protected function getTranslatorData(): array
     {

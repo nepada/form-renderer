@@ -30,7 +30,7 @@ class ValidationClassFilterTest extends TestCase
     }
 
     /**
-     * @return mixed[]
+     * @return list<mixed[]>
      */
     protected function getFilterData(): array
     {
