@@ -1,5 +1,5 @@
 {block #form}
 FORM
 {ifset $mode}{$mode}{/ifset}
-{foreach $this->global->formRendererImports as $templateFile}{=basename($templateFile)}{sep},{/sep}{/foreach}
+{foreach $templateImports as $templateFile}{=basename($templateFile)}{sep},{/sep}{/foreach}
 {/block}

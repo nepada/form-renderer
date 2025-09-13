@@ -1,6 +1,8 @@
 <?php
 declare(strict_types = 1);
 
+use Composer\InstalledVersions;
+use Composer\Semver\VersionParser;
 use Nette\Localization\Translator;
 
 $config = ['parameters' => ['ignoreErrors' => []]];
@@ -11,6 +13,14 @@ if ($isNetteUtils4) {
     $config['parameters']['ignoreErrors'][] = [
         'message' => '~^Parameter \\#1 \\$message of method Nette\\\\Localization\\\\Translator\\:\\:translate\\(\\) expects string\\|Stringable, mixed given\\.$~',
         'path' => __DIR__ . '/../../src/FormRenderer/Filters/SafeTranslateFilter.php',
+        'count' => 1,
+    ];
+}
+
+if (InstalledVersions::satisfies(new VersionParser(), 'latte/latte', '<3.1')) {
+    $config['parameters']['ignoreErrors'][] = [
+        'message' => '~^Ternary operator condition is always true\\.$~',
+        'path' => __DIR__ . '/../../src/FormRenderer/LatteExtensions/Nodes/NClassNode.php',
         'count' => 1,
     ];
 }

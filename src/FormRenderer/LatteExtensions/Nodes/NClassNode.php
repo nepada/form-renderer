@@ -8,7 +8,9 @@ use Latte\Compiler\Nodes\Php\Expression\ArrayNode;
 use Latte\Compiler\Nodes\StatementNode;
 use Latte\Compiler\PrintContext;
 use Latte\Compiler\Tag;
+use Latte\Runtime\Filters;
 use Nepada\FormRenderer\Helpers;
+use function is_callable;
 
 /**
  * Improved version of `n:class="..."` that supports array arguments, e.g. `n:class="firstClass, $condition ? [foo => true, bar => true], anotherClass"`.
@@ -37,7 +39,8 @@ final class NClassNode extends StatementNode
     public function print(PrintContext $context): string
     {
         $classListCode = '$ʟ_tmp = array_filter(array_merge(...array_map([\'' . Helpers::class . '\', \'parseClassList\'], %node)))';
-        $code = 'if (' . $classListCode . ') echo \' class="\', LR\Filters::escapeHtmlAttr(implode(\' \', array_unique($ʟ_tmp))), \'"\' %line;';
+        $escaper = is_callable([Filters::class, 'escapeHtmlAttr']) ? 'Filters::escapeHtmlAttr' : 'HtmlHelpers::escapeAttr'; // Latte <3.1 compatibility
+        $code = 'if (' . $classListCode . ') echo \' class="\', LR\\' . $escaper . '(implode(\' \', array_unique($ʟ_tmp))), \'"\' %line;';
 
         return $context->format($code, $this->args, $this->position);
     }
