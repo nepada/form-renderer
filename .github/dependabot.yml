@@ -14,12 +14,11 @@ updates:
       - dependency-type: "development"
     ignore:
       - dependency-name: "nette/di"
+      - dependency-name: "nette/schema"
       - dependency-name: "nette/bootstrap"
-      - dependency-name: "nette/component-model"
       - dependency-name: "composer-runtime-api"
-      - dependency-name: "nette/http"
+      - dependency-name: "nette/component-model"
       - dependency-name: "nette/neon"
-      - dependency-name: "nette/robot-loader"
     groups:
         phpstan:
             patterns: ["*phpstan*"]
