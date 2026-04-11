@@ -9,7 +9,7 @@ class FillableCustomControl extends CustomControl
     private bool $isFilled;
 
     /**
-     * @param string[] $errors
+     * @param list<string|\Stringable> $errors
      */
     public function __construct(bool $isFilled, mixed $value = null, array $errors = [])
     {

@@ -13,12 +13,12 @@ class CustomControl implements Nette\Forms\Control
     private mixed $value;
 
     /**
-     * @var string[]
+     * @var list<string|\Stringable>
      */
     private array $errors;
 
     /**
-     * @param string[] $errors
+     * @param list<string|\Stringable> $errors
      */
     public function __construct(mixed $value = null, array $errors = [])
     {
@@ -45,7 +45,7 @@ class CustomControl implements Nette\Forms\Control
     }
 
     /**
-     * @return string[]
+     * @return list<string|\Stringable>
      */
     public function getErrors(): array
     {
