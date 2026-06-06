@@ -36,22 +36,4 @@ if (! InstalledVersions::satisfies(new VersionParser(), 'latte/latte', '<3.1')) 
     ];
 }
 
-if (! InstalledVersions::satisfies(new VersionParser(), 'nette/application', '<=3.2.9')) {
-    $config['parameters']['ignoreErrors'][] = [
-        'message' => '~^Parameter \\#2 \\$callback of method Nette\\\\Bridges\\\\ApplicationLatte\\\\Template::addFilter\\(\\) expects callable\\(mixed \\.\\.\\.\\): mixed, Nepada\\\\FormRenderer\\\\Filters\\\\ValidationClassFilter given\\.$~',
-        'path' => __DIR__ . '/../../src/FormRenderer/Bootstrap3Renderer.php',
-        'count' => 1,
-    ];
-    $config['parameters']['ignoreErrors'][] = [
-        'message' => '~^Parameter \\#2 \\$callback of method Nette\\\\Bridges\\\\ApplicationLatte\\\\Template::addFilter\\(\\) expects callable\\(mixed \\.\\.\\.\\): mixed, Nepada\\\\FormRenderer\\\\Filters\\\\ValidationClassFilter given\\.$~',
-        'path' => __DIR__ . '/../../src/FormRenderer/Bootstrap4Renderer.php',
-        'count' => 1,
-    ];
-    $config['parameters']['ignoreErrors'][] = [
-        'message' => '~^Parameter \\#2 \\$callback of method Nette\\\\Bridges\\\\ApplicationLatte\\\\Template::addFilter\\(\\) expects callable\\(mixed \\.\\.\\.\\): mixed, Nepada\\\\FormRenderer\\\\Filters\\\\ValidationClassFilter given\\.$~',
-        'path' => __DIR__ . '/../../src/FormRenderer/Bootstrap5Renderer.php',
-        'count' => 1,
-    ];
-}
-
 return $config;
