@@ -45,7 +45,7 @@ jobs:
           vendor/bin/phpstan analyse -v
           vendor/bin/phpstan analyse -v -c phpstan.tests.neon.dist
       - if: failure()
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: output
           path: tests/**/output
