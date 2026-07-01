@@ -24,9 +24,9 @@
     "require-dev": {
         "nette/tester": "v2.6.1",
         "mockery/mockery": "1.6.12",
-        "phpstan/phpstan": "2.2.2",
+        "phpstan/phpstan": "2.2.3",
         "phpstan/phpstan-strict-rules": "2.0.11",
-        "phpstan/phpstan-nette": "2.0.10",
+        "phpstan/phpstan-nette": "2.0.11",
         "nepada/phpstan-nette-tester": "2.0.1",
         "spaze/phpstan-disallowed-calls": "4.12.0",
         "shipmonk/phpstan-rules": "4.4.0",
