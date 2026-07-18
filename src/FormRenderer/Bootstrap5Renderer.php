@@ -114,8 +114,10 @@ class Bootstrap5Renderer implements Nette\Forms\FormRenderer
     protected function prepareForm(Form $form): void
     {
         $primaryButton = $this->findPrimaryButton($form);
-        foreach ($form->getComponents(true, Controls\Button::class) as $control) {
-            /** @var Controls\Button $control */
+        foreach ($form->getComponentTree() as $control) {
+            if (!$control instanceof Controls\Button) {
+                continue;
+            }
             $controlPrototype = $control->getControlPrototype();
             $classes = Helpers::parseClassList($controlPrototype->getClass());
             if (in_array('btn', $classes, true)) {
@@ -130,8 +132,10 @@ class Bootstrap5Renderer implements Nette\Forms\FormRenderer
             }
         }
 
-        /** @var Controls\Checkbox $control */
-        foreach ($form->getComponents(true, Controls\Checkbox::class) as $control) {
+        foreach ($form->getComponentTree() as $control) {
+            if (!$control instanceof Controls\Checkbox) {
+                continue;
+            }
             if ($control->getOption('type') !== 'checkbox') {
                 continue;
             }
@@ -139,8 +143,10 @@ class Bootstrap5Renderer implements Nette\Forms\FormRenderer
                 $control->setOption('type', 'togglebutton');
             }
         }
-        /** @var Controls\CheckboxList $control */
-        foreach ($form->getComponents(true, Controls\CheckboxList::class) as $control) {
+        foreach ($form->getComponentTree() as $control) {
+            if (!$control instanceof Controls\CheckboxList) {
+                continue;
+            }
             if ($control->getOption('type') !== 'checkbox') {
                 continue;
             }
@@ -150,8 +156,10 @@ class Bootstrap5Renderer implements Nette\Forms\FormRenderer
                 $control->setOption('type', 'checkboxlist');
             }
         }
-        /** @var Controls\RadioList $control */
-        foreach ($form->getComponents(true, Controls\RadioList::class) as $control) {
+        foreach ($form->getComponentTree() as $control) {
+            if (!$control instanceof Controls\RadioList) {
+                continue;
+            }
             if ($control->getOption('type') !== 'radio') {
                 continue;
             }
@@ -161,8 +169,10 @@ class Bootstrap5Renderer implements Nette\Forms\FormRenderer
         }
 
         if ($this->shouldUseFloatingLabels()) {
-            /** @var Controls\BaseControl $control */
-            foreach ($form->getComponents(true, Controls\BaseControl::class) as $control) {
+            foreach ($form->getComponentTree() as $control) {
+                if (!$control instanceof Controls\BaseControl) {
+                    continue;
+                }
                 if ($control->getOption(self::OPTION_FLOATING_LABEL) !== null) {
                     continue;
                 }
@@ -174,8 +184,10 @@ class Bootstrap5Renderer implements Nette\Forms\FormRenderer
 
     protected function findPrimaryButton(Form $form): ?Controls\SubmitButton
     {
-        /** @var Controls\SubmitButton $control */
-        foreach ($form->getComponents(true, Controls\SubmitButton::class) as $control) {
+        foreach ($form->getComponentTree() as $control) {
+            if (!$control instanceof Controls\SubmitButton) {
+                continue;
+            }
             $classes = Helpers::parseClassList($control->getControlPrototype()->getClass());
             if (in_array('btn-primary', $classes, true)) {
                 return $control;

@@ -111,8 +111,10 @@ class Bootstrap4Renderer implements Nette\Forms\FormRenderer
     protected function prepareForm(Form $form): void
     {
         $primaryButton = $this->findPrimaryButton($form);
-        foreach ($form->getComponents(true, Controls\Button::class) as $control) {
-            /** @var Controls\Button $control */
+        foreach ($form->getComponentTree() as $control) {
+            if (!$control instanceof Controls\Button) {
+                continue;
+            }
             $controlPrototype = $control->getControlPrototype();
             $classes = Helpers::parseClassList($controlPrototype->getClass());
             if (in_array('btn', $classes, true)) {
@@ -127,8 +129,10 @@ class Bootstrap4Renderer implements Nette\Forms\FormRenderer
             }
         }
 
-        /** @var Controls\CheckboxList $control */
-        foreach ($form->getComponents(true, Controls\CheckboxList::class) as $control) {
+        foreach ($form->getComponentTree() as $control) {
+            if (!$control instanceof Controls\CheckboxList) {
+                continue;
+            }
             if ($control->getOption('type') === 'checkbox') {
                 $control->setOption('type', 'checkboxlist');
             }
@@ -137,8 +141,10 @@ class Bootstrap4Renderer implements Nette\Forms\FormRenderer
 
     protected function findPrimaryButton(Form $form): ?Controls\SubmitButton
     {
-        /** @var Controls\SubmitButton $control */
-        foreach ($form->getComponents(true, Controls\SubmitButton::class) as $control) {
+        foreach ($form->getComponentTree() as $control) {
+            if (!$control instanceof Controls\SubmitButton) {
+                continue;
+            }
             $classes = Helpers::parseClassList($control->getControlPrototype()->getClass());
             if (in_array('btn-primary', $classes, true)) {
                 return $control;
