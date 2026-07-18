@@ -115,7 +115,7 @@ class Bootstrap5Renderer implements Nette\Forms\FormRenderer
     {
         $primaryButton = $this->findPrimaryButton($form);
         foreach ($form->getComponentTree() as $control) {
-            if (!$control instanceof Controls\Button) {
+            if (! $control instanceof Controls\Button) {
                 continue;
             }
             $controlPrototype = $control->getControlPrototype();
@@ -133,7 +133,7 @@ class Bootstrap5Renderer implements Nette\Forms\FormRenderer
         }
 
         foreach ($form->getComponentTree() as $control) {
-            if (!$control instanceof Controls\Checkbox) {
+            if (! $control instanceof Controls\Checkbox) {
                 continue;
             }
             if ($control->getOption('type') !== 'checkbox') {
@@ -144,7 +144,7 @@ class Bootstrap5Renderer implements Nette\Forms\FormRenderer
             }
         }
         foreach ($form->getComponentTree() as $control) {
-            if (!$control instanceof Controls\CheckboxList) {
+            if (! $control instanceof Controls\CheckboxList) {
                 continue;
             }
             if ($control->getOption('type') !== 'checkbox') {
@@ -157,7 +157,7 @@ class Bootstrap5Renderer implements Nette\Forms\FormRenderer
             }
         }
         foreach ($form->getComponentTree() as $control) {
-            if (!$control instanceof Controls\RadioList) {
+            if (! $control instanceof Controls\RadioList) {
                 continue;
             }
             if ($control->getOption('type') !== 'radio') {
@@ -170,7 +170,7 @@ class Bootstrap5Renderer implements Nette\Forms\FormRenderer
 
         if ($this->shouldUseFloatingLabels()) {
             foreach ($form->getComponentTree() as $control) {
-                if (!$control instanceof Controls\BaseControl) {
+                if (! $control instanceof Controls\BaseControl) {
                     continue;
                 }
                 if ($control->getOption(self::OPTION_FLOATING_LABEL) !== null) {
@@ -185,7 +185,7 @@ class Bootstrap5Renderer implements Nette\Forms\FormRenderer
     protected function findPrimaryButton(Form $form): ?Controls\SubmitButton
     {
         foreach ($form->getComponentTree() as $control) {
-            if (!$control instanceof Controls\SubmitButton) {
+            if (! $control instanceof Controls\SubmitButton) {
                 continue;
             }
             $classes = Helpers::parseClassList($control->getControlPrototype()->getClass());

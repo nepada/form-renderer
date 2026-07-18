@@ -95,7 +95,7 @@ class Bootstrap3Renderer implements Nette\Forms\FormRenderer
     {
         $primaryButton = $this->findPrimaryButton($form);
         foreach ($form->getComponentTree() as $control) {
-            if (!$control instanceof Controls\Button) {
+            if (! $control instanceof Controls\Button) {
                 continue;
             }
             $controlPrototype = $control->getControlPrototype();
@@ -113,7 +113,7 @@ class Bootstrap3Renderer implements Nette\Forms\FormRenderer
         }
 
         foreach ($form->getComponentTree() as $control) {
-            if (!$control instanceof Controls\CheckboxList) {
+            if (! $control instanceof Controls\CheckboxList) {
                 continue;
             }
             if ($control->getOption('type') === 'checkbox') {
@@ -125,7 +125,7 @@ class Bootstrap3Renderer implements Nette\Forms\FormRenderer
     protected function findPrimaryButton(Form $form): ?Controls\SubmitButton
     {
         foreach ($form->getComponentTree() as $control) {
-            if (!$control instanceof Controls\SubmitButton) {
+            if (! $control instanceof Controls\SubmitButton) {
                 continue;
             }
             $classes = Helpers::parseClassList($control->getControlPrototype()->getClass());
