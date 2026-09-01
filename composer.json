@@ -24,7 +24,7 @@
     },
     "require-dev": {
         "nette/tester": "v2.6.1",
-        "mockery/mockery": "1.6.12",
+        "mockery/mockery": "1.6.15",
         "phpstan/phpstan": "2.2.6",
         "phpstan/phpstan-strict-rules": "2.0.12",
         "phpstan/phpstan-nette": "2.0.12",
