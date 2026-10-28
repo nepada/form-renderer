@@ -23,7 +23,13 @@ class ValidationClassFilterTest extends TestCase
     /**
      * @dataProvider getFilterData
      */
-    public function testFilter(string $description, ?string $invalidClass, ?string $validClass, Control $control, ?string $expectedClass): void
+    public function testFilter(
+        string $description,
+        ?string $invalidClass,
+        ?string $validClass,
+        Control $control,
+        ?string $expectedClass,
+    ): void
     {
         $filter = new ValidationClassFilter($invalidClass, $validClass);
         Assert::same($expectedClass, $filter->__invoke($control), $description);

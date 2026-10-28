@@ -11,14 +11,16 @@ final class SafeTranslateFilter
 
     use Nette\SmartObject;
 
-    private ?Nette\Localization\Translator $translator;
-
-    public function __construct(?Nette\Localization\Translator $translator)
+    public function __construct(
+        private ?Nette\Localization\Translator $translator,
+    )
     {
-        $this->translator = $translator;
     }
 
-    public function __invoke(Latte\Runtime\FilterInfo $filterInfo, mixed ...$args): mixed
+    public function __invoke(
+        Latte\Runtime\FilterInfo $filterInfo,
+        mixed ...$args,
+    ): mixed
     {
         if ($this->translator === null) {
             return count($args) > 0 ? reset($args) : null;

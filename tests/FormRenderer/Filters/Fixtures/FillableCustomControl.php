@@ -6,15 +6,16 @@ namespace NepadaTests\FormRenderer\Filters\Fixtures;
 class FillableCustomControl extends CustomControl
 {
 
-    private bool $isFilled;
-
     /**
      * @param list<string|\Stringable> $errors
      */
-    public function __construct(bool $isFilled, mixed $value = null, array $errors = [])
+    public function __construct(
+        private bool $isFilled,
+        mixed $value = null,
+        array $errors = [],
+    )
     {
         parent::__construct($value, $errors);
-        $this->isFilled = $isFilled;
     }
 
     public function isFilled(): bool

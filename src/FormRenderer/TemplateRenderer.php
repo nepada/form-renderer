@@ -15,10 +15,6 @@ class TemplateRenderer implements Nette\Forms\FormRenderer
     public const DEFAULT_FORM_BLOCKS_TEMPLATE_FILE = __DIR__ . '/templates/default.latte';
     private const TEMPLATE_FILE = __DIR__ . '/templates/form.latte';
 
-    private Nette\Application\UI\TemplateFactory $templateFactory;
-
-    private SafeTranslateFilterFactory $safeTranslateFilterFactory;
-
     /**
      * @var string[]
      */
@@ -26,10 +22,11 @@ class TemplateRenderer implements Nette\Forms\FormRenderer
 
     private ?Nette\Bridges\ApplicationLatte\Template $template = null;
 
-    public function __construct(Nette\Application\UI\TemplateFactory $templateFactory, SafeTranslateFilterFactory $safeTranslateFilterFactory)
+    public function __construct(
+        private Nette\Application\UI\TemplateFactory $templateFactory,
+        private SafeTranslateFilterFactory $safeTranslateFilterFactory,
+    )
     {
-        $this->templateFactory = $templateFactory;
-        $this->safeTranslateFilterFactory = $safeTranslateFilterFactory;
     }
 
     public function importTemplate(string $templateFile): void

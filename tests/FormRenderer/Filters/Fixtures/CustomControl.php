@@ -10,20 +10,14 @@ class CustomControl implements Nette\Forms\Control
 
     use Nette\SmartObject;
 
-    private mixed $value;
-
-    /**
-     * @var list<string|\Stringable>
-     */
-    private array $errors;
-
     /**
      * @param list<string|\Stringable> $errors
      */
-    public function __construct(mixed $value = null, array $errors = [])
+    public function __construct(
+        private mixed $value = null,
+        private array $errors = [],
+    )
     {
-        $this->value = $value;
-        $this->errors = $errors;
     }
 
     /**

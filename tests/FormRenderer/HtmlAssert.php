@@ -14,7 +14,11 @@ final class HtmlAssert
 
     private const IE_BUG_FIX = '<!--[if IE]><input type=IEbug disabled style="display:none"><![endif]-->';
 
-    public static function matchFile(string $file, string $actual, ?string $description = null): void
+    public static function matchFile(
+        string $file,
+        string $actual,
+        ?string $description = null,
+    ): void
     {
         $expected = Nette\Utils\FileSystem::read($file);
         Assert::match(self::normalize($expected), self::normalize($actual), $description);

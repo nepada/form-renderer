@@ -22,8 +22,6 @@ class Bootstrap4Renderer implements Nette\Forms\FormRenderer
 
     private const FORM_BLOCKS_TEMPLATE_FILE = __DIR__ . '/templates/bootstrap4.latte';
 
-    private TemplateRendererFactory $templateRendererFactory;
-
     private ?TemplateRenderer $templateRenderer = null;
 
     private bool $renderValidState = false;
@@ -38,9 +36,10 @@ class Bootstrap4Renderer implements Nette\Forms\FormRenderer
 
     private int $controlCols = self::DEFAULT_CONTROL_COLS;
 
-    public function __construct(TemplateRendererFactory $templateRendererFactory)
+    public function __construct(
+        private TemplateRendererFactory $templateRendererFactory,
+    )
     {
-        $this->templateRendererFactory = $templateRendererFactory;
     }
 
     public function importTemplate(string $templateFile): void
@@ -73,7 +72,10 @@ class Bootstrap4Renderer implements Nette\Forms\FormRenderer
         $this->mode = self::MODE_INLINE;
     }
 
-    public function setHorizontalMode(int $labelCols = self::DEFAULT_LABEL_COLS, int $controlCols = self::DEFAULT_CONTROL_COLS): void
+    public function setHorizontalMode(
+        int $labelCols = self::DEFAULT_LABEL_COLS,
+        int $controlCols = self::DEFAULT_CONTROL_COLS,
+    ): void
     {
         $this->mode = self::MODE_HORIZONTAL;
         $this->labelCols = $labelCols;

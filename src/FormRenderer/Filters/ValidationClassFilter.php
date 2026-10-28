@@ -10,14 +10,11 @@ final class ValidationClassFilter
 
     use Nette\SmartObject;
 
-    private ?string $invalidClass;
-
-    private ?string $validClass;
-
-    public function __construct(?string $invalidClass, ?string $validClass)
+    public function __construct(
+        private ?string $invalidClass,
+        private ?string $validClass,
+    )
     {
-        $this->invalidClass = $invalidClass;
-        $this->validClass = $validClass;
     }
 
     public function __invoke(Nette\Forms\Control $control): ?string
