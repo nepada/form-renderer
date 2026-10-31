@@ -3,10 +3,10 @@
     {var $controlName = $control->lookupPath(\Nette\Forms\Form::class)}
     {var $controlType = $control->getOption('type') ?? 'default'}
     {ifset #"{$blockNamePrefix}-name-{$controlName}"}
-        {include #"{$blockNamePrefix}-name-{$controlName}", control => $control, (expand) $parameters}
+        {include #"{$blockNamePrefix}-name-{$controlName}", (expand) $parameters, control => $control}
     {elseifset #"{$blockNamePrefix}-type-{$controlType}"}
-        {include #"{$blockNamePrefix}-type-{$controlType}", control => $control, (expand) $parameters}
+        {include #"{$blockNamePrefix}-type-{$controlType}", (expand) $parameters, control => $control}
     {else}
-        {include #"{$blockNamePrefix}-type-default", control => $control, (expand) $parameters}
+        {include #"{$blockNamePrefix}-type-default", (expand) $parameters, control => $control}
     {/ifset}
 {/define}
