@@ -25,11 +25,6 @@ if (! InstalledVersions::satisfies(new VersionParser(), 'latte/latte', '<3.1')) 
     ];
 } elseif (! InstalledVersions::satisfies(new VersionParser(), 'latte/latte', '<3.0.23')) {
     $config['parameters']['ignoreErrors'][] = [
-        'message' => '~^Result of && is always false\\.$~',
-        'path' => __DIR__ . '/../../src/FormRenderer/LatteExtensions/Nodes/NClassNode.php',
-        'count' => 1,
-    ];
-    $config['parameters']['ignoreErrors'][] = [
         'message' => '~^Call to function is_callable\\(\\) with array.* will always evaluate to false\\.$~',
         'path' => __DIR__ . '/../../src/FormRenderer/LatteExtensions/Nodes/NClassNode.php',
         'count' => 1,
